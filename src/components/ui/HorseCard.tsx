@@ -99,13 +99,15 @@ export function HorseCard({
           />
         )}
 
-        {/* Prominent VENDIDO / SOLD Stamp Overlay when horse.status === 'sold' */}
+        {/* Quiet-Luxury Editorial VENDIDO / SOLD Plaque when horse.status === 'sold' */}
         {horse.status === 'sold' && (
-          <div className="pointer-events-none absolute inset-0 bg-tinta/25 flex items-center justify-center z-10">
-            <div className="-rotate-12 px-6 py-2.5 rounded-lg bg-[#9E2A2B]/95 text-niebla border-2 border-[#C6B28A] shadow-xl backdrop-blur-sm">
-              <span className="block font-display-split font-bold text-[22px] sm:text-[26px] tracking-[0.22em] uppercase leading-none text-center">
-                ★ {lang === 'es' ? 'VENDIDO' : 'SOLD'} ★
+          <div className="pointer-events-none absolute inset-0 bg-[#141413]/30 flex items-center justify-center z-10">
+            <div className="px-6 py-2.5 rounded-full bg-[#181816]/85 backdrop-blur-md border border-[#C6B28A]/60 shadow-lg flex items-center gap-3">
+              <span className="w-4 h-[1px] bg-[#C6B28A]/80" />
+              <span className="text-[11.5px] sm:text-[12.5px] font-medium tracking-[0.32em] uppercase text-[#F4F2ED] leading-none">
+                {lang === 'es' ? 'VENDIDO' : 'SOLD'}
               </span>
+              <span className="w-4 h-[1px] bg-[#C6B28A]/80" />
             </div>
           </div>
         )}
@@ -143,10 +145,10 @@ export function HorseCard({
               </span>
             )}
             <span
-              className={`px-3.5 py-1 rounded-full text-[11.5px] font-semibold ${
+              className={`px-3.5 py-1 rounded-full text-[11px] font-medium ${
                 horse.status === 'sold'
-                  ? 'bg-[#9E2A2B] text-niebla uppercase tracking-[0.08em] font-bold'
-                  : 'bg-[#DCE8E0] text-[#1C2E24]'
+                  ? 'bg-[#181816] text-[#C6B28A] border border-[#C6B28A]/40 uppercase tracking-[0.16em]'
+                  : 'bg-[#DCE8E0] text-[#1C2E24] font-semibold'
               }`}
             >
               {statusText}

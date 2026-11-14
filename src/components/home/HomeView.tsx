@@ -100,188 +100,71 @@ export function HomeView() {
   return (
     <div className="bg-niebla text-tinta overflow-hidden">
       {/* =====================================================================
-          01 · HERO FULL SCREEN (100svh · Imagen/Video a pantalla completa)
+          01 · HERO FULL SCREEN (100svh · Video en trote llamativo sin exceso de texto)
           ===================================================================== */}
       <section className="relative w-full min-h-[100svh] flex flex-col justify-end bg-polder text-niebla overflow-hidden">
-        {/* Background Media Layer (Full Bleed) */}
+        {/* Background Video Layer (16:9 Full-Frame Trotting Horse, Head Never Cropped) */}
         <div className="absolute inset-0 z-0">
-          <AnimatePresence mode="wait">
-            {showHeroVideo && activeHero.video ? (
-              <motion.video
-                key={`video-${activeHero.slug}`}
-                ref={heroVideoRef}
-                initial={{ opacity: 0, scale: 1.03 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                src={encodeURI(activeHero.video)}
-                poster={encodeURI(activeHero.photo)}
-                autoPlay
-                loop
-                muted={heroMuted}
-                playsInline
-                className="w-full h-full object-cover object-center"
-              />
-            ) : (
-              <motion.img
-                key={`img-${activeHero.slug}`}
-                initial={{ opacity: 0, scale: 1.04 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-                src={encodeURI(activeHero.photo)}
-                alt={`${activeHero.name}, ejemplar frisón KFPS en Cuadra Imperial Loy`}
-                className="w-full h-full object-cover object-center"
-              />
-            )}
-          </AnimatePresence>
+          <video
+            ref={heroVideoRef}
+            src="/images/hero-trote.mp4"
+            poster="/images/hero-trote-poster.jpg"
+            autoPlay
+            loop
+            muted={heroMuted}
+            playsInline
+            className="w-full h-full object-cover object-center"
+          />
 
-          {/* Subtle Cinematic Overlays for Clean Typography Contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#111C16]/90 via-[#111C16]/35 to-[#111C16]/25 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111C16]/75 via-[#111C16]/25 to-transparent pointer-events-none" />
+          {/* Subtle Bottom Vignette Only — Keeps the Trotting Horse Clear & Unobstructed */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F1914]/85 via-[#0F1914]/15 to-transparent pointer-events-none" />
         </div>
 
-        {/* Foreground Content (Bottom-Aligned Full Screen Layout) */}
-        <div className="gallery-container relative z-10 pt-32 pb-10 lg:pb-16 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
-            {/* Left Copy Column (7 cols) */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-7 flex flex-col items-start"
-            >
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[11px] uppercase tracking-[0.2em] text-champagne font-semibold mb-5">
-                <span className="w-1.5 h-1.5 rounded-full bg-champagne" />
-                {dict.home.hero.eyebrow}
-              </span>
-
-              <h1 className="font-display-split font-bold uppercase text-niebla text-[38px] sm:text-[52px] lg:text-[64px] leading-[1.05] tracking-[-0.01em] max-w-[16ch]">
-                {dict.home.hero.titleStrong}{' '}
-                <span className="text-champagne">{dict.home.hero.titleLight}</span>
-              </h1>
-
-              <p className="mt-5 text-[16px] sm:text-[18px] leading-[1.6] text-niebla/85 max-w-[54ch]">
-                {dict.home.hero.subtitle}
-              </p>
-
-              <div className="mt-8 flex flex-wrap items-center gap-3.5">
-                <button
-                  type="button"
-                  onClick={() =>
-                    triggerWhatsApp({
-                      intent: 'visit',
-                      ctaPosition: 'home_hero_primary',
-                    })
-                  }
-                  className="inline-flex items-center justify-center h-[52px] px-7 rounded-full bg-niebla text-polder font-semibold text-[12.5px] uppercase tracking-[0.16em] hover:bg-champagne hover:text-tinta transition-all duration-300 shadow-lg"
-                >
-                  {dict.home.hero.primaryCta}
-                </button>
-
-                <Link
-                  href={`/${lang}/ejemplares`}
-                  className="inline-flex items-center justify-center h-[52px] px-7 rounded-full bg-white/10 backdrop-blur-md border border-white/25 text-niebla font-semibold text-[12.5px] uppercase tracking-[0.16em] hover:bg-white/20 transition-all duration-300"
-                >
-                  {dict.home.hero.secondaryCta}
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* Right Interactive Horse Switcher Card (5 cols) */}
+        {/* Minimal Editorial Impulse Overlay at Bottom */}
+        <div className="gallery-container relative z-10 pb-12 lg:pb-16 pt-32 w-full">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-5 flex lg:justify-end"
+              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col items-start"
             >
-              <div className="w-full max-w-md rounded-2xl bg-[#14221A]/75 backdrop-blur-md border border-white/15 p-5 text-niebla">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <span className="text-[10.5px] uppercase tracking-[0.2em] text-champagne font-semibold block mb-1">
-                      {lang === 'es' ? 'Ejemplar en pantalla' : 'Featured horse'}
-                    </span>
-                    <Link
-                      href={`/${lang}/ejemplares/${activeHero.slug}`}
-                      className="font-display-split font-bold text-[26px] text-niebla hover:text-champagne transition-colors leading-none uppercase"
-                    >
-                      {activeHero.name}
-                    </Link>
-                    <p className="mt-1.5 text-[12.5px] text-niebla/75 leading-relaxed">
-                      {lang === 'es' ? activeHero.tagEs : activeHero.tagEn}
-                    </p>
-                  </div>
+              <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-champagne font-semibold mb-3">
+                <span className="w-6 h-[1px] bg-champagne" />
+                <span>FRISONES KFPS · PAÍSES BAJOS</span>
+              </span>
 
-                  <Link
-                    href={`/${lang}/ejemplares/${activeHero.slug}`}
-                    className="shrink-0 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-[11px] uppercase tracking-[0.15em] text-champagne font-semibold transition-colors"
-                  >
-                    {lang === 'es' ? 'Ver ficha →' : 'View profile →'}
-                  </Link>
-                </div>
+              <h1 className="font-display-split font-bold uppercase text-niebla text-[36px] sm:text-[50px] lg:text-[60px] leading-[1.02] tracking-[-0.01em]">
+                {dict.home.hero.titleStrong}{' '}
+                <span className="text-champagne">{dict.home.hero.titleLight}</span>
+              </h1>
+            </motion.div>
 
-                {/* Horse Selector Pills + Video Toggle */}
-                <div className="mt-4 pt-3.5 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex flex-wrap items-center gap-1.5">
-                    {HERO_SHOWCASE.map((item, idx) => {
-                      const active = heroSlideIdx === idx;
-                      return (
-                        <button
-                          key={item.slug}
-                          type="button"
-                          onClick={() => {
-                            setHeroSlideIdx(idx);
-                            setShowHeroVideo(false);
-                          }}
-                          className={`px-3 py-1.5 text-[11.5px] rounded-full font-semibold transition-all ${
-                            active
-                              ? 'bg-champagne text-tinta shadow-sm'
-                              : 'bg-white/10 text-niebla/75 hover:bg-white/20 hover:text-niebla'
-                          }`}
-                        >
-                          {item.name.split(' ')[0]}
-                        </button>
-                      );
-                    })}
-                  </div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-wrap items-center gap-3 shrink-0"
+            >
+              <a
+                href="#coleccion"
+                className="inline-flex items-center justify-center h-[52px] px-8 rounded-full bg-niebla text-polder font-semibold text-[12px] uppercase tracking-[0.18em] hover:bg-champagne hover:text-tinta transition-all duration-300 shadow-lg"
+              >
+                {dict.home.hero.secondaryCta}
+              </a>
 
-                  <div className="flex items-center gap-1.5">
-                    {activeHero.video && (
-                      <button
-                        type="button"
-                        onClick={() => setShowHeroVideo((v) => !v)}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/15 text-niebla font-semibold hover:bg-champagne hover:text-tinta transition-colors rounded-full text-[11.5px]"
-                      >
-                        <Play className="w-3 h-3" />
-                        <span>
-                          {showHeroVideo
-                            ? lang === 'es'
-                              ? 'Foto'
-                              : 'Photo'
-                            : 'Video'}
-                        </span>
-                      </button>
-                    )}
-
-                    {showHeroVideo && activeHero.video && (
-                      <button
-                        type="button"
-                        onClick={toggleHeroSound}
-                        aria-label={
-                          heroMuted ? dict.system.soundOn : dict.system.soundOff
-                        }
-                        className="p-1.5 rounded-full bg-white/15 text-niebla hover:bg-white/25"
-                      >
-                        {heroMuted ? (
-                          <VolumeX className="w-3.5 h-3.5" />
-                        ) : (
-                          <Volume2 className="w-3.5 h-3.5" />
-                        )}
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </div>
+              <button
+                type="button"
+                onClick={() =>
+                  triggerWhatsApp({
+                    intent: 'visit',
+                    ctaPosition: 'home_hero_primary',
+                  })
+                }
+                className="inline-flex items-center justify-center h-[52px] px-6 rounded-full bg-[#14221A]/70 backdrop-blur-md border border-white/25 text-niebla font-semibold text-[12px] uppercase tracking-[0.16em] hover:bg-white/20 transition-all duration-300"
+              >
+                {dict.home.hero.primaryCta}
+              </button>
             </motion.div>
           </div>
         </div>

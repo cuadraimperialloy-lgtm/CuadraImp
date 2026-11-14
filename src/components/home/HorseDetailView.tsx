@@ -327,11 +327,13 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
               className="w-full h-full object-contain bg-arena transition-transform duration-700 hover:scale-[1.015]"
             />
             {isSold && (
-              <div className="pointer-events-none absolute inset-0 bg-tinta/25 flex items-center justify-center z-10">
-                <div className="-rotate-12 px-8 py-3.5 rounded-xl bg-[#9E2A2B]/95 text-niebla border-2 border-[#C6B28A] shadow-2xl backdrop-blur-sm">
-                  <span className="block font-display-split font-bold text-[30px] sm:text-[42px] tracking-[0.22em] uppercase leading-none text-center">
-                    ★ {lang === 'es' ? 'VENDIDO' : 'SOLD'} ★
+              <div className="pointer-events-none absolute inset-0 bg-[#141413]/30 flex items-center justify-center z-10">
+                <div className="px-8 py-3.5 rounded-full bg-[#181816]/85 backdrop-blur-md border border-[#C6B28A]/60 shadow-xl flex items-center gap-4">
+                  <span className="w-6 h-[1px] bg-[#C6B28A]/80" />
+                  <span className="text-[13px] sm:text-[15px] font-medium tracking-[0.34em] uppercase text-[#F4F2ED] leading-none">
+                    {lang === 'es' ? 'EJEMPLAR VENDIDO' : 'SOLD'}
                   </span>
+                  <span className="w-6 h-[1px] bg-[#C6B28A]/80" />
                 </div>
               </div>
             )}
@@ -370,9 +372,9 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
                     </span>
                   )}
                 <span
-                  className={`inline-flex items-center px-4 py-1.5 rounded-full text-[13px] font-semibold tracking-[0.04em] ${isSold
-                      ? 'bg-[#9E2A2B] text-niebla uppercase font-bold'
-                      : 'bg-[#DCE8E0] text-[#1C2E24]'
+                  className={`inline-flex items-center px-4 py-1.5 rounded-full text-[12px] font-medium ${isSold
+                      ? 'bg-[#181816] text-[#C6B28A] border border-[#C6B28A]/40 uppercase tracking-[0.18em]'
+                      : 'bg-[#DCE8E0] text-[#1C2E24] font-semibold'
                     }`}
                 >
                   {statusText}

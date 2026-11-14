@@ -220,9 +220,12 @@ export function StallionsView() {
                 <span className="text-champagne font-semibold">
                   {dict.home.privateVisit.estanciaBadge}
                 </span>
-                <span>Zapotlanejo, Jal.</span>
+                <span>Ayotlán, Jal.</span>
               </div>
             </div>
+            <p className="mt-2.5 text-[13px] text-tinta-diluida">
+              {dict.home.privateVisit.estanciaCaption}
+            </p>
           </div>
         </Reveal>
       </div>
@@ -782,10 +785,13 @@ export function StableView() {
                     {dict.home.privateVisit.estanciaBadge}
                   </span>
                   <span>
-                    {dict.home.privateVisit.estanciaTitle} · Zapotlanejo, Jal.
+                    {dict.home.privateVisit.estanciaTitle} · Ayotlán, Jal.
                   </span>
                 </div>
               </div>
+              <p className="mt-3 text-[13px] text-tinta-diluida">
+                {dict.home.privateVisit.estanciaCaption}
+              </p>
             </div>
           </Reveal>
         </div>
