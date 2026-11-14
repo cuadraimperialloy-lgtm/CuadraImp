@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --niebla: #F4F2ED;
+  /* Piedra Caliza Mate (Fondo limpio base, cero blanco frío) */
+  --arena: #EAE6DF;
+  /* Arena Suave / Travertino (Tarjetas limpias sin bordes pesados) */
+  --arena-profunda: #DFDBD2;
+  /* Piedra media para contrastes suaves */
+  --tinta: #181816;
+  /* Carbón Azabache Mate (Tipografía principal y bloques nocturnos) */
+  --tinta-diluida: #6E6A63;
+  /* Gris Piedra Cálido (Subtítulos y etiquetas secundarias) */
+  --polder: #1C2E24;
+  /* Verde Pólder Profundo (Estuche para el escudo dorado, Header y CTA) */
+  --champagne: #C6B28A;
+  /* Champagne Satinado (Micro-acento del escudo dorado sobre verde/oscuro) */
+  --bronce-piedra: #7D6B4A;
+  /* Bronce Piedra Desaturado (Micro-acento KFPS sobre fondos claros) */
+  --linea: rgba(24, 24, 22, 0.08);
+  /* Línea divisoria sutil y limpia */
+  --font-sofia: 'Sofia Sans Extra Condensed', sans-serif;
+  --font-instrument: 'Instrument Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  border-color: var(--linea);
+}
+
+html {
+  background-color: var(--niebla);
+  color: var(--tinta);
+  font-family: var(--font-instrument), sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--niebla);
+  color: var(--tinta);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+:focus-visible {
+  outline: none;
+}
+
+/* Typography utilities — Clean, breathable line-heights (zero overlapping text) */
+.font-display-split {
+  font-family: var(--font-sofia), sans-serif;
+  text-transform: uppercase;
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+}
+
+.hero-fluid {
+  font-size: clamp(36px, 4.5vw, 60px);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+}
+
+.h1-fluid {
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+}
+
+.h2-fluid {
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.h3-fluid {
+  font-size: clamp(22px, 2.4vw, 32px);
+  line-height: 1.14;
+  letter-spacing: 0.01em;
+}
+
+.eyebrow {
+  font-family: var(--font-instrument), sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--bronce-piedra);
+  font-weight: 600;
+}
+
+.tabular-specs {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Clean Rounded Passepartout Frame */
+.passepartout-frame {
+  background-color: var(--arena);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .passepartout-frame {
+    padding: 22px;
+  }
+}
+
+/* Gallery Grid Container */
+.gallery-container {
+  width: 100%;
+  max-width: 1380px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .gallery-container {
+    padding-left: 44px;
+    padding-right: 44px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .gallery-container {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+/* Section vertical rhythm */
+.gallery-section {
+  padding-top: 76px;
+  padding-bottom: 76px;
+}
+
+@media (min-width: 1024px) {
+  .gallery-section {
+    padding-top: 116px;
+    padding-bottom: 116px;
+  }
+}
+
+/* Link with subtle 1px animated stroke */
+.gallery-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--tinta);
+  text-decoration: none;
+  padding-bottom: 2px;
+  font-weight: 500;
+}
+
+.gallery-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--bronce-piedra);
+  transform: scaleX(1);
+  transform-origin: right;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gallery-link:hover::after {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Ticker animation */
+@keyframes ticker-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 48s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-ticker {
+    animation: none;
+  }
+}

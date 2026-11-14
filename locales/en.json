@@ -1,0 +1,623 @@
+{
+  "seo": {
+    "title": "KFPS Friesian Horses for Sale · Mexico | Cuadra Imperial Loy",
+    "description": "Friesian horses imported from the Netherlands, hand-selected and registered with the KFPS. See them at a private visit in Zapotlanejo, Jalisco. Shipping to Mexico, the US and Latin America.",
+    "ogTitle": "Cuadra Imperial Loy · Friesians from the Netherlands",
+    "ogDescription": "Receive your horse sound and with origin papers."
+  },
+  "nav": {
+    "horses": "Horses",
+    "stallions": "Stallions",
+    "stable": "The Stable",
+    "guarantee": "Guarantee & Shipping",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "bookVisit": "Book a visit",
+    "bookPrivateVisit": "Book a private visit",
+    "selection": "Selection",
+    "mobileFooter": "Zapotlanejo, Jalisco · 38 minutes from Guadalajara",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "system": {
+    "status": {
+      "available": "Available",
+      "en_route": "En route from the Netherlands",
+      "reserved": "Reserved",
+      "sold": "Sold",
+      "draft": "Draft",
+      "archived": "Archived"
+    },
+    "origin": {
+      "Holanda": "Netherlands",
+      "Nacional": "Mexican-born"
+    },
+    "loading": "Loading…",
+    "linkCopied": "Link copied",
+    "numberCopied": "Number copied",
+    "fieldError": "Please check this field.",
+    "priceOnRequest": "Price on request",
+    "priceSub": "Sent by WhatsApp the same day. The same for every client.",
+    "viewHorse": "View horse →",
+    "save": "Save",
+    "saved": "Saved",
+    "addedToSelection": "Added to your selection",
+    "removedFromSelection": "Removed from your selection",
+    "officialNumberNotice": "This is our only official number: +52 33 1702 6066.",
+    "noObligation": "No obligation to buy. Your veterinarian is welcome.",
+    "noObligationShort": "No obligation to buy",
+    "vetWelcome": "Your veterinarian and trainer are welcome.",
+    "soundOn": "Sound",
+    "soundOff": "Mute",
+    "copy": "Copy",
+    "copied": "Copied"
+  },
+  "whatsappDrawer": {
+    "eyebrow": "DIRECT CONVERSATION",
+    "titleStrong": "CONTINUE ON",
+    "titleLight": "WHATSAPP",
+    "subtitle": "Scan the code with your phone or open WhatsApp Web on this computer.",
+    "qrCaption": "Scan with your phone camera to open the conversation.",
+    "messagePreviewLabel": "Message to be sent (you may edit it):",
+    "openWebBtn": "Open WhatsApp Web",
+    "officialNumberLabel": "Only official stable number:",
+    "copyNumberBtn": "Copy number",
+    "folioLabel": "Reference folio:"
+  },
+  "selectionDrawer": {
+    "eyebrow": "YOUR SELECTION",
+    "titleStrong": "MY",
+    "titleLight": "SELECTION",
+    "emptyState": "Save the horses you like to ask about them together.",
+    "exploreBtn": "View available horses",
+    "removeBtn": "Remove",
+    "sirePrefix": "By",
+    "soldNotice": "Sold (will not be included in your inquiry)",
+    "primaryCta": "Ask about my selection on WhatsApp",
+    "secondaryCta": "Book a visit to see them"
+  },
+  "dossierDrawer": {
+    "eyebrow": "KFPS DOSSIER",
+    "titlePrefix": "DOSSIER FOR",
+    "description": "Pedigree and KFPS passport sent directly to your WhatsApp.",
+    "availableDocsLabel": "Documents available for this horse:",
+    "docTypes": {
+      "passport": "Original KFPS passport",
+      "pedigree": "KFPS pedigree",
+      "vet_report": "Veterinary report",
+      "xrays": "X-rays"
+    },
+    "nameLabel": "Your name (optional)",
+    "namePlaceholder": "e.g. Charles Miller",
+    "purposeLabel": "What are you looking for? (optional)",
+    "purposeChips": ["Dressage / Dancing", "Trail & pleasure", "Show", "Breeding"],
+    "cityLabel": "Where is your ranch located? (city, optional)",
+    "cityPlaceholder": "e.g. Austin, TX",
+    "whatsappLabel": "Your WhatsApp (optional, for follow-up)",
+    "whatsappPlaceholder": "Phone number",
+    "privacyConsent": "I accept the privacy notice",
+    "privacyRequiredError": "Please accept the privacy notice to save your contact details.",
+    "submitCta": "Get it on WhatsApp",
+    "footerNote": "We store your details solely to assist you.",
+    "privacyLink": "Privacy notice"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "KFPS FRIESIANS · IMPORTED FROM THE NETHERLANDS · JALISCO, MEXICO",
+      "titleStrong": "THE BLACK PEARL",
+      "titleLight": "OF HOLLAND",
+      "subtitle": "Friesians hand-selected one by one in the Netherlands, with original KFPS registration and passport. Meet them in person at a private visit, 38 minutes from Guadalajara.",
+      "primaryCta": "Book a private visit",
+      "secondaryCta": "View the horses →",
+      "microcopy": "No obligation to buy"
+    },
+    "ticker": [
+      "Registered with the KFPS",
+      "Hand-selected in the Netherlands",
+      "Original KFPS passport",
+      "Private visits in Jalisco",
+      "Shipping to Mexico, the US and Latin America",
+      "Your trainer is always welcome"
+    ],
+    "collection": {
+      "eyebrow": "THE COLLECTION",
+      "titleStrong": "AVAILABLE",
+      "titleLight": "HORSES",
+      "description": "Few horses, each with video, passport and bloodline.",
+      "viewAllBtn": "View the full collection",
+      "sirePrefix": "By"
+    },
+    "manifesto": {
+      "eyebrow": "THE STABLE",
+      "titleStrong": "FEW HORSES.",
+      "titleLight": "EACH ONE CHOSEN.",
+      "body": "We are neither a breeding farm nor a broker. We travel to the Netherlands to see each horse walk, trot and ridden; we check its temperament and its papers before bringing it home. What arrives in Zapotlanejo is what we would buy ourselves.",
+      "link": "About the stable →"
+    },
+    "process": {
+      "eyebrow": "THE PROCESS",
+      "titleStrong": "HOW TO BUY",
+      "titleLight": "A FRIESIAN",
+      "steps": [
+        {
+          "num": "01",
+          "title": "Choose and ask",
+          "body": "Message us about the horse you like. The same day we send video, KFPS passport photo and price."
+        },
+        {
+          "num": "02",
+          "title": "See it in person",
+          "body": "At your private visit you see it in the arena and review the original KFPS passport. Bring your vet and your trainer."
+        },
+        {
+          "num": "03",
+          "title": "Secure payments",
+          "body": "Secure payments."
+        },
+        {
+          "num": "04",
+          "title": "Receive it at your ranch",
+          "body": "Delivered with its original KFPS passport and health certificate for transport to your ranch."
+        }
+      ],
+      "cta": "Start on WhatsApp"
+    },
+    "whatArrives": {
+      "eyebrow": "DELIVERY & DOCUMENTATION",
+      "titleStrong": "WHAT ARRIVES",
+      "titleLight": "WITH YOUR HORSE",
+      "items": [
+        {
+          "title": "Original KFPS passport",
+          "body": "Issued in the Netherlands. Records pedigree, markings and origin registration."
+        },
+        {
+          "title": "Verified pedigree",
+          "body": "Official KFPS genealogical record with documented sire and dam lines."
+        },
+        {
+          "title": "Veterinary report",
+          "body": "Clinical exam and X-rays. Your own vet may inspect before closing."
+        },
+        {
+          "title": "Transport documents",
+          "body": "Health movement certificate and paperwork for your destination."
+        }
+      ],
+      "closingQuote": "“We say what you see in the arena and what the papers say.”"
+    },
+    "privateVisit": {
+      "eyebrow": "38 MINUTES FROM GUADALAJARA",
+      "titleStrong": "A PRIVATE VISIT.",
+      "titleLight": "BEHIND CLOSED DOORS.",
+      "body": "We reserve the arena and the time for you. Only you, your people and the horses, with no rush and no pressure to buy.",
+      "bullets": [
+        "Arena presentation or ridden demonstration",
+        "Original KFPS passport review",
+        "Private attention behind closed doors",
+        "Your vet and trainer welcome"
+      ],
+      "cta": "Book a private visit",
+      "estanciaTitle": "Estancia Imperial Loy",
+      "estanciaBadge": "Under construction · Rendering",
+      "estanciaCaption": "Architectural rendering of the upcoming Estancia Imperial Loy in Zapotlanejo, Jalisco."
+    },
+    "kfps": {
+      "eyebrow": "KONINKLIJKE VERENIGING HET FRIESCH PAARDEN-STAMBOEK",
+      "titleStrong": "THE BREED REGISTRY",
+      "titleLight": "SINCE 1879",
+      "body": "In the Netherlands, the KFPS records every Friesian: ancestry, breeder, height and awards. That is how you can verify everything we tell you.",
+      "link": "What the predicates mean →"
+    },
+    "stallions": {
+      "eyebrow": "BREEDING SERVICES",
+      "titleStrong": "STALLIONS",
+      "titleLight": "AT STUD",
+      "body": "Yde, Yente, Wilco and Xavi are the stable stallions. They are available for breeding services: live cover, cooled or frozen semen.",
+      "cta": "Inquire about breeding",
+      "viewAllLink": "View stallions →",
+      "studOnlyTag": "At stud only"
+    },
+    "videos": {
+      "eyebrow": "REAL MOVEMENT",
+      "titleStrong": "IN THE",
+      "titleLight": "ARENA",
+      "body": "This is how they move. Recent videos of our horses.",
+      "instagramLink": "Follow us on Instagram →"
+    },
+    "faqPreview": {
+      "eyebrow": "CLEAR ANSWERS",
+      "titleStrong": "FREQUENT",
+      "titleLight": "QUESTIONS",
+      "viewAllLink": "View all questions →"
+    },
+    "closing": {
+      "eyebrow": "ZAPOTLANEJO, JALISCO",
+      "titleStrong": "SEE IT",
+      "titleLight": "IN PERSON.",
+      "body": "Tell us what you are looking for — age, height, level — and we will tell you honestly which horse suits you.",
+      "primaryCta": "Book a private visit",
+      "secondaryLink": "Or message us on WhatsApp"
+    }
+  },
+  "catalog": {
+    "eyebrow": "KFPS COLLECTION",
+    "titleStrong": "FRIESIAN HORSES",
+    "titleLight": "FOR SALE",
+    "description": "Imported from the Netherlands and registered with the KFPS, with their original passport of origin. See them at a private visit in Zapotlanejo, Jalisco.",
+    "filters": {
+      "origin": "Origin",
+      "originAll": "All origins",
+      "sex": "Sex",
+      "sexAll": "All",
+      "fullPaper": "Full Paper",
+      "withVideo": "With video",
+      "status": "Status",
+      "statusAll": "All statuses",
+      "sort": "Sort by",
+      "sortOptions": {
+        "curated": "Stable selection",
+        "youngest": "Youngest first",
+        "oldest": "Oldest first",
+        "tallest": "Tallest first"
+      },
+      "clear": "Clear",
+      "mobileFilterBtn": "Filter & sort"
+    },
+    "countSingular": "horse",
+    "countPlural": "horses",
+    "emptyState": "No horses match these filters. Tell us what you are looking for and we will notify you when one arrives.",
+    "emptyCta": "Message on WhatsApp"
+  },
+  "horseDetail": {
+    "breadcrumbRoot": "Horses",
+    "sirePrefix": "By",
+    "damsirePrefix": "Damsire:",
+    "damPrefix": "Dam:",
+    "specs": {
+      "age": "Age",
+      "height": "Height at withers",
+      "sex": "Sex",
+      "level": "Level",
+      "registry": "KFPS Registry",
+      "fullPaper": "Full Paper",
+      "awards": "Awards",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "bloodlineTitle": "Bloodline",
+    "priceTitle": "Price on request",
+    "priceDescription": "Sent by WhatsApp the same day. The same for every client.",
+    "primaryCtaPrefix": "Book a visit to see",
+    "secondaryCta": "Ask for price and video",
+    "tertiaryDossierLink": "Get full dossier (PDF)",
+    "studPrimaryCtaPrefix": "Inquire about breeding with",
+    "studSecondaryCta": "Request video and pedigree on WhatsApp",
+    "soldMessage": "This horse is now with its new owner.",
+    "soldCta": "View available horses",
+    "enRouteMessage": "Available for reservation prior to arrival in Zapotlanejo.",
+    "enRouteArrivalPrefix": "Arrives in Zapotlanejo in",
+    "accordions": {
+      "description": "Description",
+      "papers": "Papers & KFPS Registry",
+      "papersBody": "Original passport issued in the Netherlands by the KFPS. Certifies origin registration, markings, vaccinations and official pedigree.",
+      "vet": "Veterinary inspection",
+      "visit": "The private visit",
+      "visitBody": "In Zapotlanejo, 38 minutes from Guadalajara. We reserve the arena behind closed doors: see the horse in motion and review the original passport with your veterinarian and trainer.",
+      "shipping": "Shipping",
+      "shippingBody": "We coordinate and quote transport to your ranch across Mexico, the United States and Latin America with health movement certificate and negative Coggins test.",
+      "payment": "Payment methods",
+      "paymentBody": "Secure payments."
+    },
+    "dossierScrollBar": {
+      "questionPrefix": "Would you like the full dossier for",
+      "questionSuffix": "? Pedigree, passport and veterinary summary.",
+      "acceptBtn": "Get it on WhatsApp",
+      "dismissBtn": "Not now"
+    },
+    "mobileSticky": {
+      "bookVisit": "Book a visit",
+      "whatsapp": "WhatsApp"
+    }
+  },
+  "stallionsPage": {
+    "eyebrow": "BREEDING SERVICES",
+    "titleStrong": "STALLIONS",
+    "titleLight": "AT STUD",
+    "description": "Selected in the Netherlands, with KFPS registration. Available exclusively for breeding services; not for sale.",
+    "studOnlyTag": "At stud only",
+    "modalitiesTag": "Live cover · Cooled or frozen semen",
+    "quoteBtn": "Inquire about breeding",
+    "pedigreeBtn": "View pedigree",
+    "processEyebrow": "BREEDING PROTOCOL",
+    "processTitleStrong": "BREEDING",
+    "processTitleLight": "PROCESS",
+    "steps": [
+      {
+        "num": "01",
+        "title": "Modality & evaluation",
+        "body": "Service available via live cover in Zapotlanejo, or cooled and frozen semen shipment depending on your mare's location."
+      },
+      {
+        "num": "02",
+        "title": "Veterinary coordination",
+        "body": "We coordinate directly with your ranch veterinarian to schedule collection and shipping at the optimal window of the cycle."
+      },
+      {
+        "num": "03",
+        "title": "Breeding contract & certificate",
+        "body": "Formalized through a breeding agreement and service certificate with the stallion's registration records."
+      }
+    ],
+    "legalNoticeTitle": "Note regarding KFPS foal registration",
+    "legalNoticeBody": "Yde, Yente, Wilco and Xavi hold KFPS origin registration, but they are not KFPS-approved studbook stallions (which carry a studbook number such as Teun 505). Foal registration eligibility depends on current KFPS regulations and the dam's registration status. We advise you transparently based on your mare's papers before booking."
+  },
+  "guaranteePage": {
+    "eyebrow": "DOCUMENTARY & CLINICAL CERTAINTY",
+    "titleStrong": "RECEIVE YOUR HORSE",
+    "titleLight": "SOUND AND WITH ORIGIN PAPERS",
+    "subtitle": "No fine print: what the Dutch registry certifies and the vet confirms.",
+    "pillars": [
+      {
+        "title": "Original KFPS passport",
+        "body": "Every imported horse is delivered with its original passport from the Netherlands and official pedigree."
+      },
+      {
+        "title": "Open veterinary inspection",
+        "body": "You are welcome to bring your own veterinarian and trainer to our arena in Zapotlanejo prior to closing."
+      }
+    ],
+    "shipping": {
+      "eyebrow": "EQUESTRIAN LOGISTICS",
+      "titleStrong": "TO YOUR RANCH,",
+      "titleLight": "IN MEXICO, THE US & LATIN AMERICA",
+      "body": "We quote transport with no obligation. Every horse travels with an official health movement certificate and a negative equine infectious anemia (Coggins) test.",
+      "zonesLabel": "Frequent delivery regions:",
+      "zones": [
+        {
+          "name": "Western Mexico",
+          "detail": "Jalisco, Michoacán, Nayarit, Colima, Aguascalientes and Guanajuato."
+        },
+        {
+          "name": "Bajío & Central Mexico",
+          "detail": "Querétaro, State of Mexico, Mexico City, Morelos, Puebla and Hidalgo."
+        },
+        {
+          "name": "Northern Mexico",
+          "detail": "Nuevo León, Coahuila, Chihuahua, Sonora, Sinaloa and Durango."
+        },
+        {
+          "name": "United States & Latin America",
+          "detail": "Cross-border transport and export coordination with full health documentation."
+        }
+      ],
+      "cta": "Quote transport"
+    },
+    "payment": {
+      "eyebrow": "TRUST & FORMALITY",
+      "titleStrong": "SECURE",
+      "titleLight": "PAYMENTS",
+      "methods": [
+        "Secure payments"
+      ],
+      "cta": "Inquire on WhatsApp"
+    }
+  },
+  "privateVisitPage": {
+    "eyebrow": "ZAPOTLANEJO, JALISCO",
+    "titleStrong": "BOOK YOUR",
+    "titleLight": "PRIVATE VISIT",
+    "subtitle": "Only you, your people and the horses, with no pressure. 38 minutes from Guadalajara.",
+    "form": {
+      "nameLabel": "Your name*",
+      "namePlaceholder": "First and last name",
+      "whatsappLabel": "Your WhatsApp*",
+      "whatsappPlaceholder": "Phone number",
+      "horsesLabel": "Horse(s) of interest",
+      "undecidedOption": "Not sure yet, I would like guidance",
+      "preferredDayLabel": "Preferred day",
+      "dayChips": [
+        "Monday to Friday, morning (8:00–13:00)",
+        "Monday to Friday, afternoon (13:00–17:00)",
+        "Saturday (9:00–13:00)"
+      ],
+      "partySizeLabel": "Number of guests",
+      "vetCheckbox": "I will bring my veterinarian or trainer",
+      "privacyCheckbox": "I accept the privacy notice*",
+      "messagePreviewLabel": "Live preview of the message you will send on WhatsApp:",
+      "submitCta": "Send request on WhatsApp",
+      "microcopy": "We confirm day and time in this same chat. Your veterinarian and trainer are welcome."
+    },
+    "rightColumn": {
+      "eyebrow": "WHAT TO EXPECT AT YOUR VISIT",
+      "locationTitle": "Zapotlanejo, Jalisco",
+      "locationSub": "38 minutes from Guadalajara · Exact location shared upon confirming your visit",
+      "features": [
+        "Arena presentation or ridden demonstration",
+        "Original KFPS passport review",
+        "Arena reserved behind closed doors for you and your team"
+      ],
+      "scheduleLabel": "Visiting hours:",
+      "mapCaption": "Zapotlanejo, Jalisco · Guadalajara Metropolitan Area (38 min). For the privacy and security of our horses, the exact ranch location is shared once your appointment is confirmed."
+    }
+  },
+  "faqPage": {
+    "eyebrow": "CLARITY BEFORE YOUR VISIT",
+    "titleStrong": "FREQUENT",
+    "titleLight": "QUESTIONS",
+    "subtitle": "Direct answers regarding pricing, KFPS papers, training levels and shipping.",
+    "items": [
+      {
+        "q": "How much does a Friesian cost?",
+        "a": "It depends on its training level, height, age and awards. We share the price of each horse on WhatsApp the same day; it is the same for every client."
+      },
+      {
+        "q": "How do I know it is purebred?",
+        "a": "By its papers: it is registered with the KFPS, the Dutch breed registry, with an original passport and verified pedigree."
+      },
+      {
+        "q": "Can it perform dancing / high school movements?",
+        "a": "Yes, if trained for it. Each horse's profile states its level and you can see how it moves in its video. We have ridden horses as well as colts ready to be trained your way."
+      },
+      {
+        "q": "Can I see the pedigree before visiting?",
+        "a": "Yes. We send the registration, pedigree and a photo of the passport by message."
+      },
+      {
+        "q": "Do white, pinto or chestnut Friesians exist?",
+        "a": "Not in the KFPS: it only registers black horses; the only white marking permitted is a small star on the forehead."
+      },
+      {
+        "q": "Imported or Mexican-born?",
+        "a": "Most of our horses are imported from the Netherlands and hand-selected one by one; their passport states where they were born. We also have Mexican-born Friesians, clearly indicated as such on their profile."
+      },
+      {
+        "q": "Can all of them be ridden?",
+        "a": "No. Horses trained under saddle are ridden; colts and those just starting under saddle are presented in hand. Each profile states its level."
+      },
+      {
+        "q": "How tall is a Friesian?",
+        "a": "It varies. Each profile lists the height at the withers."
+      },
+      {
+        "q": "Do you ship to other states or countries?",
+        "a": "Yes, throughout Mexico, the United States and Latin America. We provide a quote with no obligation."
+      },
+      {
+        "q": "Are you a breeding farm?",
+        "a": "No. We hand-select each horse in the Netherlands and keep them in Zapotlanejo so you can meet them in person."
+      },
+      {
+        "q": "Can I bring my trainer or veterinarian?",
+        "a": "Always."
+      }
+    ],
+    "closingTitle": "Another question? We reply directly.",
+    "closingCta": "Ask on WhatsApp"
+  },
+  "stablePage": {
+    "eyebrow": "CUADRA IMPERIAL LOY · ZAPOTLANEJO, JALISCO",
+    "titleStrong": "DEVOTED TO",
+    "titleLight": "DUTCH NOBILITY",
+    "p1": "In Zapotlanejo, Jalisco, 38 minutes from Guadalajara, Cuadra Imperial Loy is dedicated to one thing only: bringing Friesians of noble carriage, personally selected in the Netherlands.",
+    "p2": "We do not import in bulk. We travel to the Netherlands to see each horse ridden, walked and evaluated for temperament. Every horse arrives with its original KFPS passport and registration.",
+    "predicatesEyebrow": "OFFICIAL KFPS NOMENCLATURE",
+    "predicatesTitleStrong": "WHAT THE",
+    "predicatesTitleLight": "PREDICATES MEAN",
+    "predicatesIntro": "The Koninklijke Vereniging 'Het Friesch Paarden-Stamboek' (KFPS), founded in 1879 in the Netherlands, evaluates the conformation, movement and aptitude of every Friesian through official inspections (Keuring).",
+    "predicatesTable": [
+      {
+        "predicate": "Veulenboek / Stamboek",
+        "meaning": "Registration in the Foal Book (Veulenboek) and subsequent entry into the Main Studbook (Stamboek) upon adult inspection."
+      },
+      {
+        "predicate": "1st, 2nd & 3rd Premie",
+        "meaning": "Recognition awarded at official KFPS inspections according to adherence to the breed standard in conformation, walk and trot."
+      },
+      {
+        "predicate": "Ster (Star)",
+        "meaning": "Predicate awarded to horses that stand out for conformation, minimum required height and superior quality of movement at the walk and trot."
+      },
+      {
+        "predicate": "Kroon (Crown) & Model",
+        "meaning": "Higher distinctions for mares combining excellent conformation with performance testing (IBOP or ABFP)."
+      },
+      {
+        "predicate": "Sport / Sport Elite",
+        "meaning": "Predicate awarded for proven results in official dressage or driving competition."
+      },
+      {
+        "predicate": "Preferent / Prestatie",
+        "meaning": "Recognition of quality demonstrated through registered KFPS offspring."
+      }
+    ],
+    "closingCta": "Book a private visit"
+  },
+  "contactPage": {
+    "eyebrow": "PERSONAL ATTENTION IN ZAPOTLANEJO",
+    "titleStrong": "TALK",
+    "titleLight": "TO THE STABLE",
+    "quote": "“We say what you see and what the papers say.”",
+    "whatsappTitle": "Direct WhatsApp",
+    "whatsappBody": "Our primary channel. We send video, price and passport for the horse you are interested in.",
+    "whatsappCta": "Message on WhatsApp",
+    "scheduleTitle": "Business hours",
+    "scheduleValue": "Mon–Fri 8 a.m.–5 p.m. · Sat 9 a.m.–1 p.m. (Mexico City time)",
+    "locationTitle": "Location",
+    "locationValue": "Zapotlanejo, Jalisco · 38 minutes from Guadalajara · By confirmed appointment only",
+    "emailTitle": "Email"
+  },
+  "footer": {
+    "tagline": "Receive your horse sound and with origin papers.",
+    "columns": {
+      "navigation": "Navigation",
+      "contact": "Contact",
+      "social": "In the arena & social"
+    },
+    "links": {
+      "horses": "Horses",
+      "stallions": "Stallions",
+      "stable": "The Stable",
+      "guarantee": "Guarantee & Shipping",
+      "privateVisit": "Private visit",
+      "faq": "FAQ",
+      "videos": "Videos",
+      "contact": "Contact"
+    },
+    "originLine": "Imported from the Netherlands · Zapotlanejo, Jalisco · Shipping to Mexico, the US and Latin America",
+    "copyright": "© 2026 Cuadra Imperial Loy",
+    "privacy": "Privacy Notice (LFPDPPP)",
+    "terms": "Terms",
+    "admin": "Internal access"
+  },
+  "cookieBanner": {
+    "text": "We use analytical cookies in accordance with Mexican privacy law (LFPDPPP) to understand which horses generate interest and serve you better.",
+    "accept": "Accept",
+    "decline": "Essential only",
+    "privacyLink": "Privacy notice"
+  },
+  "privacyPage": {
+    "eyebrow": "LFPDPPP COMPLIANCE",
+    "titleStrong": "PRIVACY",
+    "titleLight": "NOTICE",
+    "updated": "Current version: 2026.11",
+    "sections": [
+      {
+        "title": "1. Data Controller",
+        "body": "Cuadra Imperial Loy, located in Zapotlanejo, Jalisco, Mexico, with official email info@cuadraimperialloy.com, is responsible for the use and protection of your personal data in accordance with the Federal Law on Protection of Personal Data Held by Private Parties (LFPDPPP)."
+      },
+      {
+        "title": "2. Data Collected & Purpose",
+        "body": "We collect only the information you voluntarily provide (name, WhatsApp number, ranch city/location, and horses of interest) to log your inquiry in our internal administrative system, assign a reference folio, share horse documentation, coordinate private visits in Zapotlanejo, and quote shipping or breeding services."
+      },
+      {
+        "title": "3. Data Retention & Confidentiality",
+        "body": "Your data is stored under restricted access controls in our internal system to follow up on your inquiry. We never sell or transfer your personal data to third parties."
+      },
+      {
+        "title": "4. ARCO Rights (Access, Rectification, Cancellation & Opposition)",
+        "body": "You may request access, rectification, cancellation or deletion of your personal data at any time by messaging info@cuadraimperialloy.com or our official WhatsApp +52 33 1702 6066 with your name or reference folio."
+      }
+    ]
+  },
+  "termsPage": {
+    "eyebrow": "LEGAL INFORMATION",
+    "titleStrong": "TERMS",
+    "titleLight": "& CONDITIONS",
+    "sections": [
+      {
+        "title": "1. Informational Nature of the Catalog",
+        "body": "This website is intended solely to present the Friesian horses of Cuadra Imperial Loy and facilitate direct communication via WhatsApp or private visit requests in Zapotlanejo, Jalisco. No listing constitutes an automated online checkout offer."
+      },
+      {
+        "title": "2. Pricing & Availability",
+        "body": "Horse prices are provided directly through our official WhatsApp channel (+52 33 1702 6066) and are the same for every client. Availability of each horse is confirmed upon executing a purchase agreement."
+      },
+      {
+        "title": "3. Purchase Agreement & Veterinary Inspection",
+        "body": "Every sale is formalized through a written purchase agreement, reservation deposit, and final payment subject to veterinary inspection prior to delivery."
+      }
+    ]
+  }
+}
+

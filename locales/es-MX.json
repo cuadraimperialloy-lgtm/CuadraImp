@@ -1,0 +1,623 @@
+{
+  "seo": {
+    "title": "Caballos frisones KFPS en venta · Jalisco | Cuadra Imperial Loy",
+    "description": "Frisones importados de Holanda, escogidos uno por uno y registrados en la KFPS. Véalos en una cita privada en Zapotlanejo, Jalisco. Envíos a México, EE. UU. y Latinoamérica.",
+    "ogTitle": "Cuadra Imperial Loy · Frisones de Holanda",
+    "ogDescription": "Reciba su caballo sano y con papeles de origen."
+  },
+  "nav": {
+    "horses": "Ejemplares",
+    "stallions": "Sementales",
+    "stable": "La Cuadra",
+    "guarantee": "Garantía y envíos",
+    "faq": "Preguntas",
+    "contact": "Contacto",
+    "bookVisit": "Agendar cita",
+    "bookPrivateVisit": "Agendar cita privada",
+    "selection": "Selección",
+    "mobileFooter": "Zapotlanejo, Jalisco · A 38 minutos de Guadalajara",
+    "menu": "Menú",
+    "close": "Cerrar"
+  },
+  "system": {
+    "status": {
+      "available": "Disponible",
+      "en_route": "En camino desde Holanda",
+      "reserved": "Apartado",
+      "sold": "Vendido",
+      "draft": "Borrador",
+      "archived": "Archivado"
+    },
+    "origin": {
+      "Holanda": "Holanda",
+      "Nacional": "Nacional"
+    },
+    "loading": "Cargando…",
+    "linkCopied": "Enlace copiado",
+    "numberCopied": "Número copiado",
+    "fieldError": "Revise este campo.",
+    "priceOnRequest": "Precio a solicitud",
+    "priceSub": "Se lo damos por WhatsApp el mismo día. Es el mismo para todos.",
+    "viewHorse": "Ver ejemplar →",
+    "save": "Guardar",
+    "saved": "Guardado",
+    "addedToSelection": "Añadido a su selección",
+    "removedFromSelection": "Quitado de su selección",
+    "officialNumberNotice": "+52 33 1702 6066 es nuestro único número oficial.",
+    "noObligation": "Sin compromiso de compra. Su veterinario es bienvenido.",
+    "noObligationShort": "Sin compromiso de compra",
+    "vetWelcome": "Su veterinario y caballerango son bienvenidos.",
+    "soundOn": "Sonido",
+    "soundOff": "Silenciar",
+    "copy": "Copiar",
+    "copied": "Copiado"
+  },
+  "whatsappDrawer": {
+    "eyebrow": "CONVERSACIÓN DIRECTA",
+    "titleStrong": "CONTINÚE EN",
+    "titleLight": "WHATSAPP",
+    "subtitle": "Escanee el código con su teléfono o abra WhatsApp Web en esta computadora.",
+    "qrCaption": "Escanee con la cámara de su teléfono para abrir la conversación.",
+    "messagePreviewLabel": "Mensaje que se enviará (puede editarlo):",
+    "openWebBtn": "Abrir WhatsApp Web",
+    "officialNumberLabel": "Único número oficial de la cuadra:",
+    "copyNumberBtn": "Copiar número",
+    "folioLabel": "Folio de atención:"
+  },
+  "selectionDrawer": {
+    "eyebrow": "SU SELECCIÓN",
+    "titleStrong": "MI",
+    "titleLight": "SELECCIÓN",
+    "emptyState": "Guarde los ejemplares que le interesen para consultarlos juntos.",
+    "exploreBtn": "Ver ejemplares disponibles",
+    "removeBtn": "Quitar",
+    "sirePrefix": "Hijo de",
+    "soldNotice": "Vendido (no se incluirá en la consulta)",
+    "primaryCta": "Consultar mi selección por WhatsApp",
+    "secondaryCta": "Agendar cita para verlos"
+  },
+  "dossierDrawer": {
+    "eyebrow": "EXPEDIENTE KFPS",
+    "titlePrefix": "EXPEDIENTE DE",
+    "description": "Genealogía y pasaporte KFPS enviados directo a su WhatsApp.",
+    "availableDocsLabel": "Documentos disponibles de este ejemplar:",
+    "docTypes": {
+      "passport": "Pasaporte KFPS original",
+      "pedigree": "Genealogía KFPS",
+      "vet_report": "Dictamen veterinario",
+      "xrays": "Radiografías"
+    },
+    "nameLabel": "Su nombre (opcional)",
+    "namePlaceholder": "Ej. Ing. Carlos Méndez",
+    "purposeLabel": "¿Para qué lo busca? (opcional)",
+    "purposeChips": ["Baile", "Paseo y cabalgata", "Exhibición", "Cría"],
+    "cityLabel": "¿Dónde está su rancho? (ciudad, opcional)",
+    "cityPlaceholder": "Ej. Querétaro, Qro.",
+    "whatsappLabel": "Su WhatsApp (opcional, para seguimiento)",
+    "whatsappPlaceholder": "10 dígitos",
+    "privacyConsent": "Acepto el aviso de privacidad",
+    "privacyRequiredError": "Acepte el aviso de privacidad para guardar sus datos de contacto.",
+    "submitCta": "Recibir por WhatsApp",
+    "footerNote": "Guardamos sus datos solo para atenderle.",
+    "privacyLink": "Aviso de privacidad"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "FRISONES KFPS · IMPORTADOS DE HOLANDA · ZAPOTLANEJO, JALISCO",
+      "titleStrong": "LA PERLA NEGRA",
+      "titleLight": "DE HOLANDA",
+      "subtitle": "Frisones escogidos uno por uno en los Países Bajos, con registro y pasaporte original KFPS. Véalos en persona, en una cita privada a 38 minutos de Guadalajara.",
+      "primaryCta": "Agendar cita privada",
+      "secondaryCta": "Ver ejemplares →",
+      "microcopy": "Sin compromiso de compra"
+    },
+    "ticker": [
+      "Registrados en la KFPS",
+      "Escogidos uno por uno en Holanda",
+      "Pasaporte original KFPS",
+      "Cita privada en Jalisco",
+      "Envíos a México, EE. UU. y Latinoamérica",
+      "Su caballerango siempre es bienvenido"
+    ],
+    "collection": {
+      "eyebrow": "LA COLECCIÓN",
+      "titleStrong": "EJEMPLARES",
+      "titleLight": "DISPONIBLES",
+      "description": "Pocos caballos, cada uno con video, pasaporte y línea de sangre.",
+      "viewAllBtn": "Ver toda la colección",
+      "sirePrefix": "Hijo de"
+    },
+    "manifesto": {
+      "eyebrow": "LA CUADRA",
+      "titleStrong": "POCOS CABALLOS.",
+      "titleLight": "CADA UNO, ELEGIDO.",
+      "body": "No somos criadero ni intermediario. Viajamos a Holanda a ver a cada caballo caminar, trotar y montarse; revisamos su carácter y sus papeles antes de traerlo. Lo que llega a Zapotlanejo es lo que nosotros mismos compraríamos.",
+      "link": "Conozca la cuadra →"
+    },
+    "process": {
+      "eyebrow": "EL PROCESO",
+      "titleStrong": "ASÍ SE COMPRA",
+      "titleLight": "UN FRISÓN",
+      "steps": [
+        {
+          "num": "01",
+          "title": "Elija y pregunte",
+          "body": "Escríbanos por el ejemplar que le interesa. El mismo día le enviamos video, foto del pasaporte KFPS y precio."
+        },
+        {
+          "num": "02",
+          "title": "Véalo en persona",
+          "body": "En la cita privada lo ve en pista y revisa su pasaporte original KFPS. Venga con su veterinario y su caballerango."
+        },
+        {
+          "num": "03",
+          "title": "Pagos seguros",
+          "body": "Pagos seguros."
+        },
+        {
+          "num": "04",
+          "title": "Recíbalo en su rancho",
+          "body": "Se entrega con su pasaporte original KFPS y certificado zoosanitario para el traslado a su rancho."
+        }
+      ],
+      "cta": "Empezar por WhatsApp"
+    },
+    "whatArrives": {
+      "eyebrow": "ENTREGA Y DOCUMENTACIÓN",
+      "titleStrong": "LO QUE RECIBE",
+      "titleLight": "CON SU CABALLO",
+      "items": [
+        {
+          "title": "Pasaporte KFPS original",
+          "body": "Emitido en los Países Bajos. Acredita genealogía, reseña y registro de origen."
+        },
+        {
+          "title": "Genealogía verificada",
+          "body": "Árbol genealógico oficial KFPS con líneas paternas y maternas documentadas."
+        },
+        {
+          "title": "Revisión veterinaria",
+          "body": "Examen clínico y radiografías. Su propio veterinario puede revisarlo antes de cerrar."
+        },
+        {
+          "title": "Documentación de traslado",
+          "body": "Certificado zoosanitario de movilización y trámites para su destino."
+        }
+      ],
+      "closingQuote": "«Se dice lo que se ve en la pista y lo que dice el papel.»"
+    },
+    "privateVisit": {
+      "eyebrow": "A 38 MINUTOS DE GUADALAJARA",
+      "titleStrong": "UNA CITA PRIVADA.",
+      "titleLight": "A PUERTA CERRADA.",
+      "body": "Le apartamos la pista y el tiempo. Solo usted, su gente y los caballos, sin prisa y sin presión de compra.",
+      "bullets": [
+        "Presentación en pista o prueba montada",
+        "Revisión del pasaporte KFPS original",
+        "Atención privada a puerta cerrada",
+        "Su veterinario y caballerango, bienvenidos"
+      ],
+      "cta": "Agendar cita privada",
+      "estanciaTitle": "Estancia Imperial Loy",
+      "estanciaBadge": "En construcción · Render",
+      "estanciaCaption": "Proyección arquitectónica de la próxima Estancia Imperial Loy en Zapotlanejo, Jalisco."
+    },
+    "kfps": {
+      "eyebrow": "KONINKLIJKE VERENIGING HET FRIESCH PAARDEN-STAMBOEK",
+      "titleStrong": "EL REGISTRO",
+      "titleLight": "DE LA RAZA DESDE 1879",
+      "body": "La KFPS lleva en Holanda el control de cada frisón: ascendencia, criador, alzada y premios. Así puede comprobar todo lo que le decimos.",
+      "link": "Qué significan los predicados →"
+    },
+    "stallions": {
+      "eyebrow": "SERVICIO REPRODUCTIVO",
+      "titleStrong": "SEMENTALES",
+      "titleLight": "PARA MAQUILA",
+      "body": "Yde, Yente, Wilco y Xavi son los sementales de la cuadra. Están disponibles para servicio de maquila: monta directa, semen refrigerado o congelado.",
+      "cta": "Cotizar maquila",
+      "viewAllLink": "Ver sementales →",
+      "studOnlyTag": "Solo maquila"
+    },
+    "videos": {
+      "eyebrow": "MOVIMIENTO REAL",
+      "titleStrong": "EN LA",
+      "titleLight": "PISTA",
+      "body": "Así se mueven. Videos recientes de nuestros caballos.",
+      "instagramLink": "Síganos en Instagram →"
+    },
+    "faqPreview": {
+      "eyebrow": "RESPUESTAS CLARAS",
+      "titleStrong": "PREGUNTAS",
+      "titleLight": "FRECUENTES",
+      "viewAllLink": "Ver todas las preguntas →"
+    },
+    "closing": {
+      "eyebrow": "ZAPOTLANEJO, JALISCO",
+      "titleStrong": "VÉALO",
+      "titleLight": "EN PERSONA.",
+      "body": "Escríbanos qué busca —edad, alzada, nivel— y le decimos con franqueza qué caballo le conviene.",
+      "primaryCta": "Agendar cita privada",
+      "secondaryLink": "O escríbanos por WhatsApp"
+    }
+  },
+  "catalog": {
+    "eyebrow": "COLECCIÓN KFPS",
+    "titleStrong": "CABALLOS FRISONES",
+    "titleLight": "EN VENTA",
+    "description": "Importados de Holanda y registrados en la KFPS, con su pasaporte original de origen. Véalos en una cita privada en Zapotlanejo, Jalisco.",
+    "filters": {
+      "origin": "Origen",
+      "originAll": "Todos los orígenes",
+      "sex": "Sexo",
+      "sexAll": "Todos",
+      "fullPaper": "Full Paper",
+      "withVideo": "Con video",
+      "status": "Estado",
+      "statusAll": "Todos los estados",
+      "sort": "Ordenar",
+      "sortOptions": {
+        "curated": "Selección de la cuadra",
+        "youngest": "Más jóvenes",
+        "oldest": "Mayor edad",
+        "tallest": "Mayor alzada"
+      },
+      "clear": "Limpiar",
+      "mobileFilterBtn": "Filtrar y ordenar"
+    },
+    "countSingular": "ejemplar",
+    "countPlural": "ejemplares",
+    "emptyState": "No hay ejemplares con estos filtros. Díganos qué busca y le avisamos cuando llegue.",
+    "emptyCta": "Escribir por WhatsApp"
+  },
+  "horseDetail": {
+    "breadcrumbRoot": "Ejemplares",
+    "sirePrefix": "Hijo de",
+    "damsirePrefix": "Nieto de",
+    "damPrefix": "Madre:",
+    "specs": {
+      "age": "Edad",
+      "height": "Alzada a la cruz",
+      "sex": "Sexo",
+      "level": "Nivel",
+      "registry": "Registro KFPS",
+      "fullPaper": "Full Paper",
+      "awards": "Premios",
+      "yes": "Sí",
+      "no": "No"
+    },
+    "bloodlineTitle": "Línea de sangre",
+    "priceTitle": "Precio a solicitud",
+    "priceDescription": "Se lo damos por WhatsApp el mismo día. Es el mismo para todos.",
+    "primaryCtaPrefix": "Agendar cita para ver a",
+    "secondaryCta": "Pedir precio y video por WhatsApp",
+    "tertiaryDossierLink": "Recibir expediente completo (PDF)",
+    "studPrimaryCtaPrefix": "Cotizar maquila con",
+    "studSecondaryCta": "Pedir video y genealogía por WhatsApp",
+    "soldMessage": "Este caballo ya está con su nuevo dueño.",
+    "soldCta": "Ver ejemplares disponibles",
+    "enRouteMessage": "Puede apartarlo antes de su llegada a Zapotlanejo.",
+    "enRouteArrivalPrefix": "Llega a Zapotlanejo en",
+    "accordions": {
+      "description": "Descripción",
+      "papers": "Papeles y registro KFPS",
+      "papersBody": "Pasaporte original emitido en los Países Bajos por la KFPS. Acredita registro de origen, reseña, vacunas y genealogía oficial.",
+      "vet": "Revisión veterinaria",
+      "visit": "La cita privada",
+      "visitBody": "En Zapotlanejo, a 38 minutos de Guadalajara. Le apartamos la pista a puerta cerrada: ve al ejemplar en movimiento y revisa el pasaporte original con su veterinario y caballerango.",
+      "shipping": "Envíos",
+      "shippingBody": "Coordinamos y cotizamos el traslado a su rancho en todo México, Estados Unidos y Latinoamérica con certificado zoosanitario de movilización y prueba de anemia infecciosa negativa.",
+      "payment": "Formas de pago",
+      "paymentBody": "Pagos seguros."
+    },
+    "dossierScrollBar": {
+      "questionPrefix": "¿Quiere el expediente completo de",
+      "questionSuffix": "? Genealogía, pasaporte y resumen veterinario.",
+      "acceptBtn": "Recibir por WhatsApp",
+      "dismissBtn": "Ahora no"
+    },
+    "mobileSticky": {
+      "bookVisit": "Agendar cita",
+      "whatsapp": "WhatsApp"
+    }
+  },
+  "stallionsPage": {
+    "eyebrow": "SERVICIO DE MAQUILA",
+    "titleStrong": "SEMENTALES",
+    "titleLight": "PARA MAQUILA",
+    "description": "Seleccionados en Holanda, con registro KFPS. Disponibles solo para servicio de maquila; no están a la venta.",
+    "studOnlyTag": "Solo maquila",
+    "modalitiesTag": "Monta directa · Semen refrigerado o congelado",
+    "quoteBtn": "Cotizar maquila",
+    "pedigreeBtn": "Ver genealogía",
+    "processEyebrow": "PROTOCOLO REPRODUCTIVO",
+    "processTitleStrong": "PROCESO",
+    "processTitleLight": "DE MAQUILA",
+    "steps": [
+      {
+        "num": "01",
+        "title": "Modalidad y evaluación",
+        "body": "Servicio disponible en monta directa en Zapotlanejo, o envío de semen refrigerado o congelado según la ubicación de su yegua."
+      },
+      {
+        "num": "02",
+        "title": "Coordinación veterinaria",
+        "body": "Nos coordinamos con el médico veterinario de su rancho para programar el envío o la recepción en el momento óptimo del ciclo."
+      },
+      {
+        "num": "03",
+        "title": "Contrato y certificado",
+        "body": "Se formaliza mediante contrato de maquila y entrega de constancia de servicio con los datos del semental."
+      }
+    ],
+    "legalNoticeTitle": "Nota sobre registro KFPS de las crías",
+    "legalNoticeBody": "Yde, Yente, Wilco y Xavi cuentan con registro de origen KFPS, pero no son sementales con licencia de libro principal (Stamboek con número como Teun 505). La elegibilidad de registro de una cría depende de las disposiciones vigentes de la KFPS y del registro de la yegua. Le informamos con total transparencia según el papel de su yegua antes de contratar."
+  },
+  "guaranteePage": {
+    "eyebrow": "CERTEZA DOCUMENTAL Y CLÍNICA",
+    "titleStrong": "RECIBA SU CABALLO",
+    "titleLight": "SANO Y CON PAPELES DE ORIGEN",
+    "subtitle": "Sin letras pequeñas: lo que avala el registro holandés y lo que revisa el veterinario.",
+    "pillars": [
+      {
+        "title": "Pasaporte KFPS original",
+        "body": "Cada ejemplar importado se entrega con su pasaporte original de los Países Bajos y su genealogía oficial."
+      },
+      {
+        "title": "Revisión veterinaria abierta",
+        "body": "Usted puede traer a su propio médico veterinario y a su caballerango a la pista de Zapotlanejo antes de liquidar la compra."
+      }
+    ],
+    "shipping": {
+      "eyebrow": "LOGÍSTICA ECUESTRE",
+      "titleStrong": "A SU RANCHO,",
+      "titleLight": "EN MÉXICO, EE. UU. Y LATINOAMÉRICA",
+      "body": "Le cotizamos el traslado sin compromiso. Viaja con certificado zoosanitario de movilización y prueba de anemia infecciosa negativa.",
+      "zonesLabel": "Rutas frecuentes de entrega:",
+      "zones": [
+        {
+          "name": "Occidente",
+          "detail": "Jalisco, Michoacán, Nayarit, Colima, Aguascalientes y Guanajuato."
+        },
+        {
+          "name": "Bajío y Centro",
+          "detail": "Querétaro, Estado de México, Ciudad de México, Morelos, Puebla e Hidalgo."
+        },
+        {
+          "name": "Norte",
+          "detail": "Nuevo León, Coahuila, Chihuahua, Sonora, Sinaloa y Durango."
+        },
+        {
+          "name": "Estados Unidos y Latinoamérica",
+          "detail": "Coordinación de exportación y traslado transfronterizo con documentación sanitaria."
+        }
+      ],
+      "cta": "Cotizar traslado"
+    },
+    "payment": {
+      "eyebrow": "FORMALIDAD Y CONFIANZA",
+      "titleStrong": "PAGOS",
+      "titleLight": "SEGUROS",
+      "methods": [
+        "Pagos seguros"
+      ],
+      "cta": "Consultar por WhatsApp"
+    }
+  },
+  "privateVisitPage": {
+    "eyebrow": "ZAPOTLANEJO, JALISCO",
+    "titleStrong": "AGENDE SU",
+    "titleLight": "CITA PRIVADA",
+    "subtitle": "Solo usted, su gente y los caballos, sin presión. A 38 minutos de Guadalajara.",
+    "form": {
+      "nameLabel": "Su nombre*",
+      "namePlaceholder": "Nombre y apellido",
+      "whatsappLabel": "Su WhatsApp*",
+      "whatsappPlaceholder": "Número a 10 dígitos",
+      "horsesLabel": "Caballo(s) de interés",
+      "undecidedOption": "Aún no sé, quiero asesoría",
+      "preferredDayLabel": "Día preferido",
+      "dayChips": [
+        "Lunes a viernes, mañana (8:00–13:00)",
+        "Lunes a viernes, tarde (13:00–17:00)",
+        "Sábado (9:00–13:00)"
+      ],
+      "partySizeLabel": "Personas que vienen",
+      "vetCheckbox": "Vendré con mi veterinario o caballerango",
+      "privacyCheckbox": "Acepto el aviso de privacidad*",
+      "messagePreviewLabel": "Vista previa del mensaje que enviará por WhatsApp:",
+      "submitCta": "Enviar solicitud por WhatsApp",
+      "microcopy": "Le confirmamos día y hora por este mismo chat. Su veterinario y caballerango son bienvenidos."
+    },
+    "rightColumn": {
+      "eyebrow": "LO QUE VIVIRÁ EN SU VISITA",
+      "locationTitle": "Zapotlanejo, Jalisco",
+      "locationSub": "A 38 minutos de Guadalajara · Ubicación exacta al confirmar su cita",
+      "features": [
+        "Presentación en pista o prueba montada",
+        "Revisión del pasaporte KFPS original",
+        "Pista reservada a puerta cerrada para usted y su equipo"
+      ],
+      "scheduleLabel": "Horario de citas:",
+      "mapCaption": "Zapotlanejo, Jalisco · Región Altos Sur / Zona Metropolitana de Guadalajara (38 min). Por privacidad y seguridad de los ejemplares, compartimos la ubicación exacta al confirmar su cita."
+    }
+  },
+  "faqPage": {
+    "eyebrow": "CLARIDAD ANTES DE SU VISITA",
+    "titleStrong": "PREGUNTAS",
+    "titleLight": "FRECUENTES",
+    "subtitle": "Respuestas directas sobre precios, papeles KFPS, niveles de rienda y traslados.",
+    "items": [
+      {
+        "q": "¿Cuánto cuesta un frisón?",
+        "a": "Depende de su nivel, alzada, edad y premios. Le damos el precio de cada caballo por WhatsApp el mismo día; es el mismo para todos."
+      },
+      {
+        "q": "¿Cómo sé que es puro?",
+        "a": "Por sus papeles: está registrado en la KFPS, el registro holandés de la raza, con pasaporte de origen y genealogía verificada."
+      },
+      {
+        "q": "¿Puede ser bailador?",
+        "a": "Sí, si está enseñado. Cada ficha indica su nivel y en el video lo ve moverse. Tenemos caballos con rienda y potros para formarlos a su gusto."
+      },
+      {
+        "q": "¿Puedo ver el pedigrí antes de ir?",
+        "a": "Sí. Le enviamos registro, genealogía y foto del pasaporte por mensaje."
+      },
+      {
+        "q": "¿Existe el frisón blanco, pinto o café?",
+        "a": "No en la KFPS: solo registra caballos negros; la única marca blanca permitida es una estrella pequeña en la frente."
+      },
+      {
+        "q": "¿Importado o nacional?",
+        "a": "La mayoría son importados de Holanda y escogidos uno por uno; su pasaporte dice dónde nacieron. También tenemos frisones nacionales, señalados como tales en su ficha."
+      },
+      {
+        "q": "¿Todos se pueden montar?",
+        "a": "No. Los que tienen rienda se montan; los potros y los que inician rienda se presentan a la mano. Cada ficha dice su nivel."
+      },
+      {
+        "q": "¿Qué tan alto es un frisón?",
+        "a": "Varía. Cada ficha indica la alzada a la cruz."
+      },
+      {
+        "q": "¿Envían a otros estados o países?",
+        "a": "Sí, a todo México, Estados Unidos y Latinoamérica. Le cotizamos sin compromiso."
+      },
+      {
+        "q": "¿Son criadero?",
+        "a": "No. Seleccionamos cada caballo en Holanda y los tenemos en Zapotlanejo para que los vea en persona."
+      },
+      {
+        "q": "¿Puedo ir con mi caballerango o veterinario?",
+        "a": "Siempre."
+      }
+    ],
+    "closingTitle": "¿Otra pregunta? Le respondemos directamente.",
+    "closingCta": "Preguntar por WhatsApp"
+  },
+  "stablePage": {
+    "eyebrow": "CUADRA IMPERIAL LOY · ZAPOTLANEJO, JALISCO",
+    "titleStrong": "PASIÓN POR",
+    "titleLight": "EL PORTE HOLANDÉS",
+    "p1": "En Zapotlanejo, Jalisco, a 38 minutos de Guadalajara, Cuadra Imperial Loy se dedica solo a una cosa: traer frisones de gran porte, seleccionados personalmente en los Países Bajos.",
+    "p2": "No traemos lotes. Viajamos a Holanda para ver montar, caminar y revisar el carácter de cada caballo. Cada uno llega con su pasaporte y registro original KFPS.",
+    "predicatesEyebrow": "NOMENCLATURA OFICIAL KFPS",
+    "predicatesTitleStrong": "QUÉ SIGNIFICAN",
+    "predicatesTitleLight": "LOS PREDICADOS",
+    "predicatesIntro": "La Koninklijke Vereniging 'Het Friesch Paarden-Stamboek' (KFPS), fundada en 1879 en los Países Bajos, evalúa la conformación, el movimiento y la aptitud de cada frisón mediante inspecciones oficiales (Keuring).",
+    "predicatesTable": [
+      {
+        "predicate": "Veulenboek / Stamboek",
+        "meaning": "Inscripción en el libro de potros (Veulenboek) y posterior paso al libro principal (Stamboek) tras la inspección de edad adulta."
+      },
+      {
+        "predicate": "1er, 2º y 3er Premio (Premie)",
+        "meaning": "Reconocimiento otorgado en las inspecciones oficiales KFPS según la fidelidad al estándar racial en conformación, paso y trote."
+      },
+      {
+        "predicate": "Ster (Estrella)",
+        "meaning": "Predicado otorgado a ejemplares que destacan por su exterior, alzada mínima requerida y calidad superior de movimiento en trote y paso."
+      },
+      {
+        "predicate": "Kroon (Corona) y Model",
+        "meaning": "Distinciones superiores para yeguas que combinan excelente conformación con pruebas de aptitud (IBOP o ABFP)."
+      },
+      {
+        "predicate": "Sport / Sport Elite",
+        "meaning": "Predicado por resultados comprobados en competencia oficial de doma, enganche o alta escuela."
+      },
+      {
+        "predicate": "Preferent / Prestatie",
+        "meaning": "Reconocimiento a la calidad demostrada a través de su descendencia registrada en la KFPS."
+      }
+    ],
+    "closingCta": "Agendar cita privada"
+  },
+  "contactPage": {
+    "eyebrow": "ATENCIÓN PERSONAL EN ZAPOTLANEJO",
+    "titleStrong": "HABLE",
+    "titleLight": "CON LA CUADRA",
+    "quote": "«Se dice lo que se ve y lo que dice el papel.»",
+    "whatsappTitle": "WhatsApp directo",
+    "whatsappBody": "Nuestro canal principal. Le enviamos video, precio y pasaporte del ejemplar que le interese.",
+    "whatsappCta": "Escribir por WhatsApp",
+    "scheduleTitle": "Horario de atención",
+    "scheduleValue": "Lunes a viernes 8:00–17:00 · Sábado 9:00–13:00 (hora del centro de México)",
+    "locationTitle": "Ubicación",
+    "locationValue": "Zapotlanejo, Jalisco · A 38 minutos de Guadalajara · Solo con cita confirmada",
+    "emailTitle": "Correo electrónico"
+  },
+  "footer": {
+    "tagline": "Reciba su caballo sano y con papeles de origen.",
+    "columns": {
+      "navigation": "Navegación",
+      "contact": "Contacto",
+      "social": "En pista y redes"
+    },
+    "links": {
+      "horses": "Ejemplares",
+      "stallions": "Sementales",
+      "stable": "La cuadra",
+      "guarantee": "Garantía y envíos",
+      "privateVisit": "Cita privada",
+      "faq": "Preguntas",
+      "videos": "En video",
+      "contact": "Contacto"
+    },
+    "originLine": "Importados de Holanda · Zapotlanejo, Jalisco · Envíos a México, EE. UU. y Latinoamérica",
+    "copyright": "© 2026 Cuadra Imperial Loy",
+    "privacy": "Aviso de privacidad (LFPDPPP)",
+    "terms": "Términos",
+    "admin": "Acceso interno"
+  },
+  "cookieBanner": {
+    "text": "Utilizamos cookies analíticas conforme a la LFPDPPP para conocer qué ejemplares generan interés y atenderle mejor.",
+    "accept": "Aceptar",
+    "decline": "Solo esenciales",
+    "privacyLink": "Aviso de privacidad"
+  },
+  "privacyPage": {
+    "eyebrow": "CUMPLIMIENTO LFPDPPP",
+    "titleStrong": "AVISO DE",
+    "titleLight": "PRIVACIDAD",
+    "updated": "Versión vigente: 2026.11",
+    "sections": [
+      {
+        "title": "1. Responsable del tratamiento de sus datos",
+        "body": "Cuadra Imperial Loy, con ubicación en Zapotlanejo, Jalisco, México, y correo oficial info@cuadraimperialloy.com, es responsable del uso y protección de sus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)."
+      },
+      {
+        "title": "2. Datos que recabamos y finalidad",
+        "body": "Recabamos únicamente los datos que usted nos proporciona voluntariamente (nombre, número de WhatsApp, ciudad o ubicación de su rancho e interés en ejemplares) para registrarlo en nuestro sistema administrativo interno, asignarle un folio de atención, enviarle información documental de los caballos, coordinar citas privadas en Zapotlanejo y cotizar traslados o servicios de maquila."
+      },
+      {
+        "title": "3. Conservación y confidencialidad",
+        "body": "Sus datos se almacenan bajo controles de acceso restringido en nuestro sistema interno para dar seguimiento a su solicitud. No vendemos ni cedemos sus datos a terceros."
+      },
+      {
+        "title": "4. Derechos ARCO (Acceso, Rectificación, Cancelación y Oposición)",
+        "body": "Usted puede solicitar en cualquier momento el acceso, rectificación, cancelación o eliminación de sus datos personales enviando un mensaje a info@cuadraimperialloy.com o al WhatsApp oficial +52 33 1702 6066 indicando su nombre o número de folio."
+      }
+    ]
+  },
+  "termsPage": {
+    "eyebrow": "INFORMACIÓN LEGAL",
+    "titleStrong": "TÉRMINOS",
+    "titleLight": "Y CONDICIONES",
+    "sections": [
+      {
+        "title": "1. Carácter informativo del catálogo",
+        "body": "Este sitio web tiene como único propósito presentar los ejemplares frisones de Cuadra Imperial Loy y facilitar el contacto directo por WhatsApp o la solicitud de citas privadas en Zapotlanejo, Jalisco. Ninguna publicación constituye una oferta de compra automatizada en línea."
+      },
+      {
+        "title": "2. Precios y disponibilidad",
+        "body": "Los precios de los ejemplares se proporcionan directamente por nuestro canal oficial de WhatsApp (+52 33 1702 6066) y son los mismos para todos los clientes. La disponibilidad de cada ejemplar se confirma al momento de formalizar un contrato de compraventa."
+      },
+      {
+        "title": "3. Formalización y revisión veterinaria",
+        "body": "Toda compraventa se formaliza mediante contrato escrito, anticipo de apartado y liquidación sujeta a la revisión clínica veterinaria previa a la entrega."
+      }
+    ]
+  }
+}
+

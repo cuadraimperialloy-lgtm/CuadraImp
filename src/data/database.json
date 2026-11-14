@@ -1,0 +1,1124 @@
+{
+  "settings": {
+    "officialWhatsApp": "523317026066",
+    "officialWhatsAppDisplay": "+52 33 1702 6066",
+    "officialEmail": "info@cuadraimperialloy.com",
+    "instagramUrl": "https://www.instagram.com/cuadraimperialloy",
+    "tiktokUrl": "https://www.tiktok.com/@cuadraimperialloy",
+    "facebookUrl": "https://www.facebook.com/CuadraImperialLoy",
+    "timezone": "America/Mexico_City",
+    "schedule": {
+      "weekdaysOpen": "08:00",
+      "weekdaysClose": "17:00",
+      "saturdayOpen": "09:00",
+      "saturdayClose": "13:00",
+      "sundayClosed": true
+    },
+    "closedHolidays": [],
+    "privacyNoticeVersion": "2026.11",
+    "showCatalogStartingPrice": false,
+    "catalogStartingPriceMxn": 0
+  },
+  "horses": [
+    {
+      "id": "horse-yde",
+      "name": "Yde fan de Kamp",
+      "slug": "yde",
+      "code": "YDE",
+      "sex": "entero",
+      "type": "stud",
+      "origin": "Holanda",
+      "birthDate": "2023-04-10",
+      "heightM": 1.72,
+      "registrationNumber": "202301054",
+      "microchip": "0814",
+      "fullPaper": true,
+      "sire": "Wolter 513 (AA)",
+      "damsire": "Eise 489 (Sport-Elite AAA)",
+      "dam": "Fopkje fan de Lege Geaën (Ster)",
+      "showDam": true,
+      "awards": [
+        "2e premie"
+      ],
+      "level": null,
+      "bloodlineEs": "Padre: Wolter 513 (AA) · Madre: Fopkje fan de Lege Geaën (Ster) · Abuelo directo destacado: Eise 489 (Sport-Elite AAA).",
+      "bloodlineEn": "Sire: Wolter 513 (AA) · Dam: Fopkje fan de Lege Geaën (Ster) · Featured maternal grandsire: Eise 489 (Sport-Elite AAA).",
+      "descriptionEs": "Semental de la cuadra (Frisón europeo, macho entero) con registro KFPS 202301054, Full Paper (Sí), 2e premie y 1.72 m de alzada. Nacido el 2023-04-10. Chip (últimos 4 dígitos): 0814.",
+      "descriptionEn": "Stable stallion (European Friesian) with KFPS registration 202301054, Full Paper (Yes), 2e premie and 1.72 m height. Born 2023-04-10. Chip (last 4 digits): 0814.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Yde/Yde_1.jpg",
+      "hoverPhoto": "/images/horses/Yde/Yde_2.jpg",
+      "gallery": [
+        {
+          "url": "/images/horses/Yde/Yde_1.jpg",
+          "altEs": "Yde fan de Kamp, caballo frisón KFPS (1.72 m, Full Paper) en Cuadra Imperial Loy",
+          "altEn": "Yde fan de Kamp, KFPS Friesian horse (1.72 m, Full Paper) at Cuadra Imperial Loy"
+        },
+        {
+          "url": "/images/horses/Yde/Yde_2.jpg",
+          "altEs": "Yde fan de Kamp en postura de conformación",
+          "altEn": "Yde fan de Kamp in conformation stance"
+        },
+        {
+          "url": "/images/horses/Yde/Yde_3.jpg",
+          "altEs": "Yde fan de Kamp, detalle de cuello y cabeza",
+          "altEn": "Yde fan de Kamp, neck and head detail"
+        },
+        {
+          "url": "/images/horses/Yde/Yde_4.jpg",
+          "altEs": "Yde fan de Kamp en pista",
+          "altEn": "Yde fan de Kamp in the arena"
+        },
+        {
+          "url": "/images/horses/Yde/Yde_5.jpg",
+          "altEs": "Yde fan de Kamp en movimiento",
+          "altEn": "Yde fan de Kamp in motion"
+        },
+        {
+          "url": "/images/horses/Yde/Yde_6.jpg",
+          "altEs": "Yde fan de Kamp, perfil completo",
+          "altEn": "Yde fan de Kamp, full profile"
+        }
+      ],
+      "mainVideo": "/images/horses/Yde/Yde_Trote.mp4",
+      "videoPoster": "/images/horses/Yde/Yde_1.jpg",
+      "privateDocuments": [
+        {
+          "id": "doc-yde-1",
+          "type": "passport",
+          "labelEs": "Pasaporte KFPS original (#202301054)",
+          "labelEn": "Original KFPS passport (#202301054)",
+          "filename": "Yde_fan_de_Kamp_KFPS_202301054.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        },
+        {
+          "id": "doc-yde-2",
+          "type": "pedigree",
+          "labelEs": "Registro genealógico Full Paper KFPS",
+          "labelEn": "KFPS Full Paper pedigree",
+          "filename": "Yde_Genealogia_KFPS.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "status": "available",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 1,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "horse-aylan",
+      "name": "Aylan",
+      "slug": "aylan",
+      "code": "AYL",
+      "sex": "entero",
+      "type": "sale",
+      "origin": "Holanda",
+      "birthDate": "2024-02-25",
+      "heightM": 1.65,
+      "registrationNumber": "202400235",
+      "microchip": "4959",
+      "fullPaper": false,
+      "sire": "Hilbrand 525 (Sport AAA)",
+      "damsire": "Hette 481 (Sport AAA)",
+      "dam": "Madelief van Schafer",
+      "showDam": true,
+      "awards": [
+        "2e premie"
+      ],
+      "level": null,
+      "bloodlineEs": "Padre: Hilbrand 525 (Sport AAA) · Madre: Madelief van Schafer · Abuelo directo destacado: Hette 481 (Sport AAA).",
+      "bloodlineEn": "Sire: Hilbrand 525 (Sport AAA) · Dam: Madelief van Schafer · Featured maternal grandsire: Hette 481 (Sport AAA).",
+      "descriptionEs": "Frisón europeo macho entero ubicado en CEDIS Zapotlanejo, con registro KFPS 202400235, 2e premie y 1.65 m de alzada. Nacido el 2024-02-25. Chip (últimos 4 dígitos): 4959.",
+      "descriptionEn": "European Friesian stallion located at CEDIS Zapotlanejo, with KFPS registration 202400235, 2e premie and 1.65 m height. Born 2024-02-25. Chip (last 4 digits): 4959.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Aylan/Aylan_1.jpg",
+      "hoverPhoto": "/images/horses/Aylan/Aylan_2.jpg",
+      "gallery": [
+        {
+          "url": "/images/horses/Aylan/Aylan_1.jpg",
+          "altEs": "Aylan, frisón europeo (Hilbrand 525 x Hette 481) en Zapotlanejo",
+          "altEn": "Aylan, European Friesian (Hilbrand 525 x Hette 481) in Zapotlanejo"
+        },
+        {
+          "url": "/images/horses/Aylan/Aylan_2.jpg",
+          "altEs": "Aylan, segundo ángulo en estudio",
+          "altEn": "Aylan, second studio angle"
+        },
+        {
+          "url": "/images/horses/Aylan/Aylan_3.jpg",
+          "altEs": "Aylan, conformación completa",
+          "altEn": "Aylan, full conformation"
+        },
+        {
+          "url": "/images/horses/Aylan/Aylan_4.jpg",
+          "altEs": "Aylan, perfil de cabeza y cuello",
+          "altEn": "Aylan, head and neck profile"
+        },
+        {
+          "url": "/images/horses/Aylan/Aylan_5.jpg",
+          "altEs": "Aylan en presentación a la mano",
+          "altEn": "Aylan presented in hand"
+        }
+      ],
+      "mainVideo": "/images/horses/Aylan/Aylan_Trote.mp4",
+      "videoPoster": "/images/horses/Aylan/Aylan_1.jpg",
+      "privateDocuments": [
+        {
+          "id": "doc-ayl-1",
+          "type": "passport",
+          "labelEs": "Registro KFPS (#202400235)",
+          "labelEn": "KFPS Registration (#202400235)",
+          "filename": "Aylan_KFPS_202400235.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        },
+        {
+          "id": "doc-ayl-2",
+          "type": "pedigree",
+          "labelEs": "Ficha técnica y genealogía verificada",
+          "labelEn": "Technical sheet and verified pedigree",
+          "filename": "Aylan_Ficha_Tecnica.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "status": "available",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 2,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "horse-ykpe",
+      "name": "Ypke G.",
+      "slug": "ykpe",
+      "code": "YKP",
+      "sex": "entero",
+      "type": "sale",
+      "origin": "Holanda",
+      "birthDate": "2023-05-29",
+      "heightM": 1.67,
+      "registrationNumber": "202302638",
+      "microchip": "0525",
+      "fullPaper": false,
+      "sire": "Pier 448 (Sport AA)",
+      "damsire": "Beart 411 (Sport Pref)",
+      "dam": "Xante",
+      "showDam": true,
+      "awards": [],
+      "level": null,
+      "bloodlineEs": "Padre: Pier 448 (Sport AA) · Madre: Xante · Abuelo directo destacado: Beart 411 (Sport Pref).",
+      "bloodlineEn": "Sire: Pier 448 (Sport AA) · Dam: Xante · Featured maternal grandsire: Beart 411 (Sport Pref).",
+      "descriptionEs": "Frisón europeo macho entero ubicado en CEDIS Zapotlanejo, con registro KFPS 202302638 y 1.67 m de alzada. Nacido el 2023-05-29. Chip (últimos 4 dígitos): 0525.",
+      "descriptionEn": "European Friesian stallion located at CEDIS Zapotlanejo, with KFPS registration 202302638 and 1.67 m height. Born 2023-05-29. Chip (last 4 digits): 0525.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Ykpe/Ykpe_1.jpg",
+      "hoverPhoto": "/images/horses/Ykpe/Ykpe_2.jpg",
+      "gallery": [
+        {
+          "url": "/images/horses/Ykpe/Ykpe_1.jpg",
+          "altEs": "Ypke G., frisón KFPS (Pier 448 x Beart 411) en Zapotlanejo",
+          "altEn": "Ypke G., KFPS Friesian (Pier 448 x Beart 411) in Zapotlanejo"
+        },
+        {
+          "url": "/images/horses/Ykpe/Ykpe_2.jpg",
+          "altEs": "Ypke G., vista lateral completa",
+          "altEn": "Ypke G., full side view"
+        },
+        {
+          "url": "/images/horses/Ykpe/Ykpe_3.jpg",
+          "altEs": "Ypke G., porte y alzada de 1.67 m",
+          "altEn": "Ypke G., carriage and 1.67 m height"
+        },
+        {
+          "url": "/images/horses/Ykpe/Ykpe_4.jpg",
+          "altEs": "Ypke G. en Cuadra Imperial Loy",
+          "altEn": "Ypke G. at Cuadra Imperial Loy"
+        },
+        {
+          "url": "/images/horses/Ykpe/Ykpe_5.jpg",
+          "altEs": "Ypke G., detalle de crin y perfil",
+          "altEn": "Ypke G., mane and profile detail"
+        },
+        {
+          "url": "/images/horses/Ykpe/Ykpe_6.jpg",
+          "altEs": "Ypke G. en pista",
+          "altEn": "Ypke G. in the arena"
+        }
+      ],
+      "mainVideo": "/images/horses/Ykpe/Ykpe_Trote.mp4",
+      "videoPoster": "/images/horses/Ykpe/Ykpe_1.jpg",
+      "privateDocuments": [
+        {
+          "id": "doc-ykp-1",
+          "type": "passport",
+          "labelEs": "Registro KFPS (#202302638)",
+          "labelEn": "KFPS Registration (#202302638)",
+          "filename": "Ypke_G_KFPS_202302638.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        },
+        {
+          "id": "doc-ykp-2",
+          "type": "pedigree",
+          "labelEs": "Ficha técnica del ejemplar",
+          "labelEn": "Horse technical sheet",
+          "filename": "Ypke_G_Ficha_Tecnica.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "status": "available",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 3,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "horse-tebbe",
+      "name": "Tebbe",
+      "slug": "tebbe",
+      "code": "TEB",
+      "sex": "entero",
+      "type": "sale",
+      "origin": "Holanda",
+      "birthDate": "2022-05-17",
+      "heightM": 1.66,
+      "registrationNumber": "202203577",
+      "microchip": "2320",
+      "fullPaper": false,
+      "sire": "Gerben 479 (Sport AAA)",
+      "damsire": "Wytse 462 (Sport-Elite AAA)",
+      "dam": "Anne Anne S",
+      "showDam": true,
+      "awards": [],
+      "level": null,
+      "bloodlineEs": "Padre: Gerben 479 (Sport AAA) · Madre: Anne Anne S · Abuelo directo destacado: Wytse 462 (Sport-Elite AAA).",
+      "bloodlineEn": "Sire: Gerben 479 (Sport AAA) · Dam: Anne Anne S · Featured maternal grandsire: Wytse 462 (Sport-Elite AAA).",
+      "descriptionEs": "Frisón europeo macho entero ubicado en CEDIS Zapotlanejo, con registro KFPS 202203577 y 1.66 m de alzada. Nacido el 2022-05-17. Chip (últimos 4 dígitos): 2320.",
+      "descriptionEn": "European Friesian stallion located at CEDIS Zapotlanejo, with KFPS registration 202203577 and 1.66 m height. Born 2022-05-17. Chip (last 4 digits): 2320.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Tebbe/Tebbe_1.jpg",
+      "hoverPhoto": "/images/horses/Tebbe/Tebbe_2.jpg",
+      "gallery": [
+        {
+          "url": "/images/horses/Tebbe/Tebbe_1.jpg",
+          "altEs": "Tebbe, ejemplar frisón (Gerben 479 x Wytse 462) en Cuadra Imperial Loy",
+          "altEn": "Tebbe, Friesian horse (Gerben 479 x Wytse 462) at Cuadra Imperial Loy"
+        },
+        {
+          "url": "/images/horses/Tebbe/Tebbe_2.jpg",
+          "altEs": "Tebbe, segundo ángulo",
+          "altEn": "Tebbe, second angle"
+        },
+        {
+          "url": "/images/horses/Tebbe/Tebbe_3.jpg",
+          "altEs": "Tebbe, conformación lateral",
+          "altEn": "Tebbe, side conformation"
+        },
+        {
+          "url": "/images/horses/Tebbe/Tebbe_4.jpg",
+          "altEs": "Tebbe, detalle de expresión",
+          "altEn": "Tebbe, expression detail"
+        },
+        {
+          "url": "/images/horses/Tebbe/Tebbe_5.jpg",
+          "altEs": "Tebbe en presentación",
+          "altEn": "Tebbe in presentation"
+        }
+      ],
+      "mainVideo": "/images/horses/Tebbe/Tebbe_Trote_1.mp4",
+      "videoPoster": "/images/horses/Tebbe/Tebbe_1.jpg",
+      "privateDocuments": [
+        {
+          "id": "doc-teb-1",
+          "type": "passport",
+          "labelEs": "Registro KFPS (#202203577)",
+          "labelEn": "KFPS Registration (#202203577)",
+          "filename": "Tebbe_KFPS_202203577.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        },
+        {
+          "id": "doc-teb-2",
+          "type": "pedigree",
+          "labelEs": "Ficha técnica del ejemplar",
+          "labelEn": "Horse technical sheet",
+          "filename": "Tebbe_Ficha_Tecnica.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "status": "available",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 4,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "horse-ulke",
+      "name": "Ulke van 't Heidehoefke",
+      "slug": "ulke",
+      "code": "ULK",
+      "sex": "entero",
+      "type": "sale",
+      "origin": "Holanda",
+      "birthDate": "2022-04-25",
+      "heightM": 1.64,
+      "registrationNumber": "202201735",
+      "microchip": "3634",
+      "fullPaper": false,
+      "sire": "Gerben 479 (Sport AAA)",
+      "damsire": "Doaitsen 420 (Sport)",
+      "dam": "Teuntje van 't Heidehoefke",
+      "showDam": true,
+      "awards": [],
+      "level": null,
+      "bloodlineEs": "Padre: Gerben 479 (Sport AAA) · Madre: Teuntje van 't Heidehoefke · Abuelo directo destacado: Doaitsen 420 (Sport).",
+      "bloodlineEn": "Sire: Gerben 479 (Sport AAA) · Dam: Teuntje van 't Heidehoefke · Featured maternal grandsire: Doaitsen 420 (Sport).",
+      "descriptionEs": "Frisón europeo macho entero ubicado en CEDIS Zapotlanejo, con registro KFPS 202201735 y 1.64 m de alzada. Nacido el 2022-04-25. Chip (últimos 4 dígitos): 3634.",
+      "descriptionEn": "European Friesian stallion located at CEDIS Zapotlanejo, with KFPS registration 202201735 and 1.64 m height. Born 2022-04-25. Chip (last 4 digits): 3634.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Ulke/Ulke_1.jpg",
+      "hoverPhoto": "/images/horses/Ulke/Ulke_2.jpg",
+      "gallery": [
+        {
+          "url": "/images/horses/Ulke/Ulke_1.jpg",
+          "altEs": "Ulke van 't Heidehoefke, caballo frisón importado de Holanda",
+          "altEn": "Ulke van 't Heidehoefke, Friesian horse imported from the Netherlands"
+        },
+        {
+          "url": "/images/horses/Ulke/Ulke_2.jpg",
+          "altEs": "Ulke van 't Heidehoefke, vista de perfil",
+          "altEn": "Ulke van 't Heidehoefke, profile view"
+        },
+        {
+          "url": "/images/horses/Ulke/Ulke_3.jpg",
+          "altEs": "Ulke van 't Heidehoefke, conformación en estudio",
+          "altEn": "Ulke van 't Heidehoefke, studio conformation"
+        },
+        {
+          "url": "/images/horses/Ulke/Ulke_4.jpg",
+          "altEs": "Ulke van 't Heidehoefke, detalle frontal",
+          "altEn": "Ulke van 't Heidehoefke, front detail"
+        }
+      ],
+      "mainVideo": "/images/horses/Ulke/Ulke_Trote.mp4",
+      "videoPoster": "/images/horses/Ulke/Ulke_1.jpg",
+      "privateDocuments": [
+        {
+          "id": "doc-ulk-1",
+          "type": "passport",
+          "labelEs": "Registro KFPS (#202201735)",
+          "labelEn": "KFPS Registration (#202201735)",
+          "filename": "Ulke_KFPS_202201735.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "status": "available",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 5,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "horse-brian-brobbey",
+      "name": "Brian Brobbey v.d. Schans",
+      "slug": "brian-brobbey",
+      "code": "BBR",
+      "sex": "entero",
+      "type": "sale",
+      "origin": "Holanda",
+      "birthDate": "2024-04-27",
+      "heightM": null,
+      "registrationNumber": "202401948",
+      "microchip": "4880",
+      "fullPaper": true,
+      "sire": "Hielke 530 (AAA)",
+      "damsire": "Jurre 495 (Sport-Elite AAA)",
+      "dam": "Geartsje 'fan Great Beckum' (Ster)",
+      "showDam": true,
+      "awards": [],
+      "level": null,
+      "bloodlineEs": "Padre: Hielke 530 (AAA) · Madre: Geartsje 'fan Great Beckum' (Ster) · Abuelo directo destacado: Jurre 495 (Sport-Elite AAA).",
+      "bloodlineEn": "Sire: Hielke 530 (AAA) · Dam: Geartsje 'fan Great Beckum' (Ster) · Featured maternal grandsire: Jurre 495 (Sport-Elite AAA).",
+      "descriptionEs": "Frisón europeo macho entero disponible (CEDIS: En tránsito), con registro KFPS 202401948 y Full Paper (Sí). Nacido el 2024-04-27. Chip (últimos 4 dígitos): 4880.",
+      "descriptionEn": "European Friesian stallion available (in transit), with KFPS registration 202401948 and Full Paper (Yes). Born 2024-04-27. Chip (last 4 digits): 4880.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Brian Brobbey/Brian Brobbey_1.jpeg",
+      "hoverPhoto": null,
+      "gallery": [
+        {
+          "url": "/images/horses/Brian Brobbey/Brian Brobbey_1.jpeg",
+          "altEs": "Brian Brobbey v.d. Schans, frisón Full Paper (Hielke 530 x Jurre 495)",
+          "altEn": "Brian Brobbey v.d. Schans, Full Paper Friesian (Hielke 530 x Jurre 495)"
+        }
+      ],
+      "mainVideo": "/images/horses/Brian Brobbey/Brian Brobbey_Trote.mp4",
+      "videoPoster": "/images/horses/Brian Brobbey/Brian Brobbey_1.jpeg",
+      "privateDocuments": [
+        {
+          "id": "doc-bbr-1",
+          "type": "passport",
+          "labelEs": "Pasaporte Full Paper KFPS (#202401948)",
+          "labelEn": "Full Paper KFPS Passport (#202401948)",
+          "filename": "Brian_Brobbey_KFPS_202401948.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "status": "en_route",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 6,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "horse-youp-grinse",
+      "name": "Youp Grinse",
+      "slug": "youp-grinse",
+      "code": "YGR",
+      "sex": "entero",
+      "type": "sale",
+      "origin": "Holanda",
+      "birthDate": "2023-03-25",
+      "heightM": null,
+      "registrationNumber": "202301185",
+      "microchip": "3789",
+      "fullPaper": false,
+      "sire": "Teun 505 (Sport AAA)",
+      "damsire": "Bartele 472 (Sport AAA)",
+      "dam": "Auke Wendela (Sport)",
+      "showDam": true,
+      "awards": [],
+      "level": null,
+      "bloodlineEs": "Padre: Teun 505 (Sport AAA) · Madre: Auke Wendela (Sport) · Abuelo directo destacado: Bartele 472 (Sport AAA).",
+      "bloodlineEn": "Sire: Teun 505 (Sport AAA) · Dam: Auke Wendela (Sport) · Featured maternal grandsire: Bartele 472 (Sport AAA).",
+      "descriptionEs": "Frisón europeo macho entero disponible (CEDIS: En tránsito), con registro KFPS 202301185. Nacido el 2023-03-25. Chip (últimos 4 dígitos): 3789.",
+      "descriptionEn": "European Friesian stallion available (in transit), with KFPS registration 202301185. Born 2023-03-25. Chip (last 4 digits): 3789.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Youp Grinse/Youp Grinse_1.jpeg",
+      "hoverPhoto": null,
+      "gallery": [
+        {
+          "url": "/images/horses/Youp Grinse/Youp Grinse_1.jpeg",
+          "altEs": "Youp Grinse, frisón europeo (Teun 505 x Bartele 472)",
+          "altEn": "Youp Grinse, European Friesian (Teun 505 x Bartele 472)"
+        }
+      ],
+      "mainVideo": "/images/horses/Youp Grinse/Youp Grinse_Trote.mp4",
+      "videoPoster": "/images/horses/Youp Grinse/Youp Grinse_1.jpeg",
+      "privateDocuments": [
+        {
+          "id": "doc-ygr-1",
+          "type": "passport",
+          "labelEs": "Registro KFPS (#202301185)",
+          "labelEn": "KFPS Registration (#202301185)",
+          "filename": "Youp_Grinse_KFPS_202301185.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "status": "en_route",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 7,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "horse-yuma",
+      "name": "Yuma van The Ranch",
+      "slug": "yuma",
+      "code": "YUM",
+      "sex": "entero",
+      "type": "sale",
+      "origin": "Holanda",
+      "birthDate": "2023-05-19",
+      "heightM": null,
+      "registrationNumber": "202302533",
+      "microchip": "2479",
+      "fullPaper": false,
+      "sire": "Epke 474 (Sport-Elite AAA)",
+      "damsire": "Beart 411 (Sport Pref)",
+      "dam": "Akkelyn K.",
+      "showDam": true,
+      "awards": [],
+      "level": null,
+      "bloodlineEs": "Padre: Epke 474 (Sport-Elite AAA) · Madre: Akkelyn K. · Abuelo directo destacado: Beart 411 (Sport Pref).",
+      "bloodlineEn": "Sire: Epke 474 (Sport-Elite AAA) · Dam: Akkelyn K. · Featured maternal grandsire: Beart 411 (Sport Pref).",
+      "descriptionEs": "Frisón europeo macho entero disponible (CEDIS: En tránsito), con registro KFPS 202302533. Nacido el 2023-05-19. Chip (últimos 4 dígitos): 2479.",
+      "descriptionEn": "European Friesian stallion available (in transit), with KFPS registration 202302533. Born 2023-05-19. Chip (last 4 digits): 2479.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Yuma/Yuma_1.jpeg",
+      "hoverPhoto": null,
+      "gallery": [
+        {
+          "url": "/images/horses/Yuma/Yuma_1.jpeg",
+          "altEs": "Yuma van The Ranch, frisón europeo (Epke 474 x Beart 411)",
+          "altEn": "Yuma van The Ranch, European Friesian (Epke 474 x Beart 411)"
+        }
+      ],
+      "mainVideo": "/images/horses/Yuma/Yuma_Trote.mp4",
+      "videoPoster": "/images/horses/Yuma/Yuma_1.jpeg",
+      "privateDocuments": [
+        {
+          "id": "doc-yum-1",
+          "type": "passport",
+          "labelEs": "Registro KFPS (#202302533)",
+          "labelEn": "KFPS Registration (#202302533)",
+          "filename": "Yuma_KFPS_202302533.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "status": "en_route",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 8,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "horse-youp-fan-vdv",
+      "name": "Youp fan VDV",
+      "slug": "youp-fan-vdv",
+      "code": "YFV",
+      "sex": "entero",
+      "type": "sale",
+      "origin": "Holanda",
+      "birthDate": "2023-02-16",
+      "heightM": null,
+      "registrationNumber": "202300131",
+      "microchip": "8083",
+      "fullPaper": false,
+      "sire": "Boet 516 (Sport AAA)",
+      "damsire": "Jouwe 485 (Sport AAA)",
+      "dam": "Wietsche R",
+      "showDam": true,
+      "awards": [],
+      "level": null,
+      "bloodlineEs": "Padre: Boet 516 (Sport AAA) · Madre: Wietsche R · Abuelo directo destacado: Jouwe 485 (Sport AAA).",
+      "bloodlineEn": "Sire: Boet 516 (Sport AAA) · Dam: Wietsche R · Featured maternal grandsire: Jouwe 485 (Sport AAA).",
+      "descriptionEs": "Frisón europeo macho entero disponible (CEDIS: En tránsito), con registro KFPS 202300131. Nacido el 2023-02-16. Chip (últimos 4 dígitos): 8083.",
+      "descriptionEn": "European Friesian stallion available (in transit), with KFPS registration 202300131. Born 2023-02-16. Chip (last 4 digits): 8083.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Youp Fan/Youp Fan_1.jpeg",
+      "hoverPhoto": null,
+      "gallery": [
+        {
+          "url": "/images/horses/Youp Fan/Youp Fan_1.jpeg",
+          "altEs": "Youp fan VDV, caballo frisón europeo (Boet 516 x Jouwe 485)",
+          "altEn": "Youp fan VDV, European Friesian horse (Boet 516 x Jouwe 485)"
+        }
+      ],
+      "mainVideo": "/images/horses/Youp Fan/Youp Fan_Trote.mp4",
+      "videoPoster": "/images/horses/Youp Fan/Youp Fan_1.jpeg",
+      "privateDocuments": [
+        {
+          "id": "doc-yfv-1",
+          "type": "passport",
+          "labelEs": "Registro KFPS (#202300131)",
+          "labelEn": "KFPS Registration (#202300131)",
+          "filename": "Youp_fan_VDV_KFPS_202300131.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "status": "en_route",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 9,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "horse-sultan",
+      "name": "Sultán",
+      "slug": "sultan",
+      "code": "SUL",
+      "sex": "entero",
+      "type": "sale",
+      "origin": "Nacional",
+      "birthDate": "2025-07-13",
+      "heightM": 1.54,
+      "registrationNumber": null,
+      "microchip": null,
+      "fullPaper": null,
+      "sire": null,
+      "damsire": null,
+      "dam": null,
+      "showDam": false,
+      "awards": [],
+      "level": null,
+      "bloodlineEs": "",
+      "bloodlineEn": "",
+      "descriptionEs": "Frisón nacional macho entero disponible en CEDIS Zapotlanejo, con 1.54 m de alzada. Nacido el 2025-07-13.",
+      "descriptionEn": "National Friesian colt available at CEDIS Zapotlanejo, standing at 1.54 m. Born 2025-07-13.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Nacionales/Sultan/Sultan_1.jpeg",
+      "hoverPhoto": "/images/horses/Nacionales/Sultan/Sultan_Mama.jpeg",
+      "gallery": [
+        {
+          "url": "/images/horses/Nacionales/Sultan/Sultan_1.jpeg",
+          "altEs": "Sultán, ejemplar frisón nacional en Zapotlanejo",
+          "altEn": "Sultán, Mexican-born Friesian in Zapotlanejo"
+        },
+        {
+          "url": "/images/horses/Nacionales/Sultan/Sultan_Mama.jpeg",
+          "altEs": "Sultán en Cuadra Imperial Loy",
+          "altEn": "Sultán at Cuadra Imperial Loy"
+        }
+      ],
+      "mainVideo": "/images/horses/Nacionales/Sultan/Sultan_Trote.mp4",
+      "videoPoster": "/images/horses/Nacionales/Sultan/Sultan_1.jpeg",
+      "privateDocuments": [],
+      "status": "available",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 10,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "horse-theo",
+      "name": "Theo",
+      "slug": "theo",
+      "code": "THE",
+      "sex": "entero",
+      "type": "sale",
+      "origin": "Holanda",
+      "birthDate": "2022-06-02",
+      "heightM": null,
+      "registrationNumber": "202202641",
+      "microchip": "9303",
+      "fullPaper": false,
+      "sire": "Fonger 478 (Sport AAA)",
+      "damsire": "Olgert 445 (Sport-Elite AAA)",
+      "dam": "Wieteke",
+      "showDam": true,
+      "awards": [
+        "3e premie"
+      ],
+      "level": null,
+      "bloodlineEs": "Padre: Fonger 478 (Sport AAA) · Madre: Wieteke · Abuelo directo destacado: Olgert 445 (Sport-Elite AAA).",
+      "bloodlineEn": "Sire: Fonger 478 (Sport AAA) · Dam: Wieteke · Featured maternal grandsire: Olgert 445 (Sport-Elite AAA).",
+      "descriptionEs": "Frisón europeo macho entero (Estado: Vendido) con registro KFPS 202202641 y 3e premie. Nacido el 2022-06-02. Chip (últimos 4 dígitos): 9303.",
+      "descriptionEn": "European Friesian stallion (Status: Sold) with KFPS registration 202202641 and 3e premie. Born 2022-06-02. Chip (last 4 digits): 9303.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Theo/Theo_1.jpg",
+      "hoverPhoto": "/images/horses/Theo/Theo_2.jpg",
+      "gallery": [
+        {
+          "url": "/images/horses/Theo/Theo_1.jpg",
+          "altEs": "Theo, frisón importado de Holanda (Vendido)",
+          "altEn": "Theo, Friesian imported from the Netherlands (Sold)"
+        },
+        {
+          "url": "/images/horses/Theo/Theo_2.jpg",
+          "altEs": "Theo, vista lateral",
+          "altEn": "Theo, side view"
+        },
+        {
+          "url": "/images/horses/Theo/Theo_3.jpg",
+          "altEs": "Theo en estudio",
+          "altEn": "Theo in studio"
+        },
+        {
+          "url": "/images/horses/Theo/Theo_4.jpg",
+          "altEs": "Theo, perfil",
+          "altEn": "Theo, profile"
+        }
+      ],
+      "mainVideo": "/images/horses/Theo/Theo_Trote.mp4",
+      "videoPoster": "/images/horses/Theo/Theo_1.jpg",
+      "privateDocuments": [],
+      "status": "sold",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 11,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "horse-yente",
+      "name": "Yente",
+      "slug": "yente",
+      "code": "YEN",
+      "sex": "entero",
+      "type": "stud",
+      "origin": "Holanda",
+      "birthDate": "2023-05-28",
+      "heightM": 1.66,
+      "registrationNumber": "202302602",
+      "microchip": "0493",
+      "fullPaper": true,
+      "sire": "Teun 505 (Sport AAA)",
+      "damsire": "Norbert 444 (Sport Pref AAA)",
+      "dam": "Mila fan Stal Bellefleur (Kroon AA)",
+      "showDam": true,
+      "awards": [
+        "1e premie y Ster"
+      ],
+      "level": null,
+      "bloodlineEs": "Padre: Teun 505 (Sport AAA) · Madre: Mila fan Stal Bellefleur (Kroon AA) · Abuelo directo destacado: Norbert 444 (Sport Pref AAA).",
+      "bloodlineEn": "Sire: Teun 505 (Sport AAA) · Dam: Mila fan Stal Bellefleur (Kroon AA) · Featured maternal grandsire: Norbert 444 (Sport Pref AAA).",
+      "descriptionEs": "Semental de la cuadra (Frisón europeo, macho entero) con registro KFPS 202302602, Full Paper (Sí), 1e premie y Ster, y 1.66 m de alzada. Nacido el 2023-05-28. Chip (últimos 4 dígitos): 0493.",
+      "descriptionEn": "Stable stallion (European Friesian) with KFPS registration 202302602, Full Paper (Yes), 1e premie & Ster, and 1.66 m height. Born 2023-05-28. Chip (last 4 digits): 0493.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Yente/Yente_1.jpg",
+      "hoverPhoto": "/images/horses/Yente/Yente_2.jpg",
+      "gallery": [
+        {
+          "url": "/images/horses/Yente/Yente_1.jpg",
+          "altEs": "Yente, semental frisón KFPS (1e premie, Ster) para maquila",
+          "altEn": "Yente, KFPS Friesian stallion (1e premie, Ster) at stud"
+        },
+        {
+          "url": "/images/horses/Yente/Yente_2.jpg",
+          "altEs": "Yente, conformación lateral",
+          "altEn": "Yente, side conformation"
+        },
+        {
+          "url": "/images/horses/Yente/Yente_3.jpg",
+          "altEs": "Yente, detalle de cuello y expresión",
+          "altEn": "Yente, neck and expression detail"
+        },
+        {
+          "url": "/images/horses/Yente/Yente_4.jpg",
+          "altEs": "Yente en presentación",
+          "altEn": "Yente in presentation"
+        }
+      ],
+      "mainVideo": "/images/horses/Yente/Yente_Trote.mp4",
+      "videoPoster": "/images/horses/Yente/Yente_1.jpg",
+      "privateDocuments": [
+        {
+          "id": "doc-yen-1",
+          "type": "pedigree",
+          "labelEs": "Genealogía Full Paper KFPS (#202302602)",
+          "labelEn": "Full Paper KFPS Pedigree (#202302602)",
+          "filename": "Yente_KFPS_202302602.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "status": "available",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 12,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "horse-wilco",
+      "name": "Wilco WT fan de Boerdam",
+      "slug": "wilco",
+      "code": "WIL",
+      "sex": "entero",
+      "type": "stud",
+      "origin": "Holanda",
+      "birthDate": "2023-04-26",
+      "heightM": 1.65,
+      "registrationNumber": "202301998",
+      "microchip": "6284",
+      "fullPaper": true,
+      "sire": "Tiede 501 (Sport AAA)",
+      "damsire": "Alwin 469 (Sport Pref AAA)",
+      "dam": "Ziba M (Ster)",
+      "showDam": true,
+      "awards": [
+        "Ster"
+      ],
+      "level": null,
+      "bloodlineEs": "Padre: Tiede 501 (Sport AAA) · Madre: Ziba M (Ster) · Abuelo directo destacado: Alwin 469 (Sport Pref AAA).",
+      "bloodlineEn": "Sire: Tiede 501 (Sport AAA) · Dam: Ziba M (Ster) · Featured maternal grandsire: Alwin 469 (Sport Pref AAA).",
+      "descriptionEs": "Semental de la cuadra (Frisón europeo, macho entero) con registro KFPS 202301998, Full Paper (Sí), predicado Ster y 1.65 m de alzada. Nacido el 2023-04-26. Chip (últimos 4 dígitos): 6284.",
+      "descriptionEn": "Stable stallion (European Friesian) with KFPS registration 202301998, Full Paper (Yes), Ster predicate and 1.65 m height. Born 2023-04-26. Chip (last 4 digits): 6284.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Wilco/Wilco_1.jpg",
+      "hoverPhoto": "/images/horses/Wilco/Wilco_2.jpg",
+      "gallery": [
+        {
+          "url": "/images/horses/Wilco/Wilco_1.jpg",
+          "altEs": "Wilco WT fan de Boerdam, semental frisón KFPS (Ster) para maquila",
+          "altEn": "Wilco WT fan de Boerdam, KFPS Friesian stallion (Ster) at stud"
+        },
+        {
+          "url": "/images/horses/Wilco/Wilco_2.jpg",
+          "altEs": "Wilco WT fan de Boerdam, segundo ángulo",
+          "altEn": "Wilco WT fan de Boerdam, second angle"
+        },
+        {
+          "url": "/images/horses/Wilco/Wilco_3.jpg",
+          "altEs": "Wilco WT fan de Boerdam, conformación completa",
+          "altEn": "Wilco WT fan de Boerdam, full conformation"
+        },
+        {
+          "url": "/images/horses/Wilco/Wilco_4.jpg",
+          "altEs": "Wilco WT fan de Boerdam, perfil",
+          "altEn": "Wilco WT fan de Boerdam, profile"
+        }
+      ],
+      "mainVideo": "/images/horses/Wilco/Wilco_Trote.mp4",
+      "videoPoster": "/images/horses/Wilco/Wilco_1.jpg",
+      "privateDocuments": [
+        {
+          "id": "doc-wil-1",
+          "type": "pedigree",
+          "labelEs": "Genealogía Full Paper KFPS (#202301998)",
+          "labelEn": "Full Paper KFPS Pedigree (#202301998)",
+          "filename": "Wilco_WT_KFPS_202301998.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "status": "available",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 13,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "horse-xavi",
+      "name": "Xavi fan Veldzicht",
+      "slug": "xavi",
+      "code": "XAV",
+      "sex": "entero",
+      "type": "stud",
+      "origin": "Holanda",
+      "birthDate": "2023-03-26",
+      "heightM": null,
+      "registrationNumber": "202300717",
+      "microchip": "5141",
+      "fullPaper": true,
+      "sire": "Wolter 513 (AA)",
+      "damsire": "Fabe 348 (Sport Pref)",
+      "dam": "Tanja fan de Mayhoeve (Kroon Pref AA *5)",
+      "showDam": true,
+      "awards": [],
+      "level": null,
+      "bloodlineEs": "Padre: Wolter 513 (AA) · Madre: Tanja fan de Mayhoeve (Kroon Pref AA *5) · Abuelo directo destacado: Fabe 348 (Sport Pref).",
+      "bloodlineEn": "Sire: Wolter 513 (AA) · Dam: Tanja fan de Mayhoeve (Kroon Pref AA *5) · Featured maternal grandsire: Fabe 348 (Sport Pref).",
+      "descriptionEs": "Semental de la cuadra (Frisón europeo, macho entero) con registro KFPS 202300717 y Full Paper (Sí). Nacido el 2023-03-26. Chip (últimos 4 dígitos): 5141.",
+      "descriptionEn": "Stable stallion (European Friesian) with KFPS registration 202300717 and Full Paper (Yes). Born 2023-03-26. Chip (last 4 digits): 5141.",
+      "vetSummaryEs": "",
+      "vetSummaryEn": "",
+      "internalPriceMxn": null,
+      "internalPriceUsd": null,
+      "showFromPriceInCatalog": false,
+      "coverPhoto": "/images/horses/Xavi/Xavi_1.jpg",
+      "hoverPhoto": "/images/horses/Xavi/Xavi_2.jpg",
+      "gallery": [
+        {
+          "url": "/images/horses/Xavi/Xavi_1.jpg",
+          "altEs": "Xavi fan Veldzicht, semental frisón KFPS Full Paper en Cuadra Imperial Loy",
+          "altEn": "Xavi fan Veldzicht, Full Paper KFPS Friesian stallion at Cuadra Imperial Loy"
+        },
+        {
+          "url": "/images/horses/Xavi/Xavi_2.jpg",
+          "altEs": "Xavi fan Veldzicht, vista lateral",
+          "altEn": "Xavi fan Veldzicht, side view"
+        },
+        {
+          "url": "/images/horses/Xavi/Xavi_3.jpg",
+          "altEs": "Xavi fan Veldzicht en pista",
+          "altEn": "Xavi fan Veldzicht in the arena"
+        },
+        {
+          "url": "/images/horses/Xavi/Xavi_4.jpg",
+          "altEs": "Xavi fan Veldzicht, expresión y porte",
+          "altEn": "Xavi fan Veldzicht, expression and carriage"
+        },
+        {
+          "url": "/images/horses/Xavi/Xavi_5.jpg",
+          "altEs": "Xavi fan Veldzicht, conformación completa",
+          "altEn": "Xavi fan Veldzicht, full conformation"
+        }
+      ],
+      "mainVideo": "/images/horses/Xavi/Xavi_1.mp4",
+      "videoPoster": "/images/horses/Xavi/Xavi_1.jpg",
+      "privateDocuments": [
+        {
+          "id": "doc-xav-1",
+          "type": "pedigree",
+          "labelEs": "Genealogía Full Paper KFPS (#202300717)",
+          "labelEn": "Full Paper KFPS Pedigree (#202300717)",
+          "filename": "Xavi_fan_Veldzicht_KFPS_202300717.pdf",
+          "uploadedAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "status": "available",
+      "estimatedArrivalDate": null,
+      "published": true,
+      "sortOrder": 14,
+      "updatedAt": "2026-11-13T18:00:00Z"
+    }
+  ],
+  "leads": [
+    {
+      "folio": "CIL-PP6W",
+      "intent": "horse",
+      "horseCodes": [
+        "AYL"
+      ],
+      "horseNames": [
+        "Aylan"
+      ],
+      "page": "/es/ejemplares/aylan",
+      "ctaPosition": "ficha_top_primary",
+      "lang": "es",
+      "device": "desktop",
+      "countryApprox": "MX",
+      "utmSource": null,
+      "utmMedium": null,
+      "utmCampaign": null,
+      "referrer": "http://localhost:3000/es/contacto",
+      "name": null,
+      "whatsapp": null,
+      "cityCountry": null,
+      "preferredDay": null,
+      "partySize": null,
+      "bringingVetOrTrainer": false,
+      "purpose": null,
+      "mareInfo": null,
+      "consentAccepted": false,
+      "consentTimestamp": null,
+      "consentVersion": "2026.11",
+      "consentIpHash": null,
+      "stage": "nuevo",
+      "lossReason": null,
+      "assignedTo": "Ventas",
+      "appointmentDate": null,
+      "appointmentTime": null,
+      "depositMxn": null,
+      "finalHorseCode": null,
+      "firstResponseAt": null,
+      "anonymizedAt": null,
+      "id": "lead-1794635282224-my0k",
+      "createdAt": "2026-11-14T05:48:02.224Z",
+      "updatedAt": "2026-11-14T05:48:02.224Z",
+      "interactions": []
+    },
+    {
+      "folio": "CIL-EEPU",
+      "intent": "visit",
+      "horseCodes": [
+        "AYL"
+      ],
+      "horseNames": [
+        "Aylan"
+      ],
+      "page": "/es/ejemplares/aylan",
+      "ctaPosition": "ficha_top_visit",
+      "lang": "es",
+      "device": "desktop",
+      "countryApprox": "MX",
+      "utmSource": null,
+      "utmMedium": null,
+      "utmCampaign": null,
+      "referrer": "http://localhost:3000/es/contacto",
+      "name": null,
+      "whatsapp": null,
+      "cityCountry": null,
+      "preferredDay": null,
+      "partySize": null,
+      "bringingVetOrTrainer": false,
+      "purpose": null,
+      "mareInfo": null,
+      "consentAccepted": false,
+      "consentTimestamp": null,
+      "consentVersion": "2026.11",
+      "consentIpHash": null,
+      "stage": "nuevo",
+      "lossReason": null,
+      "assignedTo": "Ventas",
+      "appointmentDate": null,
+      "appointmentTime": null,
+      "depositMxn": null,
+      "finalHorseCode": null,
+      "firstResponseAt": null,
+      "anonymizedAt": null,
+      "id": "lead-1794635280040-wp21",
+      "createdAt": "2026-11-14T05:48:00.040Z",
+      "updatedAt": "2026-11-14T05:48:00.040Z",
+      "interactions": []
+    },
+    {
+      "folio": "CIL-FS6M",
+      "intent": "general",
+      "horseCodes": [],
+      "horseNames": [],
+      "page": "/es/contacto",
+      "ctaPosition": "floating_pill",
+      "lang": "es",
+      "device": "desktop",
+      "countryApprox": "MX",
+      "utmSource": null,
+      "utmMedium": null,
+      "utmCampaign": null,
+      "referrer": "http://localhost:3000/es/contacto",
+      "name": null,
+      "whatsapp": null,
+      "cityCountry": null,
+      "preferredDay": null,
+      "partySize": null,
+      "bringingVetOrTrainer": false,
+      "purpose": null,
+      "mareInfo": null,
+      "consentAccepted": false,
+      "consentTimestamp": null,
+      "consentVersion": "2026.11",
+      "consentIpHash": null,
+      "stage": "nuevo",
+      "lossReason": null,
+      "assignedTo": "Ventas",
+      "appointmentDate": null,
+      "appointmentTime": null,
+      "depositMxn": null,
+      "finalHorseCode": null,
+      "firstResponseAt": null,
+      "anonymizedAt": null,
+      "id": "lead-1794635093134-1pme",
+      "createdAt": "2026-11-14T05:44:53.134Z",
+      "updatedAt": "2026-11-14T05:44:53.134Z",
+      "interactions": []
+    }
+  ],
+  "auditLogs": []
+}
