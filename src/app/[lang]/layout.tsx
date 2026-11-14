@@ -8,6 +8,10 @@ import { Footer } from '@/components/layout/Footer';
 import { GlobalOverlays } from '@/components/layout/GlobalOverlays';
 import { LocalBusinessSchema } from '@/components/seo/StructuredData';
 
+export function generateStaticParams() {
+  return [{ lang: 'es' }, { lang: 'en' }];
+}
+
 export async function generateMetadata({
   params,
 }: {

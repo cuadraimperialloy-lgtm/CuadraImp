@@ -11,7 +11,7 @@ const GALLERY_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 export function Reveal({
   children,
   delay = 0,
-  y = 22,
+  y = 10,
   className = '',
 }: {
   children: React.ReactNode;
@@ -21,10 +21,14 @@ export function Reveal({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y }}
+      initial={{ opacity: 0.01, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.75, delay, ease: GALLERY_EASE }}
+      viewport={{ once: true, margin: '0px' }}
+      transition={{
+        duration: 0.32,
+        delay: Math.min(delay, 0.12),
+        ease: GALLERY_EASE,
+      }}
       className={className}
     >
       {children}

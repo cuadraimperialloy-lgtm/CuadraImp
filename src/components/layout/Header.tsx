@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Bookmark, Menu, X } from 'lucide-react';
 import { useGallery } from '@/context/GalleryContext';
 
@@ -13,11 +13,39 @@ export function Header() {
     selectedHorses,
     setSelectionDrawerOpen,
   } = useGallery();
+  const router = useRouter();
   const pathname = usePathname() || `/${lang}`;
+  const [optimisticPath, setOptimisticPath] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    setOptimisticPath(null);
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Eagerly prefetch all primary navigation routes so menu switching is instant
+  useEffect(() => {
+    const routes = [
+      `/${lang}`,
+      `/${lang}/ejemplares`,
+      `/${lang}/cuadra-y-sementales`,
+      `/${lang}/la-cuadra`,
+      `/${lang}/garantia`,
+      `/${lang}/preguntas`,
+      `/${lang}/cita-privada`,
+      `/${lang}/contacto`,
+    ];
+    routes.forEach((r) => {
+      try {
+        router.prefetch(r);
+      } catch {
+        // ignore
+      }
+    });
+  }, [lang, router]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,18 +83,29 @@ export function Header() {
     { href: `/${lang}/preguntas`, label: dict.nav.faq },
   ];
 
+  const currentPath = optimisticPath || pathname;
+
   return (
     <>
       <header
         style={{ backgroundColor: '#1C2E24' }}
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-gallery bg-[#1C2E24] text-[#F4F2ED] border-b border-white/10 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ease-out bg-[#1C2E24] text-[#F4F2ED] border-b border-white/10 ${
           hidden && !mobileMenuOpen ? '-translate-y-full' : 'translate-y-0'
         } ${scrolled ? 'py-3 shadow-md' : 'py-3.5'}`}
       >
+        {/* Instant Top Progress Indicator on Menu Click */}
+        {optimisticPath && optimisticPath !== pathname && (
+          <div className="
+            absolute top-0 left-0 right-0 h-[2px] bg-[#C6B28A] animate-pulse
+          " />
+        )}
+
         <div className="gallery-container flex items-center justify-between gap-4">
           {/* Official Golden Logo housed on Deep Pólder Green (#1C2E24) */}
           <Link
             href={`/${lang}`}
+            prefetch={true}
+            onClick={() => setOptimisticPath(`/${lang}`)}
             className="flex items-center shrink-0"
             aria-label="Cuadra Imperial Loy"
           >
@@ -84,18 +123,24 @@ export function Header() {
           >
             {navLinks.map((item) => {
               const isActive =
-                pathname === item.href || pathname.startsWith(`${item.href}/`);
+                currentPath === item.href ||
+                currentPath.startsWith(`${item.href}/`);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-[12.5px] uppercase tracking-[0.15em] transition-colors ${
+                  prefetch={true}
+                  onClick={() => setOptimisticPath(item.href)}
+                  className={`relative py-1 text-[12.5px] uppercase tracking-[0.15em] transition-colors duration-150 ${
                     isActive
                       ? 'text-[#C6B28A] font-semibold'
                       : 'text-[#F4F2ED]/85 hover:text-[#F4F2ED]'
                   }`}
                 >
                   {item.label}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-[#C6B28A] rounded-full" />
+                  )}
                 </Link>
               );
             })}
@@ -127,6 +172,8 @@ export function Header() {
             >
               <Link
                 href={switchLangHref('es')}
+                prefetch={true}
+                onClick={() => setOptimisticPath(switchLangHref('es'))}
                 className={
                   lang === 'es'
                     ? 'text-[#C6B28A] font-semibold'
@@ -138,6 +185,8 @@ export function Header() {
               <span className="text-[#F4F2ED]/30">|</span>
               <Link
                 href={switchLangHref('en')}
+                prefetch={true}
+                onClick={() => setOptimisticPath(switchLangHref('en'))}
                 className={
                   lang === 'en'
                     ? 'text-[#C6B28A] font-semibold'
@@ -150,6 +199,8 @@ export function Header() {
 
             <Link
               href={`/${lang}/cita-privada`}
+              prefetch={true}
+              onClick={() => setOptimisticPath(`/${lang}/cita-privada`)}
               className="inline-flex items-center justify-center h-[42px] px-5 bg-[#F4F2ED] text-[#181816] text-[11.5px] font-semibold uppercase tracking-[0.15em] rounded-full hover:bg-[#C6B28A] transition-colors"
             >
               {dict.nav.bookVisit}

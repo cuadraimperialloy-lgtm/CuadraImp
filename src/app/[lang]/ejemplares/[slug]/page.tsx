@@ -1,10 +1,17 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getPublicHorseBySlug } from '@/lib/db';
+import { getPublicHorseBySlug, getPublicHorses } from '@/lib/db';
 import { normalizeLocale } from '@/lib/i18n';
 import { HorseDetailView } from '@/components/home/HorseDetailView';
 import { ProductHorseSchema } from '@/components/seo/StructuredData';
+
+export function generateStaticParams() {
+  const horses = getPublicHorses();
+  return ['es', 'en'].flatMap((lang) =>
+    horses.map((h) => ({ lang, slug: h.slug }))
+  );
+}
 
 export async function generateMetadata({
   params,
