@@ -374,7 +374,7 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
                 <span
                   className={`inline-flex items-center px-4 py-1.5 rounded-full text-[12px] font-medium ${isSold
                       ? 'bg-[#181816] text-[#C6B28A] border border-[#C6B28A]/40 uppercase tracking-[0.18em]'
-                      : 'bg-[#DCE8E0] text-[#1C2E24] font-semibold'
+                      : 'bg-[#EFEAE2] text-[#211915] border border-[#DDD5C7] font-semibold'
                     }`}
                 >
                   {statusText}

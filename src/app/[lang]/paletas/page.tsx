@@ -67,7 +67,7 @@ const PROPOSALS = [
     colors: {
       canvas: '#F4F2ED',
       surface: '#EAE6DF',
-      accentBlock: '#1C2E24',
+      accentBlock: '#211915',
       accentBlockText: '#F4F2ED',
       textPrimary: '#181816',
       textSecondary: '#6E6A63',

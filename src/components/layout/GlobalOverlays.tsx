@@ -189,7 +189,7 @@ export function GlobalOverlays() {
       type: 'svg',
       margin: 1,
       color: {
-        dark: '#1C2E24',
+        dark: '#211915',
         light: '#F4F2ED',
       },
     })

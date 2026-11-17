@@ -88,8 +88,8 @@ export function Header() {
   return (
     <>
       <header
-        style={{ backgroundColor: '#1C2E24' }}
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ease-out bg-[#1C2E24] text-[#F4F2ED] border-b border-white/10 ${
+        style={{ backgroundColor: '#211915' }}
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ease-out bg-[#211915] text-[#F4F2ED] border-b border-white/10 ${
           hidden && !mobileMenuOpen ? '-translate-y-full' : 'translate-y-0'
         } ${scrolled ? 'py-3 shadow-md' : 'py-3.5'}`}
       >
@@ -101,7 +101,7 @@ export function Header() {
         )}
 
         <div className="gallery-container flex items-center justify-between gap-4">
-          {/* Official Golden Logo housed on Deep Pólder Green (#1C2E24) */}
+          {/* Official Golden Logo housed on Café Cuero / Ébano Profundo (#211915) */}
           <Link
             href={`/${lang}`}
             prefetch={true}

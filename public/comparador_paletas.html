@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Comparador Visual de Paletas de Color — Cuadra Imperial Loy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --niebla: #F4F2ED;
+    --arena: #EAE6DF;
+    --arena-profunda: #DFDBD2;
+    --tinta: #181816;
+    --tinta-diluida: #6E6A63;
+    --champagne: #C6B28A;
+    --bronce: #7D6B4A;
+    --linea: rgba(24, 24, 22, 0.08);
+
+    /* Dynamic Theme Color */
+    --theme-dark: #171413;
+    --theme-name: "Opción 3: Espresso Noir (Recomendada)";
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #E5E1D8;
+    color: var(--tinta);
+    padding: 24px 16px 80px 16px;
+    line-height: 1.5;
+  }
+
+  /* Control Panel / Toolbar */
+  .control-dock {
+    position: sticky;
+    top: 16px;
+    z-index: 100;
+    max-width: 1280px;
+    margin: 0 auto 28px auto;
+    background: rgba(24, 24, 22, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(198, 178, 138, 0.25);
+    border-radius: 20px;
+    padding: 16px 22px;
+    color: #F4F2ED;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .dock-info h1 {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dock-info p {
+    font-size: 12px;
+    color: #A8A39A;
+    margin-top: 2px;
+  }
+
+  .dock-badges {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .palette-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.05);
+    color: #E2DDD5;
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .palette-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(198, 178, 138, 0.4);
+    color: #FFF;
+    transform: translateY(-1px);
+  }
+
+  .palette-btn.active {
+    background: #FFFFFF;
+    color: #121212;
+    border-color: #FFFFFF;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  }
+
+  .swatch-circle {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.6);
+    display: inline-block;
+  }
+
+  /* Main Container */
+  .preview-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    transition: all 0.4s ease;
+  }
+
+  /* Section Header Banner */
+  .brand-hero-frame {
+    background: var(--niebla);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+    border: 1px solid var(--linea);
+    margin-bottom: 32px;
+  }
+
+  /* Real Header Mockup */
+  .site-header {
+    background-color: var(--theme-dark);
+    color: var(--niebla);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background-color 0.35s ease;
+  }
+
+  .logo-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-crest-svg {
+    height: 40px;
+    width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(244, 242, 237, 0.78);
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a.active, .nav-links a:hover {
+    color: var(--champagne);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .btn-appointment {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--champagne);
+    color: #181816;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  /* Hero Section Mockup */
+  .hero-canvas {
+    position: relative;
+    background-color: var(--theme-dark);
+    color: var(--niebla);
+    padding: 70px 48px 60px 48px;
+    overflow: hidden;
+    transition: background-color 0.35s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .hero-canvas::after {
+    content: '';
+    position: absolute;
+    right: -60px;
+    top: -60px;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(198, 178, 138, 0.12) 0%, rgba(0,0,0,0) 70%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--champagne);
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 4.5vw, 54px);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.12;
+    margin-bottom: 20px;
+    max-width: 22ch;
+  }
+
+  .hero-title span {
+    font-style: italic;
+    color: var(--champagne);
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: rgba(244, 242, 237, 0.75);
+    max-width: 58ch;
+    line-height: 1.65;
+    margin-bottom: 34px;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--niebla);
+    color: var(--theme-dark);
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--champagne);
+    color: #181816;
+  }
+
+  .btn-secondary {
+    border: 1px solid rgba(244, 242, 237, 0.25);
+    color: var(--niebla);
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--champagne);
+    color: var(--champagne);
+  }
+
+  /* Body Content: Horse Showcase Card */
+  .showcase-grid {
+    padding: 56px 48px;
+    background: var(--niebla);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  @media (max-width: 860px) {
+    .showcase-grid {
+      grid-template-columns: 1fr;
+      padding: 36px 24px;
+    }
+  }
+
+  .horse-card-mock {
+    background: var(--arena);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--linea);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+  }
+
+  .horse-image-wrap {
+    position: relative;
+    height: 310px;
+    background: #2A2624;
+    overflow: hidden;
+  }
+
+  .horse-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .badge-sold {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(24, 24, 22, 0.88);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(198, 178, 138, 0.4);
+    color: #F4F2ED;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .badge-sold::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--champagne);
+  }
+
+  .card-body {
+    padding: 24px;
+  }
+
+  .card-category {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--bronce);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--tinta);
+    margin-bottom: 12px;
+  }
+
+  .card-specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    border-top: 1px solid var(--linea);
+    border-bottom: 1px solid var(--linea);
+    padding: 12px 0;
+    margin-bottom: 18px;
+  }
+
+  .spec-item small {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--tinta-diluida);
+    margin-bottom: 2px;
+  }
+
+  .spec-item strong {
+    font-size: 13px;
+    color: var(--tinta);
+    font-weight: 600;
+  }
+
+  .card-action-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: var(--theme-dark);
+    color: var(--niebla);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    text-decoration: none;
+    transition: background-color 0.35s ease, opacity 0.2s;
+  }
+
+  .card-action-btn:hover {
+    opacity: 0.92;
+  }
+
+  /* Side Editorial Callout */
+  .editorial-side {
+    padding: 10px 0;
+  }
+
+  .editorial-tag {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--bronce);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .editorial-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    line-height: 1.25;
+    color: var(--tinta);
+    margin-bottom: 16px;
+  }
+
+  .editorial-text {
+    font-size: 14.5px;
+    color: var(--tinta-diluida);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .quote-highlight {
+    background-color: var(--theme-dark);
+    color: var(--niebla);
+    padding: 24px 28px;
+    border-radius: 16px;
+    position: relative;
+    border-left: 4px solid var(--champagne);
+    transition: background-color 0.35s ease;
+  }
+
+  .quote-highlight p {
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.6;
+    color: rgba(244, 242, 237, 0.9);
+  }
+
+  .quote-highlight span {
+    display: block;
+    margin-top: 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--champagne);
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  /* Footer Mockup */
+  .site-footer {
+    background-color: var(--theme-dark);
+    color: var(--niebla);
+    padding: 44px 48px 36px 48px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    transition: background-color 0.35s ease;
+  }
+
+  .footer-col-left p {
+    font-size: 12px;
+    color: rgba(244, 242, 237, 0.65);
+    margin-top: 6px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(244, 242, 237, 0.7);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--champagne);
+  }
+
+  /* 4-Column Side by Side Matrix */
+  .matrix-section {
+    margin-top: 50px;
+  }
+
+  .matrix-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .matrix-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--tinta);
+    margin-bottom: 6px;
+  }
+
+  .matrix-header p {
+    font-size: 13.5px;
+    color: var(--tinta-diluida);
+  }
+
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 1040px) {
+    .matrix-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .matrix-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .matrix-card {
+    background: #FFFFFF;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--linea);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .matrix-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.09);
+  }
+
+  .matrix-card.is-recommended {
+    border: 2px solid var(--champagne);
+    position: relative;
+  }
+
+  .recom-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--champagne);
+    color: #181816;
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 3px 8px;
+    border-radius: 999px;
+    z-index: 2;
+  }
+
+  .matrix-swatch-header {
+    padding: 24px 18px 20px 18px;
+    color: #F4F2ED;
+  }
+
+  .swatch-hex {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .swatch-name {
+    font-size: 13px;
+    margin-top: 4px;
+    color: rgba(244, 242, 237, 0.85);
+    font-weight: 500;
+  }
+
+  .matrix-mini-nav {
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(244, 242, 237, 0.75);
+  }
+
+  .matrix-card-body {
+    padding: 20px 18px;
+    background: #FFFFFF;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .matrix-card-body ul {
+    list-style: none;
+    font-size: 12.5px;
+    color: var(--tinta-diluida);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .matrix-card-body ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .matrix-card-body ul li strong {
+    color: var(--tinta);
+  }
+
+  .select-this-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--linea);
+    background: var(--arena);
+    color: var(--tinta);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .select-this-btn:hover {
+    background: var(--tinta);
+    color: #FFF;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Floating Control Bar -->
+  <div class="control-dock">
+    <div class="dock-info">
+      <h1>
+        <span style="display:inline-block; width:10px; height:10px; background:#C6B28A; border-radius:50%;"></span>
+        Selector de Color — Cuadra Imperial Loy
+      </h1>
+      <p id="currentLabel">Mostrando: Opción 3: Espresso Noir (#171413)</p>
+    </div>
+
+    <div class="dock-badges">
+      <button class="palette-btn" onclick="applyPalette('verde')">
+        <span class="swatch-circle" style="background:#1C2E24;"></span>
+        🌿 Verde Actual
+      </button>
+
+      <button class="palette-btn" onclick="applyPalette('cafe')">
+        <span class="swatch-circle" style="background:#211915;"></span>
+        ☕ Opción 1: Café Cuero
+      </button>
+
+      <button class="palette-btn" onclick="applyPalette('negro')">
+        <span class="swatch-circle" style="background:#101111;"></span>
+        🖤 Opción 2: Negro Carbón
+      </button>
+
+      <button class="palette-btn active" onclick="applyPalette('espresso')">
+        <span class="swatch-circle" style="background:#171413;"></span>
+        ⭐ Opción 3: Espresso Noir
+      </button>
+    </div>
+  </div>
+
+  <!-- Interactive Live Simulator -->
+  <div class="preview-wrapper">
+    <div class="brand-hero-frame">
+
+      <!-- Real Header Mockup -->
+      <header class="site-header">
+        <div class="logo-box">
+          <!-- Inlined Official Golden Gradient Crest -->
+          <svg class="logo-crest-svg" xmlns="http://www.w3.org/2000/svg" viewBox="123 -4 635 635" height="42">
+            <defs>
+              <linearGradient id="crestGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F2DF9F"/>
+                <stop offset="50%" stop-color="#D4B160"/>
+                <stop offset="100%" stop-color="#9C7324"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#crestGold)" d="M430 18 Q380 26 345 36 Q280 70 240 102 Q197 152 173 194 Q150 265 147 284 Q145 320 148 371 Q158 414 184 474 Q242 548 310 595 Q384 623 441 630 Q510 625 572 605 Q645 561 692 514 Q740 425 754 369 Q758 327 756 294 Q746 240 726 188 Q694 137 645 87 Q598 55 539 30 Q478 18 430 18 Z M436 34 Q517 41 584 66 Q652 115 696 170 Q738 266 740 324 Q735 376 714 444 Q678 504 628 553 Q560 593 499 610 Q437 614 380 605 Q307 576 250 533 Q189 446 168 384 Q163 328 167 278 Q180 223 216 155 Q267 100 339 56 Q387 41 436 34 Z"/>
+            <path fill="url(#crestGold)" d="M486 141 Q448 144 418 138 Q375 137 348 141 Q288 172 262 201 Q231 276 229 310 Q239 368 269 416 Q316 450 367 462 Q441 436 465 390 Q482 288 482 246 Q491 241 491 194 Q491 148 486 141 Z"/>
+          </svg>
+          <div>
+            <div style="font-family:'Playfair Display', serif; font-size:16px; font-weight:700; letter-spacing:0.12em; color:#FFF; line-height:1;">CUADRA IMPERIAL LOY</div>
+            <div style="font-size:9px; letter-spacing:0.25em; color:var(--champagne); text-transform:uppercase; margin-top:3px;">AYOTLÁN, JALISCO · KFPS FRISIANS</div>
+          </div>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="#" class="active">Ejemplares</a></li>
+          <li><a href="#">Sementales</a></li>
+          <li><a href="#">La Cuadra</a></li>
+          <li><a href="#">Garantía KFPS</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+
+        <div class="header-actions">
+          <span style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--champagne); font-weight:600;">ES / EN</span>
+          <a href="#" class="btn-appointment">Agendar Cita</a>
+        </div>
+      </header>
+
+      <!-- Hero Section Simulator -->
+      <section class="hero-canvas">
+        <span class="eyebrow">Criadero de Selección · Linajes Reales Holandeses</span>
+        <h2 class="hero-title">Perlas Negras de Holanda en <span>Ayotlán, Jalisco</span></h2>
+        <p class="hero-desc">
+          Morfología de campeonato, crines imponentes y el temperamento noble de la raza frisona. Criados y aclimatados bajo los más rigurosos estándares de la Real Asociación KFPS.
+        </p>
+
+        <div class="hero-cta-row">
+          <a href="#" class="btn-primary">Ver Colección de Ejemplares</a>
+          <a href="#" class="btn-secondary">Conocer la Estancia Imperial</a>
+        </div>
+      </section>
+
+      <!-- Showcase Horse Card + Editorial Content -->
+      <div class="showcase-grid">
+        <!-- Horse Card Mockup -->
+        <div class="horse-card-mock">
+          <div class="horse-image-wrap">
+            <img src="images/horses/Brian%20Brobbey/Brian%20Brobbey_1.jpeg" alt="Brian Brobbey" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="badge-sold">Vendido · Colección Privada</div>
+          </div>
+          <div class="card-body">
+            <div class="card-category">Semental KFPS Stb Ster</div>
+            <div class="card-name">Brian Brobbey</div>
+            <div class="card-specs">
+              <div class="spec-item">
+                <small>Alzada</small>
+                <strong>1.72 m</strong>
+              </div>
+              <div class="spec-item">
+                <small>Edad</small>
+                <strong>5 Años</strong>
+              </div>
+              <div class="spec-item">
+                <small>Microchip</small>
+                <strong>•••• 4892</strong>
+              </div>
+            </div>
+            <a href="#" class="card-action-btn">Solicitar Dossier Completo</a>
+          </div>
+        </div>
+
+        <!-- Editorial Description & Quote -->
+        <div class="editorial-side">
+          <span class="editorial-tag">Excelencia & Quiet Luxury</span>
+          <h3 class="editorial-title">El balance exacto entre sobriedad y distinción</h3>
+          <p class="editorial-text">
+            Al reemplazar el verde por un tono profundo de café o negro, los elementos clave de la marca cobran vida: el pelaje negro azabache de los frisones no compite cromáticamente, y el escudo dorado resalta con la dignidad de una pieza de alta relojería.
+          </p>
+
+          <div class="quote-highlight">
+            <p>
+              "Una cuadra de clase mundial no grita lujo; lo expresa en la pureza de sus líneas, la nobleza de sus maderas y la fidelidad a la tradición ecuestre."
+            </p>
+            <span>Estancia Imperial Loy · Ayotlán</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Mockup -->
+      <footer class="site-footer">
+        <div class="footer-col-left">
+          <div style="font-family:'Playfair Display', serif; font-size:15px; font-weight:600; color:#FFF; letter-spacing:0.08em;">
+            CUADRA IMPERIAL LOY
+          </div>
+          <p>© 2026 Cuadra Imperial Loy. Ayotlán, Jalisco, México. Certificación Oficial KFPS.</p>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="#">Privacidad</a></li>
+          <li><a href="#">Certificados KFPS</a></li>
+          <li><a href="#">WhatsApp Directo</a></li>
+          <li><a href="#">Visita Privada</a></li>
+        </ul>
+      </footer>
+
+    </div>
+
+    <!-- 4-Way Side-by-Side Matrix Section -->
+    <section class="matrix-section">
+      <div class="matrix-header">
+        <h2>Comparativa de las 4 Opciones en Simultáneo</h2>
+        <p>Observa cómo cada color transforma la personalidad del sitio web y su contraste con el escudo de oro.</p>
+      </div>
+
+      <div class="matrix-grid">
+
+        <!-- Opción Actual: Verde Pólder -->
+        <div class="matrix-card">
+          <div class="matrix-swatch-header" style="background:#1C2E24;">
+            <div class="swatch-hex">
+              #1C2E24
+              <span style="font-size:11px; opacity:0.8;">Verde</span>
+            </div>
+            <div class="swatch-name">Verde Pólder Actual</div>
+          </div>
+          <div class="matrix-mini-nav" style="background:#17251D;">
+            <span>ESCUDO ORO</span>
+            <span style="color:#C6B28A;">★ ★ ★ ☆</span>
+          </div>
+          <div class="matrix-card-body">
+            <ul>
+              <li><strong>Inspiración:</strong> Paisaje y praderas holandesas.</li>
+              <li><strong>Efecto:</strong> Tradicional, campirano.</li>
+              <li><strong>Punto débil:</strong> Puede asociarse a temática botánica/cacería más que a lujo puro ecuestre.</li>
+            </ul>
+            <button class="select-this-btn" onclick="applyPalette('verde')">Probar esta en Vivo</button>
+          </div>
+        </div>
+
+        <!-- Opción 1: Café Cuero / Ébano -->
+        <div class="matrix-card">
+          <div class="matrix-swatch-header" style="background:#211915;">
+            <div class="swatch-hex">
+              #211915
+              <span style="font-size:11px; opacity:0.8;">Café</span>
+            </div>
+            <div class="swatch-name">Café Cuero / Ébano</div>
+          </div>
+          <div class="matrix-mini-nav" style="background:#1A1310;">
+            <span>ESCUDO ORO</span>
+            <span style="color:#C6B28A;">★ ★ ★ ★</span>
+          </div>
+          <div class="matrix-card-body">
+            <ul>
+              <li><strong>Inspiración:</strong> Sillas de montar inglesas, cuero curtido, establos de roble noble.</li>
+              <li><strong>Efecto:</strong> Cálido, aristocrático, acogedor.</li>
+              <li><strong>Ventaja:</strong> No compite con el negro del caballo, genera un suave contraste cromático.</li>
+            </ul>
+            <button class="select-this-btn" onclick="applyPalette('cafe')">Probar esta en Vivo</button>
+          </div>
+        </div>
+
+        <!-- Opción 2: Negro Carbón Obsidiana -->
+        <div class="matrix-card">
+          <div class="matrix-swatch-header" style="background:#101111;">
+            <div class="swatch-hex">
+              #101111
+              <span style="font-size:11px; opacity:0.8;">Negro</span>
+            </div>
+            <div class="swatch-name">Negro Carbón Obsidiana</div>
+          </div>
+          <div class="matrix-mini-nav" style="background:#090A0A;">
+            <span>ESCUDO ORO</span>
+            <span style="color:#C6B28A;">★ ★ ★ ★ ★</span>
+          </div>
+          <div class="matrix-card-body">
+            <ul>
+              <li><strong>Inspiración:</strong> La Perla Negra (Frisón), alta costura (Hermès Noir, Cartier).</li>
+              <li><strong>Efecto:</strong> Máxima sobriedad, minimalismo e impacto visual.</li>
+              <li><strong>Ventaja:</strong> El oro degrado luce con el mayor contraste posible.</li>
+            </ul>
+            <button class="select-this-btn" onclick="applyPalette('negro')">Probar esta en Vivo</button>
+          </div>
+        </div>
+
+        <!-- Opción 3: Espresso Noir (Recomendada) -->
+        <div class="matrix-card is-recommended">
+          <span class="recom-tag">Recomendada</span>
+          <div class="matrix-swatch-header" style="background:#171413;">
+            <div class="swatch-hex">
+              #171413
+              <span style="font-size:11px; opacity:0.8;">Híbrido</span>
+            </div>
+            <div class="swatch-name">Espresso Noir</div>
+          </div>
+          <div class="matrix-mini-nav" style="background:#110E0D;">
+            <span>ESCUDO ORO</span>
+            <span style="color:#C6B28A;">★ ★ ★ ★ ★</span>
+          </div>
+          <div class="matrix-card-body">
+            <ul>
+              <li><strong>Inspiración:</strong> Fusión de azabache con pátina de café espresso tostado.</li>
+              <li><strong>Efecto:</strong> Se percibe negro pero sin ser frío; al interactuar con el fondo crema muestra calidez.</li>
+              <li><strong>Ventaja:</strong> El balance absoluto de "Quiet Luxury".</li>
+            </ul>
+            <button class="select-this-btn" style="background:var(--champagne); color:#181816;" onclick="applyPalette('espresso')">Probar esta en Vivo</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const palettes = {
+      verde: {
+        hex: '#1C2E24',
+        name: 'Verde Pólder Actual (#1C2E24)',
+        btnIndex: 0
+      },
+      cafe: {
+        hex: '#211915',
+        name: 'Opción 1: Café Cuero / Ébano (#211915)',
+        btnIndex: 1
+      },
+      negro: {
+        hex: '#101111',
+        name: 'Opción 2: Negro Carbón Obsidiana (#101111)',
+        btnIndex: 2
+      },
+      espresso: {
+        hex: '#171413',
+        name: 'Opción 3: Espresso Noir (#171413) — Recomendada',
+        btnIndex: 3
+      }
+    };
+
+    function applyPalette(key) {
+      const selected = palettes[key];
+      if (!selected) return;
+
+      document.documentElement.style.setProperty('--theme-dark', selected.hex);
+      document.getElementById('currentLabel').textContent = 'Mostrando: ' + selected.name;
+
+      // Update button active state
+      const buttons = document.querySelectorAll('.palette-btn');
+      buttons.forEach((btn, idx) => {
+        if (idx === selected.btnIndex) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    // Default to Espresso Noir
+    applyPalette('espresso');
+  </script>
+</body>
+</html>
+

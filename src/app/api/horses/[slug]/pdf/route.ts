@@ -187,8 +187,8 @@ function generateHorsePdfBuffer(params: {
   ops.push('0.957 0.949 0.929 rg');
   ops.push('0 0 595 842 re f');
 
-  // 2. Top Header Banner: Verde Polder Profundo (#1C2E24 -> 0.110 0.180 0.141)
-  ops.push('0.110 0.180 0.141 rg');
+  // 2. Top Header Banner: Café Cuero / Ébano Profundo (#211915 -> 0.130 0.098 0.082)
+  ops.push('0.130 0.098 0.082 rg');
   ops.push('36 742 523 66 re f');
 
   // Gold accent line inside header
@@ -228,7 +228,7 @@ function generateHorsePdfBuffer(params: {
 
     // Decorative outer border frame for the pedigree certificate
     ops.push('0.918 0.902 0.875 rg 36 120 523 600 re f');
-    ops.push('0.110 0.180 0.141 RG 1.2 w 36 120 523 600 re S');
+    ops.push('0.130 0.098 0.082 RG 1.2 w 36 120 523 600 re S');
     ops.push('0.776 0.698 0.541 RG 0.6 w 42 126 511 588 re S');
 
     // Eyebrow
@@ -267,7 +267,7 @@ function generateHorsePdfBuffer(params: {
 
     if (regLineParts.length > 0) {
       ops.push(
-        'BT /F2 10.5 Tf 0.110 0.180 0.141 rg 62 618 Td (' +
+        'BT /F2 10.5 Tf 0.130 0.098 0.082 rg 62 618 Td (' +
           pdfEscape(regLineParts.join('   |   ')) +
           ') Tj ET'
       );
@@ -295,8 +295,8 @@ function generateHorsePdfBuffer(params: {
     // Col 3 Bottom (Abuelo Materno): x = 402, w = 131, y = 240, h = 82 (center y = 281)
     // -------------------------------------------------------------------------
 
-    // Connector Lines (Verde Polder #1C2E24)
-    ops.push('0.110 0.180 0.141 RG 1.5 w');
+    // Connector Lines (Café Cuero #211915)
+    ops.push('0.130 0.098 0.082 RG 1.5 w');
     // From Ejemplar right edge (197, 383) to fork at x = 214
     ops.push('197 383 m 214 383 l S');
     // Vertical fork from y = 281 to y = 476 at x = 214
@@ -308,8 +308,8 @@ function generateHorsePdfBuffer(params: {
     // Horizontal from Madre right edge (372, 281) -> Abuelo Materno (402, 281)
     ops.push('372 281 m 402 281 l S');
 
-    // Node 1: EJEMPLAR (Dark Polder Green Box with Cream & Champagne Text)
-    ops.push('0.110 0.180 0.141 rg 62 335 135 96 re f');
+    // Node 1: EJEMPLAR (Dark Café Cuero Box with Cream & Champagne Text)
+    ops.push('0.130 0.098 0.082 rg 62 335 135 96 re f');
     ops.push('0.776 0.698 0.541 RG 1.2 w 62 335 135 96 re S');
     ops.push(
       'BT /F1 8 Tf 0.776 0.698 0.541 rg 74 408 Td (' +
@@ -331,7 +331,7 @@ function generateHorsePdfBuffer(params: {
 
     // Node 2: PADRE / SIRE (Cream Box with Dark Border)
     ops.push('0.957 0.949 0.929 rg 232 435 301 82 re f');
-    ops.push('0.110 0.180 0.141 RG 1 w 232 435 301 82 re S');
+    ops.push('0.130 0.098 0.082 RG 1 w 232 435 301 82 re S');
     ops.push(
       'BT /F1 8 Tf 0.490 0.420 0.290 rg 248 495 Td (' +
         pdfEscape(lang === 'es' ? 'PADRE (LINAJE PATERNO)' : 'SIRE (PATERNAL LINE)') +
@@ -350,7 +350,7 @@ function generateHorsePdfBuffer(params: {
 
     // Node 3: MADRE / DAM (Cream Box with Dark Border)
     ops.push('0.957 0.949 0.929 rg 232 240 140 82 re f');
-    ops.push('0.110 0.180 0.141 RG 1 w 232 240 140 82 re S');
+    ops.push('0.130 0.098 0.082 RG 1 w 232 240 140 82 re S');
     ops.push(
       'BT /F1 8 Tf 0.490 0.420 0.290 rg 244 300 Td (' +
         pdfEscape(lang === 'es' ? 'MADRE (DAM)' : 'DAM') +
@@ -538,12 +538,12 @@ function generateHorsePdfBuffer(params: {
     }
   }
 
-  // 4. Bottom Footer Box (Verde Polder / Arena)
+  // 4. Bottom Footer Box (Café Cuero / Arena)
   ops.push('0.918 0.902 0.875 rg 36 36 523 58 re f');
-  ops.push('0.110 0.180 0.141 RG 1 w 36 36 523 58 re S');
+  ops.push('0.130 0.098 0.082 RG 1 w 36 36 523 58 re S');
   ops.push(
     'BT /F2 9.5 Tf 0.094 0.094 0.086 rg 48 75 Td (' +
-      pdfEscape('CUADRA IMPERIAL LOY  -  ESTANCIA EN ZAPOTLANEJO, JALISCO, MEXICO') +
+      pdfEscape('CUADRA IMPERIAL LOY  -  ESTANCIA EN AYOTLAN, JALISCO, MEXICO') +
       ') Tj ET'
   );
   ops.push(
