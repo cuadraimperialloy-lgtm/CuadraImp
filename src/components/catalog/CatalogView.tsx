@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
-import { SlidersHorizontal, X } from 'lucide-react';
+import { Search, SlidersHorizontal, X } from 'lucide-react';
 import { useGallery } from '@/context/GalleryContext';
 import {
   Eyebrow,
@@ -20,9 +20,17 @@ import type { HorseOrigin, HorseSex, HorseStatus } from '@/types';
 
 type SortOption = 'curated' | 'youngest' | 'oldest' | 'tallest';
 
+// Helper to clean parent names removing parentheses: "Wolter 513 (AA)" -> "Wolter 513"
+const cleanSireName = (sire: string | null | undefined): string => {
+  if (!sire) return '';
+  return sire.replace(/\s*\([^)]*\)/g, '').trim();
+};
+
 export function CatalogView() {
   const { lang, dict, horses, settings, triggerWhatsApp } = useGallery();
 
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sireFilter, setSireFilter] = useState('all');
   const [originFilter, setOriginFilter] = useState<'all' | HorseOrigin>('all');
   const [sexFilter, setSexFilter] = useState<'all' | HorseSex>('all');
   const [onlyFullPaper, setOnlyFullPaper] = useState(false);
@@ -36,6 +44,16 @@ export function CatalogView() {
     [horses]
   );
 
+  // List of unique sires formatted without parentheses
+  const availableSires = useMemo(() => {
+    const set = new Set<string>();
+    saleHorses.forEach((h) => {
+      const clean = cleanSireName(h.sire);
+      if (clean) set.add(clean);
+    });
+    return Array.from(set).sort();
+  }, [saleHorses]);
+
   const filteredHorses = useMemo(() => {
     const list = saleHorses.filter((h) => {
       if (originFilter !== 'all' && h.origin !== originFilter) return false;
@@ -43,6 +61,26 @@ export function CatalogView() {
       if (onlyFullPaper && !h.fullPaper) return false;
       if (onlyWithVideo && !h.mainVideo) return false;
       if (statusFilter !== 'all' && h.status !== statusFilter) return false;
+
+      // Filter by Sire / Padre without parentheses
+      if (sireFilter !== 'all') {
+        const cleanH = cleanSireName(h.sire);
+        if (cleanH !== sireFilter) return false;
+      }
+
+      // Search by Horse Name, Code, Sire & Dam without parentheses
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase().trim().replace(/[()]/g, '');
+        const nameMatch = h.name.toLowerCase().includes(q);
+        const codeMatch = h.code.toLowerCase().includes(q);
+        const sireClean = cleanSireName(h.sire).toLowerCase();
+        const sireMatch = sireClean.includes(q);
+        const damClean = (h.dam || '').toLowerCase().replace(/[()]/g, '');
+        const damsireClean = cleanSireName(h.damsire).toLowerCase();
+        const damMatch = damClean.includes(q) || damsireClean.includes(q);
+        if (!nameMatch && !codeMatch && !sireMatch && !damMatch) return false;
+      }
+
       return true;
     });
 
@@ -70,6 +108,8 @@ export function CatalogView() {
     saleHorses,
     originFilter,
     sexFilter,
+    sireFilter,
+    searchQuery,
     onlyFullPaper,
     onlyWithVideo,
     statusFilter,
@@ -79,12 +119,16 @@ export function CatalogView() {
   const hasActiveFilters =
     originFilter !== 'all' ||
     sexFilter !== 'all' ||
+    sireFilter !== 'all' ||
+    Boolean(searchQuery.trim()) ||
     onlyFullPaper ||
     onlyWithVideo ||
     statusFilter !== 'all' ||
     sortBy !== 'curated';
 
   const clearFilters = () => {
+    setSearchQuery('');
+    setSireFilter('all');
     setOriginFilter('all');
     setSexFilter('all');
     setOnlyFullPaper(false);
@@ -107,7 +151,10 @@ export function CatalogView() {
                 strong={dict.catalog.titleStrong}
                 light={dict.catalog.titleLight}
               />
-              <p className="mt-5 text-[17px] text-tinta-diluida max-w-prose leading-relaxed">
+              {/* Subtle 1px Golden Hairline matching the official logo */}
+              <div className="w-24 h-[1px] bg-gradient-to-r from-[#C6B28A]/80 via-[#C6B28A]/40 to-transparent my-4" />
+
+              <p className="text-[17px] text-tinta-diluida max-w-prose leading-relaxed">
                 {dict.catalog.description}
               </p>
               {settings.showCatalogStartingPrice && (
@@ -120,17 +167,13 @@ export function CatalogView() {
             </Reveal>
 
             <Reveal delay={0.12} className="lg:col-span-4 flex lg:justify-end">
-              <div className="bg-polder text-niebla rounded-2xl p-5 flex items-center gap-4">
+              <div className="relative bg-polder text-niebla rounded-2xl p-5 flex items-center gap-4 border border-[#C6B28A]/25 shadow-sm overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/45 to-transparent pointer-events-none" />
                 <img
-                  src="/brand/Logotipo_Cuadra_Imperial_Loy_isotipo_degradado.svg"
-                  alt=""
-                  aria-hidden="true"
-                  className="w-11 h-11 object-contain"
+                  src="/brand/Logotipo_Cuadra_Imperial_Loy_horizontal_degradado.svg"
+                  alt="Cuadra Imperial Loy"
+                  className="h-9 sm:h-10 w-auto object-contain"
                 />
-                <div className="text-[11px] uppercase tracking-[0.18em] leading-relaxed">
-                  <div className="text-champagne font-semibold">EQUINE COLLECTION · KFPS</div>
-                  <div className="text-niebla/80">{saleHorses.length} EJEMPLARES REGISTRADOS</div>
-                </div>
               </div>
             </Reveal>
           </div>
@@ -139,8 +182,49 @@ export function CatalogView() {
 
       <div className="gallery-container">
         {/* Desktop Clean Filter Bar */}
-        <div className="hidden lg:flex flex-wrap items-center justify-between gap-4 py-4 px-5 bg-arena rounded-2xl mb-10">
-          <div className="flex flex-wrap items-center gap-5">
+        <div className="hidden lg:flex flex-wrap items-center justify-between gap-4 py-3.5 px-5 bg-arena rounded-2xl mb-10 border border-linea">
+          <div className="flex flex-wrap items-center gap-4 xl:gap-5">
+            {/* Search Input for Horse, Sire, Dam */}
+            <div className="relative flex items-center">
+              <Search className="w-3.5 h-3.5 text-tinta-diluida absolute left-3 pointer-events-none" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={lang === 'es' ? 'Buscar ejemplar o padre...' : 'Search horse or sire...'}
+                className="pl-8 pr-7 py-1.5 bg-niebla border border-linea rounded-full text-[12px] text-tinta placeholder:text-tinta-diluida/70 focus:border-tinta outline-none w-[190px] xl:w-[220px]"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-2.5 text-tinta-diluida hover:text-tinta"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              )}
+            </div>
+
+            {/* Sire / Padre Filter (sin paréntesis) */}
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] uppercase tracking-[0.16em] text-tinta-diluida">
+                {lang === 'es' ? 'Padre' : 'Sire'}:
+              </span>
+              <select
+                value={sireFilter}
+                onChange={(e) => setSireFilter(e.target.value)}
+                aria-label={lang === 'es' ? 'Filtrar por padre' : 'Filter by sire'}
+                className="bg-transparent text-[13px] font-medium text-tinta border-b border-linea pb-0.5 focus:border-tinta outline-none max-w-[140px] truncate"
+              >
+                <option value="all">{lang === 'es' ? 'Todos los padres' : 'All Sires'}</option>
+                {availableSires.map((sire) => (
+                  <option key={sire} value={sire}>
+                    {sire}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             {/* Origin */}
             <div className="flex items-center gap-2">
               <span className="text-[11px] uppercase tracking-[0.16em] text-tinta-diluida">
@@ -312,6 +396,42 @@ export function CatalogView() {
                   >
                     <X className="w-5 h-5 stroke-[1.25]" />
                   </button>
+                </div>
+
+                {/* Mobile Search Input */}
+                <div>
+                  <label className="block text-[11px] uppercase tracking-[0.18em] text-tinta-diluida mb-2">
+                    {lang === 'es' ? 'Búsqueda de ejemplar o padre' : 'Search horse or sire'}
+                  </label>
+                  <div className="relative flex items-center">
+                    <Search className="w-4 h-4 text-tinta-diluida absolute left-3 pointer-events-none" />
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder={lang === 'es' ? 'Ej. Yde, Wolter, Tiede...' : 'E.g. Yde, Wolter, Tiede...'}
+                      className="w-full h-11 pl-9 pr-3 bg-niebla border border-linea text-[14px] text-tinta outline-none"
+                    />
+                  </div>
+                </div>
+
+                {/* Mobile Sire Filter */}
+                <div>
+                  <label className="block text-[11px] uppercase tracking-[0.18em] text-tinta-diluida mb-2">
+                    {lang === 'es' ? 'Padre (Linaje KFPS)' : 'Sire (KFPS Line)'}
+                  </label>
+                  <select
+                    value={sireFilter}
+                    onChange={(e) => setSireFilter(e.target.value)}
+                    className="w-full h-11 px-3 bg-niebla border border-linea text-[14px]"
+                  >
+                    <option value="all">{lang === 'es' ? 'Todos los padres' : 'All Sires'}</option>
+                    {availableSires.map((sire) => (
+                      <option key={sire} value={sire}>
+                        {sire}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 <div>

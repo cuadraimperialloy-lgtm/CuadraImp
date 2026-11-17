@@ -11,7 +11,9 @@ export function Footer() {
   const scheduleStatus = getDynamicScheduleStatus(lang, settings);
 
   return (
-    <footer className="bg-polder text-niebla pt-20 pb-14 border-t border-white/10">
+    <footer className="relative bg-polder text-niebla pt-20 pb-14 border-t border-white/10">
+      {/* Subtle 1px Golden Hairline matching the official logo */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/45 to-transparent pointer-events-none" />
       <div className="gallery-container">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
           {/* Brand Column (5 cols) — Golden Logo over Deep Pólder Green */}

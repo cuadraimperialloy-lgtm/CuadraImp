@@ -112,10 +112,13 @@ export function HorseCard({
           </div>
         )}
 
-        {/* Subtle bottom-left brand pill matching the Equine Collection screenshots */}
-        <span className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-tinta/70 backdrop-blur-sm text-niebla text-[11px] inline-flex items-center gap-1.5 z-10">
-          <span className="w-1.5 h-1.5 rounded-full bg-champagne" />
-          <span>cuadraimperialloy</span>
+        {/* Subtle bottom-left official brand logo pill */}
+        <span className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-tinta/75 backdrop-blur-md text-niebla inline-flex items-center gap-1.5 z-10 border border-white/10">
+          <img
+            src="/brand/Logotipo_Cuadra_Imperial_Loy_horizontal_blanco.svg"
+            alt="Cuadra Imperial Loy"
+            className="h-2.5 w-auto object-contain opacity-90"
+          />
         </span>
       </Link>
 
@@ -137,11 +140,14 @@ export function HorseCard({
           </div>
 
           <div className="flex flex-wrap items-center gap-1.5">
-            {(horse.fullPaper || (horse.awards && horse.awards.length > 0)) && (
+            {horse.fullPaper && (
               <span className="px-3 py-1 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[11px] font-semibold">
-                {horse.awards && horse.awards.length > 0
-                  ? horse.awards[0]
-                  : 'Full Paper'}
+                Full Paper
+              </span>
+            )}
+            {horse.awards && horse.awards.length > 0 && (
+              <span className="px-3 py-1 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[11px] font-semibold">
+                {horse.awards[0]}
               </span>
             )}
             <span

@@ -161,13 +161,16 @@ export function HomeView() {
                     ctaPosition: 'home_hero_primary',
                   })
                 }
-                className="inline-flex items-center justify-center h-[52px] px-6 rounded-full bg-[#14221A]/70 backdrop-blur-md border border-white/25 text-niebla font-semibold text-[12px] uppercase tracking-[0.16em] hover:bg-white/20 transition-all duration-300"
+                className="inline-flex items-center justify-center h-[52px] px-6 rounded-full bg-[#18120F]/70 backdrop-blur-md border border-[#C6B28A]/35 text-niebla font-semibold text-[12px] uppercase tracking-[0.16em] hover:bg-white/20 transition-all duration-300"
               >
                 {dict.home.hero.primaryCta}
               </button>
             </motion.div>
           </div>
         </div>
+
+        {/* Subtle 1px Golden Hairline matching the official logo */}
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/45 to-transparent pointer-events-none" />
       </section>
 
       {/* =====================================================================
@@ -314,10 +317,13 @@ export function HomeView() {
       </section>
 
       {/* =====================================================================
-          04 · VIDEOS EN LA PISTA (Sección limpia en Verde Pólder Profundo)
+          04 · VIDEOS EN LA PISTA (Sección limpia en Café Cuero / Ébano)
           ===================================================================== */}
       {activeCinemaHorse && (
-        <section id="en-la-pista" className="py-16 lg:py-24 bg-polder text-niebla">
+        <section id="en-la-pista" className="relative py-16 lg:py-24 bg-polder text-niebla">
+          {/* Subtle Top & Bottom Gold Hairlines */}
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/45 to-transparent pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/45 to-transparent pointer-events-none" />
           <div className="gallery-container">
             <Reveal>
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">

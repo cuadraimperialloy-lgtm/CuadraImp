@@ -94,13 +94,18 @@ export function StallionsView() {
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <StatusTag label={dict.stallionsPage.studOnlyTag} />
-                    {(stallion.fullPaper || stallion.awards.length > 0) && (
-                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[11px] font-semibold">
-                        {stallion.awards.length > 0
-                          ? `Full Paper · ${stallion.awards.join(' · ')}`
-                          : 'Full Paper · KFPS'}
-                      </span>
-                    )}
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      {stallion.fullPaper && (
+                        <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[11px] font-semibold">
+                          Full Paper · KFPS
+                        </span>
+                      )}
+                      {stallion.awards.length > 0 && (
+                        <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[11px] font-semibold">
+                          {stallion.awards.join(' · ')}
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   <div className="block aspect-[4/3] bg-niebla rounded-xl overflow-hidden">

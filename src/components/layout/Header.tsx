@@ -93,6 +93,9 @@ export function Header() {
           hidden && !mobileMenuOpen ? '-translate-y-full' : 'translate-y-0'
         } ${scrolled ? 'py-3 shadow-md' : 'py-3.5'}`}
       >
+        {/* Subtle 1px Golden Hairline matching the official logo */}
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/45 to-transparent pointer-events-none" />
+
         {/* Instant Top Progress Indicator on Menu Click */}
         {optimisticPath && optimisticPath !== pathname && (
           <div className="

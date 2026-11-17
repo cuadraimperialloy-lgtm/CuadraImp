@@ -428,13 +428,12 @@ function generateHorsePdfBuffer(params: {
 
     const heroBullets: Array<[string, string]> = [
       [lang === 'es' ? 'Registro KFPS:' : 'KFPS Reg:', registrationNumber],
-      [
-        lang === 'es' ? 'Microchip (ult. 4):' : 'Microchip (last 4):',
-        `${maskedChip} (${lang === 'es' ? 'ultimos 4 digitos' : 'last 4 digits'})`,
-      ],
+      ['Microchip:', maskedChip],
       [lang === 'es' ? 'Sexo y Edad:' : 'Sex & Age:', `${sex}  -  ${age} (${birthDate})`],
       [lang === 'es' ? 'Alzada (Altura):' : 'Height:', height],
-      [lang === 'es' ? 'Certificacion:' : 'Certification:', `${fullPaper}  -  ${awards}`],
+      ...(fullPaper && fullPaper !== 'N/A' && fullPaper !== 'No'
+        ? [[lang === 'es' ? 'Certificacion:' : 'Certification:', `${fullPaper}  -  ${awards}`] as [string, string]]
+        : []),
     ];
 
     let heroY = 662;
@@ -492,13 +491,10 @@ function generateHorsePdfBuffer(params: {
         ? [[lang === 'es' ? 'Nivel / Etapa' : 'Training Level', level] as [string, string]]
         : []),
       [lang === 'es' ? 'Registro KFPS' : 'KFPS Registration', registrationNumber],
-      [
-        lang === 'es'
-          ? 'Microchip (solo ultimos 4 digitos)'
-          : 'Microchip (last 4 digits only)',
-        `${maskedChip} (Terminacion ${last4Chip})`,
-      ],
-      [lang === 'es' ? 'Full Paper / Premios' : 'Full Paper / Awards', `${fullPaper}  |  ${awards}`],
+      ['Microchip', maskedChip],
+      ...(fullPaper && fullPaper !== 'N/A' && fullPaper !== 'No'
+        ? [[lang === 'es' ? 'Full Paper / Premios' : 'Full Paper / Awards', `${fullPaper}  |  ${awards}`] as [string, string]]
+        : []),
       [lang === 'es' ? 'Padre (Sire)' : 'Sire', sire],
       [lang === 'es' ? 'Madre (Dam)' : 'Dam', dam],
       [lang === 'es' ? 'Abuelo Materno (Damsire)' : 'Maternal Grandsire', damsire],
@@ -556,7 +552,7 @@ function generateHorsePdfBuffer(params: {
   ops.push(
     'BT /F1 7.5 Tf 0.431 0.416 0.388 rg 48 45 Td (' +
       pdfEscape(
-        'Por seguridad y confidencialidad del registro, unicamente se muestran los ultimos 4 digitos del microchip.'
+        'Cuadra Imperial Loy  -  Crianza y seleccion de caballos frisones de linaje KFPS.'
       ) +
       ') Tj ET'
   );

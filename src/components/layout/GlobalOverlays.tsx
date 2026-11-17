@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import QRCode from 'qrcode';
 import Lenis from 'lenis';
 import { X, Check, Copy } from 'lucide-react';
@@ -251,6 +252,10 @@ export function GlobalOverlays() {
     (h) => h.status !== 'sold'
   );
   const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
+  const pathname = usePathname() || '';
+  const isHorseDetail =
+    pathname.includes('/ejemplares/') &&
+    pathname.split('/').filter(Boolean).length >= 3;
 
   const anyDrawerOpen = Boolean(
     activeWhatsAppSession ||
@@ -717,16 +722,16 @@ export function GlobalOverlays() {
                             {level || '—'}
                           </dd>
                         </div>
-                        <div className="py-2 flex justify-between">
-                          <dt className="text-tinta-diluida">
-                            {dict.horseDetail.specs.fullPaper}
-                          </dt>
-                          <dd className="text-tinta font-medium">
-                            {horse.fullPaper
-                              ? dict.horseDetail.specs.yes
-                              : '—'}
-                          </dd>
-                        </div>
+                        {horse.fullPaper && (
+                          <div className="py-2 flex justify-between">
+                            <dt className="text-tinta-diluida">
+                              {dict.horseDetail.specs.fullPaper}
+                            </dt>
+                            <dd className="text-tinta font-medium">
+                              {dict.horseDetail.specs.yes}
+                            </dd>
+                          </div>
+                        )}
                       </dl>
                     </div>
 
@@ -966,7 +971,7 @@ export function GlobalOverlays() {
         </div>
       )}
 
-      {/* 4. MODERN MINIMALIST FLOATING WHATSAPP PILL BUTTON */}
+      {/* 4. MODERN CIRCULAR WHATSAPP BUTTON (NO TEXT, NEVER OVERLAPPING) */}
       {showFloatingPill && (
         <button
           type="button"
@@ -976,20 +981,13 @@ export function GlobalOverlays() {
               ctaPosition: 'floating_pill',
             })
           }
-          aria-label="WhatsApp"
+          aria-label="Contactar por WhatsApp"
           title="WhatsApp"
-          style={{ borderRadius: '9999px' }}
-          className="group fixed bottom-6 right-6 z-40 inline-flex items-center gap-2.5 pl-2 pr-5 py-2 bg-white text-[#181816] border border-black/10 shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_36px_rgba(0,0,0,0.24)]"
+          className={`group fixed z-30 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#1F8E55] text-white shadow-[0_8px_24px_rgba(31,142,85,0.4)] flex items-center justify-center transition-all duration-300 hover:scale-105 hover:bg-[#1a7a48] hover:shadow-[0_12px_28px_rgba(31,142,85,0.5)] right-5 sm:right-7 ${
+            isHorseDetail ? 'bottom-24 lg:bottom-20' : 'bottom-6 sm:bottom-7'
+          }`}
         >
-          <span
-            style={{ borderRadius: '9999px' }}
-            className="w-10 h-10 bg-[#1F8E55] text-white flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
-          >
-            <WhatsAppIcon className="w-5 h-5" />
-          </span>
-          <span className="text-[14px] font-semibold tracking-tight text-[#181816]">
-            WhatsApp
-          </span>
+          <WhatsAppIcon className="w-6 h-6 sm:w-7 sm:h-7 text-white transition-transform duration-300 group-hover:scale-110" />
         </button>
       )}
 

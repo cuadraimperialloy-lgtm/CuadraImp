@@ -188,10 +188,14 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
         },
       ]
       : []),
-    {
-      field: lang === 'es' ? 'Full Paper' : 'Full Paper',
-      info: fullPaperLabel,
-    },
+    ...(horse.fullPaper === true
+      ? [
+        {
+          field: lang === 'es' ? 'Certificación KFPS' : 'KFPS Certification',
+          info: lang === 'es' ? 'Full Paper (Línea Materna Completa)' : 'Full Paper (Direct Maternal Line)',
+        },
+      ]
+      : []),
     ...(horse.awards && horse.awards.length > 0
       ? [
         {
@@ -231,14 +235,8 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
     ...(horse.microchip
       ? [
         {
-          field:
-            lang === 'es'
-              ? 'Chip (últimos 4 dígitos)'
-              : 'Chip (last 4 digits)',
-          info: `${formatMaskedMicrochip(horse.microchip)} (${lang === 'es'
-              ? 'solo últimos 4 dígitos visibles'
-              : 'only last 4 digits visible'
-            })`,
+          field: lang === 'es' ? 'Microchip' : 'Microchip',
+          info: formatMaskedMicrochip(horse.microchip) || `•••• ${horse.microchip}`,
         },
       ]
       : []),
@@ -293,20 +291,21 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
         </nav>
 
         {/* =================================================================
-            1. TOP EQUINE COLLECTION BRAND HEADER CARD (Green Pólder + Golden Crest)
+            1. TOP EQUINE COLLECTION BRAND HEADER CARD (Official Logo + Golden Hairlines)
             ================================================================= */}
         <Reveal>
-          <div className="bg-polder text-niebla rounded-2xl py-8 px-6 text-center mb-6 flex flex-col items-center gap-2">
+          <div className="relative bg-polder text-niebla rounded-2xl py-8 px-6 text-center mb-6 flex flex-col items-center justify-center gap-2 overflow-hidden border border-[#C6B28A]/25 shadow-sm">
+            {/* Subtle top & bottom gold hairlines matching the official logo */}
+            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/50 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/35 to-transparent pointer-events-none" />
+
             <img
-              src="/brand/Logotipo_Cuadra_Imperial_Loy_isotipo_degradado.svg"
-              alt="Cuadra Imperial Loy Escudo Oficial"
-              className="w-14 h-14 object-contain"
+              src="/brand/Logotipo_Cuadra_Imperial_Loy_horizontal_degradado.svg"
+              alt="Cuadra Imperial Loy"
+              className="h-10 sm:h-12 w-auto object-contain my-1"
             />
-            <h2 className="font-display-split font-bold text-[26px] sm:text-[32px] tracking-[0.14em] uppercase text-niebla leading-none mt-1">
-              CUADRA IMPERIAL LOY
-            </h2>
-            <div className="w-10 h-[1px] bg-champagne my-0.5" />
-            <p className="text-[11px] sm:text-[12px] uppercase tracking-[0.28em] text-champagne font-semibold">
+            <div className="w-14 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A] to-transparent my-1" />
+            <p className="text-[10.5px] sm:text-[11.5px] uppercase tracking-[0.28em] text-champagne font-semibold">
               EQUINE COLLECTION · KFPS ROYAL FRIESIAN
             </p>
           </div>
@@ -337,9 +336,12 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
                 </div>
               </div>
             )}
-            <div className="absolute bottom-4 left-4 px-3.5 py-1.5 rounded-full bg-tinta/75 backdrop-blur-sm text-niebla text-[12px] tracking-[0.04em] inline-flex items-center gap-2 z-10">
-              <span className="w-2 h-2 rounded-full bg-champagne" />
-              <span>cuadraimperialloy</span>
+            <div className="absolute bottom-4 left-4 px-3.5 py-1.5 rounded-full bg-tinta/80 backdrop-blur-md text-niebla inline-flex items-center gap-2 z-10 border border-white/10">
+              <img
+                src="/brand/Logotipo_Cuadra_Imperial_Loy_horizontal_blanco.svg"
+                alt="Cuadra Imperial Loy"
+                className="h-3 w-auto object-contain opacity-90"
+              />
             </div>
           </div>
         </Reveal>
@@ -363,14 +365,16 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                {(horse.fullPaper ||
-                  (horse.awards && horse.awards.length > 0)) && (
-                    <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[12px] font-semibold">
-                      {horse.awards && horse.awards.length > 0
-                        ? `Full Paper · ${horse.awards[0]}`
-                        : 'Full Paper · KFPS'}
-                    </span>
-                  )}
+                {horse.fullPaper && (
+                  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[12px] font-semibold">
+                    Full Paper · KFPS
+                  </span>
+                )}
+                {horse.awards && horse.awards.length > 0 && (
+                  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[12px] font-semibold">
+                    {horse.awards.join(' · ')}
+                  </span>
+                )}
                 <span
                   className={`inline-flex items-center px-4 py-1.5 rounded-full text-[12px] font-medium ${isSold
                       ? 'bg-[#181816] text-[#C6B28A] border border-[#C6B28A]/40 uppercase tracking-[0.18em]'
@@ -628,9 +632,13 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
                 preload="metadata"
                 className="w-full h-full object-contain bg-arena"
               />
-              <div className="pointer-events-none absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-tinta/75 text-niebla text-[12px] inline-flex items-center gap-1.5">
-                <Play className="w-3 h-3 fill-current" />
-                <span>cuadraimperialloy</span>
+              <div className="pointer-events-none absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-tinta/80 backdrop-blur-md text-niebla inline-flex items-center gap-2 border border-white/10">
+                <Play className="w-3 h-3 fill-current text-champagne" />
+                <img
+                  src="/brand/Logotipo_Cuadra_Imperial_Loy_horizontal_blanco.svg"
+                  alt="Cuadra Imperial Loy"
+                  className="h-3 w-auto object-contain opacity-90"
+                />
               </div>
             </div>
 
