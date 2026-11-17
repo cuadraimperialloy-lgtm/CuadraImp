@@ -730,12 +730,7 @@ export async function GET(
     age: ageText,
     birthDate: horse.birthDate || 'N/A',
     height: horse.heightM ? `${horse.heightM.toFixed(2)} m` : '—',
-    fullPaper:
-      horse.fullPaper === true
-        ? 'Si (KFPS)'
-        : horse.fullPaper === false
-        ? 'No'
-        : 'N/A',
+    fullPaper: horse.fullPaper === true ? 'Si (KFPS)' : '',
     awards:
       horse.awards && horse.awards.length > 0
         ? horse.awards.join(', ')

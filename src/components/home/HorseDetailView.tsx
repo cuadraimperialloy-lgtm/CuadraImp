@@ -104,13 +104,7 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
       ? lang === 'es'
         ? 'Full Paper (Sí)'
         : 'Full Paper (Yes)'
-      : horse.fullPaper === false
-        ? lang === 'es'
-          ? 'Registro KFPS (No Full Paper)'
-          : 'KFPS Registry (Non-Full Paper)'
-        : lang === 'es'
-          ? 'N/A (Nacional)'
-          : 'N/A (National)';
+      : '';
 
   const bloodlineText = lang === 'es' ? horse.bloodlineEs : horse.bloodlineEn;
   const descriptionText =
@@ -156,17 +150,14 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
             ? 'Nacional · Zapotlanejo'
             : 'National · Zapotlanejo',
     },
-    {
-      label: lang === 'es' ? 'Full Paper' : 'Full Paper',
-      value:
-        horse.fullPaper === true
-          ? lang === 'es'
-            ? 'Sí'
-            : 'Yes'
-          : horse.fullPaper === false
-            ? 'No'
-            : 'N/A',
-    },
+    ...(horse.fullPaper === true
+      ? [
+        {
+          label: lang === 'es' ? 'Full Paper' : 'Full Paper',
+          value: lang === 'es' ? 'Sí' : 'Yes',
+        },
+      ]
+      : []),
     ...(horse.awards && horse.awards.length > 0
       ? [
         {
