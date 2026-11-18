@@ -327,11 +327,12 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
                 </div>
               </div>
             )}
-            <div className="absolute bottom-4 left-4 px-3.5 py-1.5 rounded-full bg-tinta/80 backdrop-blur-md text-niebla inline-flex items-center gap-2 z-10 border border-white/10">
+            {/* Subtle bottom-left official brand logo seal */}
+            <div className="absolute bottom-4 left-4 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-tinta/85 backdrop-blur-md inline-flex items-center justify-center z-10 border border-[#C6B28A]/40 shadow-md">
               <img
-                src="/brand/Logotipo_Cuadra_Imperial_Loy_horizontal_blanco.svg"
+                src="/brand/Logotipo_Cuadra_Imperial_Loy_isotipo_degradado.svg"
                 alt="Cuadra Imperial Loy"
-                className="h-3 w-auto object-contain opacity-90"
+                className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
               />
             </div>
           </div>
@@ -623,12 +624,12 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
                 preload="metadata"
                 className="w-full h-full object-contain bg-arena"
               />
-              <div className="pointer-events-none absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-tinta/80 backdrop-blur-md text-niebla inline-flex items-center gap-2 border border-white/10">
-                <Play className="w-3 h-3 fill-current text-champagne" />
+              <div className="pointer-events-none absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-tinta/85 backdrop-blur-md text-niebla inline-flex items-center gap-2 border border-[#C6B28A]/40 shadow-md">
+                <Play className="w-3.5 h-3.5 fill-current text-champagne" />
                 <img
-                  src="/brand/Logotipo_Cuadra_Imperial_Loy_horizontal_blanco.svg"
+                  src="/brand/Logotipo_Cuadra_Imperial_Loy_isotipo_degradado.svg"
                   alt="Cuadra Imperial Loy"
-                  className="h-3 w-auto object-contain opacity-90"
+                  className="w-4 h-4 object-contain"
                 />
               </div>
             </div>

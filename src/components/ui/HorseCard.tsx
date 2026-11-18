@@ -112,12 +112,12 @@ export function HorseCard({
           </div>
         )}
 
-        {/* Subtle bottom-left official brand logo pill */}
-        <span className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-tinta/75 backdrop-blur-md text-niebla inline-flex items-center gap-1.5 z-10 border border-white/10">
+        {/* Subtle bottom-left official brand logo seal */}
+        <span className="absolute bottom-3 left-3 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-tinta/85 backdrop-blur-md inline-flex items-center justify-center z-10 border border-[#C6B28A]/40 shadow-sm">
           <img
-            src="/brand/Logotipo_Cuadra_Imperial_Loy_horizontal_blanco.svg"
+            src="/brand/Logotipo_Cuadra_Imperial_Loy_isotipo_degradado.svg"
             alt="Cuadra Imperial Loy"
-            className="h-2.5 w-auto object-contain opacity-90"
+            className="w-4 h-4 sm:w-4.5 sm:h-4.5 object-contain"
           />
         </span>
       </Link>
