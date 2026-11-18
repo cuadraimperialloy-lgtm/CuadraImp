@@ -208,10 +208,18 @@ export interface AuditLogEntry {
   summary: string;
 }
 
+export interface AdminAuthSettings {
+  email: string;
+  passwordHash: string;
+  salt: string;
+  updatedAt?: string;
+}
+
 export interface DatabaseSchema {
   horses: AdminHorse[];
   leads: LeadRecord[];
   settings: SiteSettings;
   auditLogs: AuditLogEntry[];
+  adminAuth?: AdminAuthSettings;
 }
 

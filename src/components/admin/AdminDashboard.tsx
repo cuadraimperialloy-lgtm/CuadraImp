@@ -45,16 +45,31 @@ const STAGES: Array<{ id: LeadStage; label: string }> = [
   { id: 'perdido', label: 'Perdido' },
 ];
 
-export function AdminDashboard({ initialDb }: { initialDb: DatabaseSchema }) {
+export function AdminDashboard({
+  initialDb,
+  initialAuthenticated = false,
+}: {
+  initialDb: DatabaseSchema;
+  initialAuthenticated?: boolean;
+}) {
   const [db, setDb] = useState<DatabaseSchema>(initialDb);
 
-  // Auth & Role state (12.2)
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // Auth & Role state
+  const [isAuthenticated, setIsAuthenticated] = useState(initialAuthenticated);
   const [loginEmail, setLoginEmail] = useState('admin@cuadraimperialloy.com');
-  const [loginPassword, setLoginPassword] = useState('••••••••••••');
-  const [loginTotp, setLoginTotp] = useState('482910');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [role, setRole] = useState<'admin' | 'ventas'>('admin');
   const [loginError, setLoginError] = useState('');
+
+  // Password change state
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [passwordSuccess, setPasswordSuccess] = useState('');
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
 
   // Navigation Tabs
   const [activeTab, setActiveTab] = useState<
@@ -83,18 +98,17 @@ export function AdminDashboard({ initialDb }: { initialDb: DatabaseSchema }) {
   const [newNoteText, setNewNoteText] = useState('');
   const [copiedScriptId, setCopiedScriptId] = useState<string | null>(null);
 
-  // Support optional URL params (?autologin=1&tab=horses|horse_form|leads)
+  // Support optional URL tab navigation
   React.useEffect(() => {
     try {
       const params = new URLSearchParams(window.location.search);
-      if (params.get('autologin') === '1') {
-        setIsAuthenticated(true);
-      }
       const tabParam = params.get('tab');
       if (tabParam === 'leads') {
         setActiveTab('leads');
       } else if (tabParam === 'horses') {
         setActiveTab('horses');
+      } else if (tabParam === 'settings') {
+        setActiveTab('settings');
       } else if (tabParam === 'horse_form') {
         setActiveTab('horses');
         if (initialDb.horses[0]) {
@@ -128,14 +142,99 @@ export function AdminDashboard({ initialDb }: { initialDb: DatabaseSchema }) {
     return data;
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!loginEmail.trim() || !loginPassword.trim() || loginTotp.trim().length < 6) {
-      setLoginError('Ingrese correo, contraseña y código TOTP de 6 dígitos.');
+    setLoginError('');
+    if (!loginEmail.trim() || !loginPassword.trim()) {
+      setLoginError('Ingresa tu correo y contraseña.');
       return;
     }
-    setLoginError('');
-    setIsAuthenticated(true);
+
+    setIsLoggingIn(true);
+    try {
+      const res = await fetch('/api/admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'login',
+          email: loginEmail.trim(),
+          password: loginPassword,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setLoginError(data.error || 'Correo o contraseña incorrectos.');
+      } else {
+        setIsAuthenticated(true);
+        setLoginPassword('');
+        showNotice('Sesión iniciada con éxito');
+      }
+    } catch {
+      setLoginError('Error de red al intentar iniciar sesión.');
+    } finally {
+      setIsLoggingIn(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'logout' }),
+      });
+    } catch {
+      // ignore
+    }
+    setIsAuthenticated(false);
+    setLoginPassword('');
+    showNotice('Sesión cerrada');
+  };
+
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPasswordError('');
+    setPasswordSuccess('');
+
+    if (!currentPassword) {
+      setPasswordError('Ingresa tu contraseña actual.');
+      return;
+    }
+    if (!newPassword || newPassword.length < 8) {
+      setPasswordError('La nueva contraseña debe tener al menos 8 caracteres.');
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setPasswordError('La confirmación de la contraseña no coincide.');
+      return;
+    }
+
+    setIsChangingPassword(true);
+    try {
+      const res = await fetch('/api/admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'change_password',
+          currentPassword,
+          newPassword,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setPasswordError(data.error || 'No se pudo actualizar la contraseña.');
+      } else {
+        setPasswordSuccess('¡Contraseña actualizada con éxito!');
+        setCurrentPassword('');
+        setNewPassword('');
+        setConfirmPassword('');
+        showNotice('Contraseña actualizada con éxito');
+      }
+    } catch {
+      setPasswordError('Error al procesar la solicitud.');
+    } finally {
+      setIsChangingPassword(false);
+    }
   };
 
   // Lead counts per horse
@@ -357,99 +456,62 @@ export function AdminDashboard({ initialDb }: { initialDb: DatabaseSchema }) {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-niebla text-tinta flex flex-col justify-center items-center p-6">
-        <div className="w-full max-w-md bg-arena border border-linea p-8 md:p-10 rounded-[2px]">
+        <div className="w-full max-w-md bg-arena border border-linea p-8 md:p-10 rounded-[2px] shadow-sm">
           <div className="flex flex-col items-center text-center pb-6 border-b border-linea">
             <img
               src="/brand/Logotipo_Cuadra_Imperial_Loy_horizontal_degradado.svg"
               alt="Cuadra Imperial Loy"
               className="h-10 w-auto mb-4"
             />
-            <p className="eyebrow">CMS ADMINISTRATIVO · ACCESO PRIVADO</p>
+            <p className="eyebrow text-champagne-dark">PANEL ADMINISTRATIVO · ACCESO PRIVADO</p>
+            <p className="text-[13px] text-tinta-diluida mt-1">
+              Ingreso seguro exclusivo para el equipo de Cuadra Imperial Loy
+            </p>
           </div>
 
           <form onSubmit={handleLogin} className="pt-6 flex flex-col gap-5">
             <div>
-              <label className="block text-[11px] uppercase tracking-[0.18em] text-tinta-diluida mb-1.5">
-                Rol de sesión
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setRole('admin');
-                    setLoginEmail('admin@cuadraimperialloy.com');
-                  }}
-                  className={`py-2.5 text-[12px] uppercase tracking-[0.16em] border rounded-[2px] ${
-                    role === 'admin'
-                      ? 'border-tinta bg-tinta text-niebla'
-                      : 'border-linea bg-niebla text-tinta-diluida'
-                  }`}
-                >
-                  Administrador
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setRole('ventas');
-                    setLoginEmail('ventas@cuadraimperialloy.com');
-                  }}
-                  className={`py-2.5 text-[12px] uppercase tracking-[0.16em] border rounded-[2px] ${
-                    role === 'ventas'
-                      ? 'border-tinta bg-tinta text-niebla'
-                      : 'border-linea bg-niebla text-tinta-diluida'
-                  }`}
-                >
-                  Ventas
-                </button>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-[11px] uppercase tracking-[0.18em] text-tinta-diluida mb-1.5">
+              <label className="block text-[11px] uppercase tracking-[0.18em] text-tinta-diluida mb-1.5 font-medium">
                 Correo electrónico
               </label>
               <input
                 type="email"
+                required
+                autoComplete="email"
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
+                placeholder="admin@cuadraimperialloy.com"
                 className="w-full h-11 px-3.5 bg-niebla border border-linea text-[14px] text-tinta outline-none focus:border-tinta rounded-[2px]"
               />
             </div>
 
             <div>
-              <label className="block text-[11px] uppercase tracking-[0.18em] text-tinta-diluida mb-1.5">
+              <label className="block text-[11px] uppercase tracking-[0.18em] text-tinta-diluida mb-1.5 font-medium">
                 Contraseña
               </label>
               <input
                 type="password"
+                required
+                autoComplete="current-password"
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
+                placeholder="••••••••••••"
                 className="w-full h-11 px-3.5 bg-niebla border border-linea text-[14px] text-tinta outline-none focus:border-tinta rounded-[2px]"
               />
             </div>
 
-            <div>
-              <label className="block text-[11px] uppercase tracking-[0.18em] text-tinta-diluida mb-1.5">
-                Segundo factor (TOTP 6 dígitos)
-              </label>
-              <input
-                type="text"
-                maxLength={6}
-                value={loginTotp}
-                onChange={(e) => setLoginTotp(e.target.value)}
-                className="w-full h-11 px-3.5 bg-niebla border border-linea text-[15px] tracking-[0.3em] text-tinta tabular-specs outline-none focus:border-tinta rounded-[2px]"
-              />
-            </div>
-
             {loginError && (
-              <p className="text-[13px] text-tinta">{loginError}</p>
+              <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-[13px] rounded-[2px]">
+                {loginError}
+              </div>
             )}
 
             <button
               type="submit"
-              className="h-[48px] bg-polder text-niebla text-[12px] uppercase tracking-[0.2em] rounded-[2px] hover:opacity-90"
+              disabled={isLoggingIn}
+              className="h-[48px] bg-polder text-niebla text-[12px] uppercase tracking-[0.2em] rounded-[2px] hover:opacity-90 disabled:opacity-50 transition-all font-medium mt-1"
             >
-              Ingresar al panel →
+              {isLoggingIn ? 'Verificando credenciales...' : 'Ingresar al panel →'}
             </button>
 
             <div className="pt-2 text-center">
@@ -520,6 +582,26 @@ export function AdminDashboard({ initialDb }: { initialDb: DatabaseSchema }) {
               Cambiar a {role === 'admin' ? 'Ventas' : 'Admin'}
             </button>
 
+            <button
+              type="button"
+              onClick={() => {
+                setPasswordError('');
+                setPasswordSuccess('');
+                setShowPasswordModal(true);
+              }}
+              className="px-3 py-2 text-[11px] uppercase tracking-[0.14em] border border-linea text-tinta-diluida hover:text-tinta rounded-[2px]"
+            >
+              Cambiar contraseña
+            </button>
+
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="px-3 py-2 text-[11px] uppercase tracking-[0.14em] border border-red-200 text-red-600 hover:bg-red-50 rounded-[2px]"
+            >
+              Cerrar sesión
+            </button>
+
             <Link
               href="/es"
               className="px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-tinta underline"
@@ -529,6 +611,101 @@ export function AdminDashboard({ initialDb }: { initialDb: DatabaseSchema }) {
           </div>
         </div>
       </header>
+
+      {showPasswordModal && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="w-full max-w-md bg-arena border border-linea p-6 sm:p-8 rounded-[2px] shadow-2xl relative">
+            <div className="flex items-center justify-between pb-4 border-b border-linea mb-5">
+              <div>
+                <p className="eyebrow text-champagne-dark">SEGURIDAD</p>
+                <h3 className="font-display font-semibold text-[20px] text-tinta">
+                  Cambiar contraseña
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowPasswordModal(false)}
+                className="w-8 h-8 rounded-full border border-linea text-tinta-diluida hover:text-tinta flex items-center justify-center text-sm"
+              >
+                ✕
+              </button>
+            </div>
+
+            <form onSubmit={handleChangePassword} className="space-y-4">
+              <div>
+                <label className="block text-[11px] uppercase tracking-[0.14em] text-tinta-diluida mb-1">
+                  Contraseña actual
+                </label>
+                <input
+                  type="password"
+                  required
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  placeholder="Ingresa contraseña actual"
+                  className="w-full h-10 px-3 bg-niebla border border-linea text-[14px] text-tinta outline-none focus:border-tinta rounded-[2px]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[11px] uppercase tracking-[0.14em] text-tinta-diluida mb-1">
+                  Nueva contraseña (mínimo 8 caracteres)
+                </label>
+                <input
+                  type="password"
+                  required
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  placeholder="Nueva contraseña segura"
+                  className="w-full h-10 px-3 bg-niebla border border-linea text-[14px] text-tinta outline-none focus:border-tinta rounded-[2px]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[11px] uppercase tracking-[0.14em] text-tinta-diluida mb-1">
+                  Confirmar nueva contraseña
+                </label>
+                <input
+                  type="password"
+                  required
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Repite la nueva contraseña"
+                  className="w-full h-10 px-3 bg-niebla border border-linea text-[14px] text-tinta outline-none focus:border-tinta rounded-[2px]"
+                />
+              </div>
+
+              {passwordError && (
+                <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-[13px] rounded-[2px]">
+                  {passwordError}
+                </div>
+              )}
+
+              {passwordSuccess && (
+                <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-[13px] rounded-[2px]">
+                  {passwordSuccess}
+                </div>
+              )}
+
+              <div className="pt-2 flex items-center justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={() => setShowPasswordModal(false)}
+                  className="h-10 px-4 text-[12px] uppercase tracking-[0.16em] border border-linea text-tinta-diluida hover:text-tinta rounded-[2px]"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  disabled={isChangingPassword}
+                  className="h-10 px-6 bg-polder text-niebla text-[12px] uppercase tracking-[0.16em] rounded-[2px] hover:opacity-90 disabled:opacity-50"
+                >
+                  {isChangingPassword ? 'Guardando...' : 'Actualizar contraseña'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {notice && (
         <div className="fixed bottom-6 right-6 z-50 bg-tinta text-niebla px-5 py-3 text-[12px] uppercase tracking-[0.18em] rounded-[2px]">
@@ -2144,6 +2321,83 @@ export function AdminDashboard({ initialDb }: { initialDb: DatabaseSchema }) {
             >
               Guardar ajustes
             </button>
+
+            {/* Seguridad y Cambio de Contraseña */}
+            <div className="pt-8 mt-8 border-t border-linea">
+              <div className="pb-4">
+                <p className="eyebrow text-champagne-dark">SEGURIDAD Y ACCESO</p>
+                <h2 className="font-display font-semibold text-[22px] text-tinta">
+                  Cambiar contraseña de administrador
+                </h2>
+                <p className="text-[13px] text-tinta-diluida mt-1">
+                  Usuario actual: <strong className="text-tinta">admin@cuadraimperialloy.com</strong> · URL de acceso: <code className="bg-arena px-1.5 py-0.5 rounded text-xs border border-linea">/panel</code>
+                </p>
+              </div>
+
+              <form onSubmit={handleChangePassword} className="space-y-4 max-w-md bg-arena/40 p-5 border border-linea rounded-[2px]">
+                <div>
+                  <label className="block text-[11px] uppercase tracking-[0.14em] text-tinta-diluida mb-1">
+                    Contraseña actual
+                  </label>
+                  <input
+                    type="password"
+                    required
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    placeholder="Contraseña actual"
+                    className="w-full h-10 px-3 bg-niebla border border-linea text-[14px]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] uppercase tracking-[0.14em] text-tinta-diluida mb-1">
+                    Nueva contraseña
+                  </label>
+                  <input
+                    type="password"
+                    required
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    placeholder="Mínimo 8 caracteres"
+                    className="w-full h-10 px-3 bg-niebla border border-linea text-[14px]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] uppercase tracking-[0.14em] text-tinta-diluida mb-1">
+                    Confirmar nueva contraseña
+                  </label>
+                  <input
+                    type="password"
+                    required
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder="Repite la nueva contraseña"
+                    className="w-full h-10 px-3 bg-niebla border border-linea text-[14px]"
+                  />
+                </div>
+
+                {passwordError && (
+                  <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-[13px] rounded-[2px]">
+                    {passwordError}
+                  </div>
+                )}
+
+                {passwordSuccess && (
+                  <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-[13px] rounded-[2px]">
+                    {passwordSuccess}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isChangingPassword}
+                  className="h-10 px-6 bg-polder text-niebla text-[12px] uppercase tracking-[0.16em] rounded-[2px] hover:opacity-90 disabled:opacity-50"
+                >
+                  {isChangingPassword ? 'Guardando...' : 'Actualizar contraseña'}
+                </button>
+              </form>
+            </div>
           </div>
         )}
 

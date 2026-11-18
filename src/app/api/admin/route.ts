@@ -1,11 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { appendAuditLog, readDatabase, writeDatabase } from '@/lib/db';
+import {
+  changeAdminPassword,
+  checkAdminCredentials,
+  createSessionToken,
+  verifySessionToken,
+} from '@/lib/auth';
 import type { AdminHorse, LeadRecord, SiteSettings } from '@/types';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   const db = readDatabase();
-  return NextResponse.json(db);
+  const sessionCookie = req.cookies.get('admin_session')?.value;
+  const isSessionValid = sessionCookie ? verifySessionToken(sessionCookie) : false;
+  return NextResponse.json({ ...db, isSessionValid });
 }
 
 export async function POST(req: NextRequest) {
@@ -13,6 +21,44 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { action, role = 'admin', actor = 'Admin' } = body;
     const db = readDatabase();
+
+    if (action === 'login') {
+      const { email, password } = body;
+      const resAuth = checkAdminCredentials(email, password, db);
+      if (!resAuth.ok) {
+        return NextResponse.json({ error: resAuth.error || 'Credenciales inválidas' }, { status: 401 });
+      }
+
+      const token = createSessionToken(resAuth.email || email);
+      const res = NextResponse.json({ ok: true, email: resAuth.email });
+      res.cookies.set('admin_session', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        path: '/',
+        maxAge: 14 * 24 * 60 * 60, // 14 days
+      });
+      return res;
+    }
+
+    if (action === 'logout') {
+      const res = NextResponse.json({ ok: true });
+      res.cookies.set('admin_session', '', {
+        httpOnly: true,
+        path: '/',
+        maxAge: 0,
+      });
+      return res;
+    }
+
+    if (action === 'change_password') {
+      const { currentPassword, newPassword } = body;
+      const changeRes = changeAdminPassword(currentPassword, newPassword, db);
+      if (!changeRes.ok) {
+        return NextResponse.json({ error: changeRes.error }, { status: 400 });
+      }
+      return NextResponse.json({ ok: true, message: 'Contraseña actualizada correctamente.' });
+    }
 
     if (action === 'save_horse') {
       const horse: AdminHorse = body.horse;

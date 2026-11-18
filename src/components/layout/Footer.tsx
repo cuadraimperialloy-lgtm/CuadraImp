@@ -205,12 +205,6 @@ export function Footer() {
             >
               {dict.footer.terms}
             </Link>
-            <Link
-              href="/admin"
-              className="hover:text-niebla transition-colors opacity-70"
-            >
-              {dict.footer.admin}
-            </Link>
           </div>
         </div>
       </div>
