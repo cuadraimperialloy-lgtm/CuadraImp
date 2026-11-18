@@ -726,14 +726,6 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
                 : 'REQUEST INFORMATION'}
             </span>
           </button>
-
-          <div className="mt-4 pt-3 border-t border-niebla/15 flex flex-col gap-2 text-[12px] text-niebla/80">
-            <span>
-              {lang === 'es'
-                ? `Atención comercial · WhatsApp ${settings.officialWhatsAppDisplay}`
-                : `Commercial Concierge · WhatsApp ${settings.officialWhatsAppDisplay}`}
-            </span>
-          </div>
         </div>
       )}
 
