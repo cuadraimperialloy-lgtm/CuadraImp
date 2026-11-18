@@ -356,24 +356,6 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
     ) : null
   );
 
-  const renderBrandHeader = (isDesktop = false) => (
-    <div className={`relative bg-polder text-niebla rounded-2xl overflow-hidden border border-[#C6B28A]/25 shadow-sm flex flex-col items-center justify-center gap-1.5 ${
-      isDesktop ? 'py-5 px-5 mb-0' : 'py-8 px-6 mb-6'
-    }`}>
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/50 to-transparent pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/35 to-transparent pointer-events-none" />
-
-      <img
-        src="/brand/Logotipo_Cuadra_Imperial_Loy_horizontal_degradado.svg"
-        alt="Cuadra Imperial Loy"
-        className={`w-auto object-contain my-0.5 ${isDesktop ? 'h-8' : 'h-10 sm:h-12'}`}
-      />
-      <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A] to-transparent my-0.5" />
-      <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.26em] text-champagne font-semibold text-center">
-        EQUINE COLLECTION · KFPS ROYAL FRIESIAN
-      </p>
-    </div>
-  );
 
   const renderTitleAndActions = (isDesktop = false) => (
     <div className={isDesktop ? 'pb-5 border-b border-linea' : 'pb-7 border-b border-linea'}>
@@ -800,9 +782,8 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
           1. MOBILE VIEW (< lg): 100% UNTOUCHED LINEAR FLOW (User's preferred layout)
           ===================================================================== */}
       <div className="lg:hidden max-w-[960px] mx-auto px-4 sm:px-6">
-        <Reveal>{renderBrandHeader(false)}</Reveal>
-        <Reveal delay={0.05}>{renderHeroPhoto(false)}</Reveal>
-        <Reveal delay={0.08}>{renderTitleAndActions(false)}</Reveal>
+        <Reveal delay={0.02}>{renderHeroPhoto(false)}</Reveal>
+        <Reveal delay={0.05}>{renderTitleAndActions(false)}</Reveal>
         <Reveal>{renderPresentation(false)}</Reveal>
         <Reveal>{renderCharacteristics(false)}</Reveal>
         <Reveal>{renderGallery(false)}</Reveal>
@@ -815,7 +796,7 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
       {/* =====================================================================
           2. DESKTOP VIEW (>= lg): SHOPIFY COCO PDP 2-COLUMN LUXURY LAYOUT
              Left Column: Media (Hero Photo + Photo Gallery + Video Presentation)
-             Right Column: Sticky Information (Heritage Badge, Title, CTAs, Specs, Docs, Accordions)
+             Right Column: Sticky Information (Title, CTAs, Specs, Docs, Accordions)
           ===================================================================== */}
       <div className="hidden lg:block max-w-[1360px] mx-auto px-6 lg:px-8 xl:px-12">
         <div className="grid grid-cols-12 gap-10 xl:gap-14 items-start">
@@ -828,8 +809,7 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
 
           {/* RIGHT COLUMN: Product Information (5 cols / ~42%) */}
           <div className="col-span-5 space-y-6">
-            <Reveal delay={0.02}>{renderBrandHeader(true)}</Reveal>
-            <Reveal delay={0.04}>{renderTitleAndActions(true)}</Reveal>
+            <Reveal delay={0.02}>{renderTitleAndActions(true)}</Reveal>
             <Reveal delay={0.06}>{renderCharacteristics(true)}</Reveal>
             <Reveal delay={0.08}>{renderPresentation(true)}</Reveal>
             <Reveal delay={0.10}>{renderDocumentation(true)}</Reveal>
