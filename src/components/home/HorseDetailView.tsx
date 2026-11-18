@@ -481,7 +481,7 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
       {!isSold && (
         <div className={`mt-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 ${isDesktop ? 'flex-col sm:flex-row' : ''}`}>
           <PrimaryButton
-            className="flex-1 justify-center !text-[12.5px] sm:!text-[13px] !tracking-[0.12em]"
+            className="flex-1 justify-center !text-[12px] sm:!text-[12.5px] !tracking-[0.1em]"
             onClick={() =>
               triggerWhatsApp({
                 intent: isStud ? 'stud' : 'horse',
@@ -497,15 +497,17 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
             }
           >
             {isStud
-              ? `${dict.horseDetail.studPrimaryCtaPrefix} ${horse.name}`
+              ? lang === 'es'
+                ? 'Cotizar maquila'
+                : 'Inquire breeding'
               : lang === 'es'
-                ? `Solicitar información`
-                : `Request information`}
+                ? 'Solicitar información'
+                : 'Request information'}
           </PrimaryButton>
 
           <SecondaryButton
             isWhatsAppCta={true}
-            className="flex-1 justify-center !text-[12.5px] sm:!text-[13px] !tracking-[0.12em]"
+            className="flex-1 justify-center !text-[12px] sm:!text-[12.5px] !tracking-[0.1em]"
             onClick={() =>
               triggerWhatsApp({
                 intent: isStud ? 'stud' : 'visit',
@@ -521,8 +523,12 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
             }
           >
             {isStud
-              ? dict.horseDetail.studSecondaryCta
-              : `${dict.horseDetail.primaryCtaPrefix} ${horse.name}`}
+              ? lang === 'es'
+                ? 'Pedir video y genealogía'
+                : 'Video & pedigree'
+              : lang === 'es'
+                ? 'Agendar visita'
+                : 'Book private visit'}
           </SecondaryButton>
         </div>
       )}

@@ -82,7 +82,7 @@ export function PrimaryButton({
   isWhatsAppCta?: boolean;
 }) {
   const baseClasses =
-    'group inline-flex items-center justify-center h-[52px] px-7 bg-polder text-niebla text-[12px] font-semibold uppercase tracking-[0.16em] rounded-xl transition-all duration-300 hover:opacity-92 disabled:opacity-50 select-none';
+    'group inline-flex items-center justify-center min-h-[50px] h-auto py-3 px-5 bg-polder text-niebla text-[12px] font-semibold uppercase tracking-[0.14em] rounded-xl transition-all duration-300 hover:opacity-92 disabled:opacity-50 select-none text-center leading-snug';
 
   const content = (
     <>
@@ -90,7 +90,7 @@ export function PrimaryButton({
       {showArrow && (
         <span
           aria-hidden="true"
-          className="ml-2.5 inline-block text-champagne transition-transform duration-300 group-hover:translate-x-1"
+          className="ml-2 inline-block text-champagne transition-transform duration-300 group-hover:translate-x-1 shrink-0"
         >
           →
         </span>
@@ -141,7 +141,7 @@ export function SecondaryButton({
   isWhatsAppCta?: boolean;
 }) {
   const baseClasses =
-    'group inline-flex items-center justify-center h-[52px] px-7 bg-arena text-tinta border border-tinta/15 text-[12px] font-semibold uppercase tracking-[0.16em] rounded-xl transition-colors duration-300 hover:bg-arena-profunda disabled:opacity-50 select-none';
+    'group inline-flex items-center justify-center min-h-[50px] h-auto py-3 px-5 bg-arena text-tinta border border-tinta/15 text-[12px] font-semibold uppercase tracking-[0.14em] rounded-xl transition-colors duration-300 hover:bg-arena-profunda disabled:opacity-50 select-none text-center leading-snug';
 
   if (href) {
     return (
@@ -251,11 +251,26 @@ export function AccordionItem({
         className="w-full py-5 flex items-center justify-between text-left group"
       >
         <span className="text-[17px] font-semibold text-tinta pr-6">{title}</span>
+        {/* Subtle gold gradient plus/minus sign matching brand crest */}
         <span
           aria-hidden="true"
-          className="text-[20px] font-light text-bronce group-hover:text-tinta select-none w-6 text-right"
+          className="w-7 h-7 flex items-center justify-center rounded-full border border-[#C6B28A]/35 bg-[#C6B28A]/5 group-hover:border-[#C6B28A]/70 group-hover:bg-[#C6B28A]/10 transition-all select-none shrink-0"
         >
-          {open ? '−' : '+'}
+          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none">
+            <defs>
+              <linearGradient id="accordion-gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#E8CB7C" />
+                <stop offset="50%" stopColor="#D4B160" />
+                <stop offset="100%" stopColor="#B08532" />
+              </linearGradient>
+            </defs>
+            <path
+              d={open ? 'M5 12h14' : 'M12 5v14M5 12h14'}
+              stroke="url(#accordion-gold-grad)"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+            />
+          </svg>
         </span>
       </button>
       {open && (
