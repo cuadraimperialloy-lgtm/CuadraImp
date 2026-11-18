@@ -165,93 +165,14 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
       : []),
   ];
 
-  // Presentation rows organized cleanly by line (renglón por renglón)
-  const presentationRows: Array<{ label: string; value: string }> = [
-    {
-      label: lang === 'es' ? 'Raza y origen' : 'Breed & Origin',
-      value:
-        lang === 'es'
-          ? `Frisón ${horse.origin === 'Holanda' ? 'europeo' : 'nacional'} · ${sexText}`
-          : `Friesian (${horse.origin === 'Holanda' ? 'European' : 'National'}) · ${sexText}`,
-    },
-    ...(horse.registrationNumber
-      ? [
-          {
-            label: lang === 'es' ? 'Registro oficial' : 'Official Registry',
-            value: `KFPS #${horse.registrationNumber}`,
-          },
-        ]
-      : []),
-    ...(horse.birthDate
-      ? [
-          {
-            label: lang === 'es' ? 'Fecha de nacimiento' : 'Date of Birth',
-            value: `${horse.birthDate}${ageText ? ` (${ageText})` : ''}`,
-          },
-        ]
-      : []),
-    ...(horse.heightM
-      ? [
-          {
-            label: lang === 'es' ? 'Alzada' : 'Height',
-            value: `${horse.heightM.toFixed(2)} m`,
-          },
-        ]
-      : []),
-    ...(horse.fullPaper === true
-      ? [
-          {
-            label: 'Certificación',
-            value:
-              lang === 'es'
-                ? 'Full Paper (Línea materna completa)'
-                : 'Full Paper (Direct maternal line)',
-          },
-        ]
-      : []),
-    ...(horse.awards && horse.awards.length > 0
-      ? [
-          {
-            label: lang === 'es' ? 'Premios y títulos' : 'Awards & Titles',
-            value: horse.awards.join(' · '),
-          },
-        ]
-      : []),
-    ...(horse.sire
-      ? [
-          {
-            label: lang === 'es' ? 'Padre (Sire)' : 'Sire',
-            value: horse.sire,
-          },
-        ]
-      : []),
-    ...(horse.dam
-      ? [
-          {
-            label: lang === 'es' ? 'Madre (Dam)' : 'Dam',
-            value: horse.dam,
-          },
-        ]
-      : []),
-    ...(horse.damsire
-      ? [
-          {
-            label: lang === 'es' ? 'Abuelo materno' : 'Maternal Grandsire',
-            value: horse.damsire,
-          },
-        ]
-      : []),
-    ...(horse.microchip
-      ? [
-          {
-            label: 'Microchip',
-            value:
-              formatMaskedMicrochip(horse.microchip) ||
-              `•••• ${horse.microchip}`,
-          },
-        ]
-      : []),
-  ];
+  // Concise editorial presentation paragraph (max 3 lines, clean & non-repetitive)
+  const presentationParagraph = isStud
+    ? lang === 'es'
+      ? `Semental Frisón KFPS de la cuadra, seleccionado en Holanda por su excelencia morfológica, carácter noble y probada genética de ${horse.sire || 'linaje oficial'}. Disponible para maquila con expediente verificado.`
+      : `Stable KFPS Friesian stallion, selected in the Netherlands for morphological excellence, noble temperament, and proven genetics from ${horse.sire || 'official lineage'}. Available for breeding with verified file.`
+    : lang === 'es'
+      ? `Ejemplar Frisón KFPS ${horse.origin === 'Holanda' ? 'europeo' : 'nacional'}, seleccionado por su presencia, conformación racial y sólida ascendencia de ${horse.sire || 'linaje oficial'}${horse.dam ? ` y ${horse.dam}` : ''}. Cuenta con expediente genealógico verificado.`
+      : `KFPS Friesian horse (${horse.origin === 'Holanda' ? 'European' : 'National'}), selected for presence, racial conformation, and solid pedigree from ${horse.sire || 'official lineage'}${horse.dam ? ` and ${horse.dam}` : ''}. Official file verified.`;
 
   // Genealogy & Registry Table Rows strictly from the official spreadsheet (only rows with data)
   const genealogyTableRows: Array<{ field: string; info: string }> = [
@@ -537,26 +458,12 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
 
   const renderPresentation = (isDesktop = false) => (
     <div className={isDesktop ? 'py-5 border-b border-linea' : 'py-8 border-b border-linea'}>
-      <h2 className={`font-semibold text-tinta mb-4 ${isDesktop ? 'text-[18px]' : 'text-[22px]'}`}>
+      <h2 className={`font-semibold text-tinta mb-2.5 ${isDesktop ? 'text-[18px]' : 'text-[22px]'}`}>
         {lang === 'es' ? 'Presentación' : 'Presentation'}
       </h2>
-
-      <div className="space-y-2.5">
-        {presentationRows.map((row) => (
-          <div
-            key={row.label}
-            className="flex items-start gap-2.5 text-[14.5px] sm:text-[15.5px] leading-relaxed"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#C6B28A] shrink-0 mt-2" />
-            <span className="font-semibold text-tinta shrink-0">
-              {row.label}:
-            </span>
-            <span className="text-tinta/90 tabular-specs">
-              {row.value}
-            </span>
-          </div>
-        ))}
-      </div>
+      <p className={`text-tinta/90 leading-relaxed max-w-2xl ${isDesktop ? 'text-[15px]' : 'text-[16px] sm:text-[17px]'}`}>
+        {presentationParagraph}
+      </p>
     </div>
   );
 
@@ -1116,15 +1023,9 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
                           : `ID ${horse.code}`}{' '}
                         · FRISÓN KFPS · {nationalityLabel}
                       </p>
-                      <div className="pt-2 space-y-1.5">
-                        {presentationRows.slice(0, 5).map((row) => (
-                          <div key={row.label} className="text-[13.5px] text-tinta flex items-baseline gap-2">
-                            <span className="w-1 h-1 rounded-full bg-[#C6B28A] shrink-0" />
-                            <span className="font-semibold">{row.label}:</span>
-                            <span className="text-tinta/85">{row.value}</span>
-                          </div>
-                        ))}
-                      </div>
+                      <p className="text-[14.5px] text-tinta/90 leading-relaxed pt-2">
+                        {presentationParagraph}
+                      </p>
                     </div>
                   </div>
 
