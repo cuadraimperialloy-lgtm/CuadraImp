@@ -826,8 +826,8 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
             {horse.mainVideo && <Reveal delay={0.08}>{renderVideo(true)}</Reveal>}
           </div>
 
-          {/* RIGHT COLUMN: Sticky Product Information (5 cols / ~42%) */}
-          <div className="col-span-5 space-y-6 sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto overscroll-contain pr-2 [scrollbar-width:thin] [scrollbar-color:#C6B28A40_transparent]">
+          {/* RIGHT COLUMN: Product Information (5 cols / ~42%) */}
+          <div className="col-span-5 space-y-6">
             <Reveal delay={0.02}>{renderBrandHeader(true)}</Reveal>
             <Reveal delay={0.04}>{renderTitleAndActions(true)}</Reveal>
             <Reveal delay={0.06}>{renderCharacteristics(true)}</Reveal>
