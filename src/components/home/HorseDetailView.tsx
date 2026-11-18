@@ -245,13 +245,527 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
     },
   ];
 
+  // Helper sub-blocks for modular Mobile vs Desktop (Shopify PDP layout)
+  const renderHeroPhoto = (isDesktop = false) => (
+    <div
+      onClick={() => setLightboxUrl(horse.coverPhoto)}
+      className={`relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-arena cursor-zoom-in border border-linea shadow-sm ${
+        isDesktop ? 'mb-0' : 'mb-7'
+      }`}
+    >
+      <img
+        src={encodeURI(horse.coverPhoto)}
+        alt={horse.name}
+        loading="eager"
+        className="w-full h-full object-contain bg-arena transition-transform duration-700 hover:scale-[1.015]"
+      />
+      {isSold && (
+        <div className="pointer-events-none absolute inset-0 bg-[#141413]/30 flex items-center justify-center z-10">
+          <div className="px-7 py-3 rounded-full bg-[#181816]/85 backdrop-blur-md border border-[#C6B28A]/60 shadow-xl flex items-center gap-3.5">
+            <span className="w-5 h-[1px] bg-[#C6B28A]/80" />
+            <span className="text-[12.5px] sm:text-[14px] font-medium tracking-[0.32em] uppercase text-[#F4F2ED] leading-none">
+              {lang === 'es' ? 'EJEMPLAR VENDIDO' : 'SOLD'}
+            </span>
+            <span className="w-5 h-[1px] bg-[#C6B28A]/80" />
+          </div>
+        </div>
+      )}
+      {/* Subtle bottom-left official brand logo seal */}
+      <div className="absolute bottom-4 left-4 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-tinta/85 backdrop-blur-md inline-flex items-center justify-center z-10 border border-[#C6B28A]/40 shadow-md">
+        <img
+          src="/brand/Logotipo_Cuadra_Imperial_Loy_isotipo_degradado.svg"
+          alt="Cuadra Imperial Loy"
+          className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
+        />
+      </div>
+    </div>
+  );
+
+  const renderGallery = (isDesktop = false) => (
+    <div className={isDesktop ? 'pt-2' : 'py-8 border-b border-linea'}>
+      <div className="flex items-center justify-between mb-4">
+        <h2 className={`font-semibold text-tinta ${isDesktop ? 'text-[20px]' : 'text-[22px]'}`}>
+          {lang === 'es' ? 'Galería de fotografías' : 'Photo Gallery'}
+        </h2>
+        <span className="text-[11.5px] uppercase tracking-[0.18em] text-tinta-diluida tabular-specs">
+          {horse.gallery.length}{' '}
+          {horse.gallery.length === 1
+            ? lang === 'es'
+              ? 'FOTOGRAFÍA'
+              : 'PHOTO'
+            : lang === 'es'
+              ? 'FOTOGRAFÍAS'
+              : 'PHOTOS'}
+        </span>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {horse.gallery.map((media, idx) => (
+          <figure
+            key={idx}
+            onClick={() => setLightboxUrl(media.url)}
+            className="group relative aspect-[4/3] rounded-[16px] overflow-hidden bg-arena border border-linea cursor-zoom-in"
+          >
+            <img
+              src={encodeURI(media.url)}
+              alt={lang === 'es' ? media.altEs : media.altEn}
+              loading={idx < 2 ? 'eager' : 'lazy'}
+              className="w-full h-full object-contain bg-arena transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            <figcaption className="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-tinta/70 text-niebla text-[11px] tabular-specs">
+              0{idx + 1} / 0{horse.gallery.length}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderVideo = (isDesktop = false) => (
+    horse.mainVideo ? (
+      <div className={isDesktop ? 'pt-2' : 'py-8 border-b border-linea'}>
+        <h2 className={`font-semibold text-tinta mb-4 ${isDesktop ? 'text-[20px]' : 'text-[22px]'}`}>
+          {lang === 'es' ? 'Presentación en video' : 'Video Presentation'}
+        </h2>
+
+        <div className="relative rounded-[18px] overflow-hidden bg-arena border border-linea aspect-[4/3]">
+          <video
+            src={encodeURI(horse.mainVideo)}
+            poster={encodeURI(horse.videoPoster || horse.coverPhoto)}
+            controls
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-contain bg-arena"
+          />
+          <div className="pointer-events-none absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-tinta/85 backdrop-blur-md text-niebla inline-flex items-center gap-2 border border-[#C6B28A]/40 shadow-md">
+            <Play className="w-3.5 h-3.5 fill-current text-champagne" />
+            <img
+              src="/brand/Logotipo_Cuadra_Imperial_Loy_isotipo_degradado.svg"
+              alt="Cuadra Imperial Loy"
+              className="w-4 h-4 object-contain"
+            />
+          </div>
+        </div>
+
+        <p className="mt-2.5 text-[13.5px] text-tinta-diluida">
+          {lang === 'es'
+            ? 'Presentación en movimiento · Video original integrado desde el expediente.'
+            : 'Presentation in motion · Original video integrated from the horse’s file.'}
+        </p>
+      </div>
+    ) : null
+  );
+
+  const renderBrandHeader = (isDesktop = false) => (
+    <div className={`relative bg-polder text-niebla rounded-2xl overflow-hidden border border-[#C6B28A]/25 shadow-sm flex flex-col items-center justify-center gap-1.5 ${
+      isDesktop ? 'py-5 px-5 mb-0' : 'py-8 px-6 mb-6'
+    }`}>
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/50 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/35 to-transparent pointer-events-none" />
+
+      <img
+        src="/brand/Logotipo_Cuadra_Imperial_Loy_horizontal_degradado.svg"
+        alt="Cuadra Imperial Loy"
+        className={`w-auto object-contain my-0.5 ${isDesktop ? 'h-8' : 'h-10 sm:h-12'}`}
+      />
+      <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A] to-transparent my-0.5" />
+      <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.26em] text-champagne font-semibold text-center">
+        EQUINE COLLECTION · KFPS ROYAL FRIESIAN
+      </p>
+    </div>
+  );
+
+  const renderTitleAndActions = (isDesktop = false) => (
+    <div className={isDesktop ? 'pb-5 border-b border-linea' : 'pb-7 border-b border-linea'}>
+      <div className="flex flex-col gap-3">
+        <div>
+          <h1 className={`font-display-split font-bold text-tinta uppercase tracking-tight leading-[0.98] ${
+            isDesktop ? 'text-[36px] xl:text-[44px]' : 'text-[42px] sm:text-[56px]'
+          }`}>
+            {horse.name}
+          </h1>
+          <p className="mt-2 text-[12.5px] sm:text-[13.5px] uppercase tracking-[0.15em] text-bronce font-semibold tabular-specs">
+            {horse.registrationNumber
+              ? `${horse.registrationNumber}`
+              : `ID ${horse.code}`}{' '}
+            · FRISÓN KFPS · {nationalityLabel}
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2 pt-0.5">
+          {horse.fullPaper && (
+            <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[11.5px] font-semibold">
+              Full Paper · KFPS
+            </span>
+          )}
+          {horse.awards && horse.awards.length > 0 && (
+            <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[11.5px] font-semibold">
+              {horse.awards.join(' · ')}
+            </span>
+          )}
+          <span
+            className={`inline-flex items-center px-3.5 py-1 rounded-full text-[11.5px] font-medium ${
+              isSold
+                ? 'bg-[#181816] text-[#C6B28A] border border-[#C6B28A]/40 uppercase tracking-[0.16em]'
+                : 'bg-[#EFEAE2] text-[#211915] border border-[#DDD5C7] font-semibold'
+            }`}
+          >
+            {statusText}
+          </span>
+        </div>
+      </div>
+
+      {/* Quick Action Bar */}
+      {!isSold && (
+        <div className={`mt-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 ${isDesktop ? 'flex-col sm:flex-row' : ''}`}>
+          <PrimaryButton
+            className="flex-1 justify-center !text-[12.5px] sm:!text-[13px] !tracking-[0.12em]"
+            onClick={() =>
+              triggerWhatsApp({
+                intent: isStud ? 'stud' : 'horse',
+                horses: [
+                  {
+                    name: horse.name,
+                    code: horse.code,
+                    sire: horse.sire,
+                  },
+                ],
+                ctaPosition: 'ficha_top_primary',
+              })
+            }
+          >
+            {isStud
+              ? `${dict.horseDetail.studPrimaryCtaPrefix} ${horse.name}`
+              : lang === 'es'
+                ? `Solicitar información`
+                : `Request information`}
+          </PrimaryButton>
+
+          <SecondaryButton
+            isWhatsAppCta={true}
+            className="flex-1 justify-center !text-[12.5px] sm:!text-[13px] !tracking-[0.12em]"
+            onClick={() =>
+              triggerWhatsApp({
+                intent: isStud ? 'stud' : 'visit',
+                horses: [
+                  {
+                    name: horse.name,
+                    code: horse.code,
+                    sire: horse.sire,
+                  },
+                ],
+                ctaPosition: 'ficha_top_visit',
+              })
+            }
+          >
+            {isStud
+              ? dict.horseDetail.studSecondaryCta
+              : `${dict.horseDetail.primaryCtaPrefix} ${horse.name}`}
+          </SecondaryButton>
+        </div>
+      )}
+    </div>
+  );
+
+  const renderPresentation = (isDesktop = false) => (
+    <div className={isDesktop ? 'py-5 border-b border-linea' : 'py-8 border-b border-linea'}>
+      <h2 className={`font-semibold text-tinta mb-2.5 ${isDesktop ? 'text-[18px]' : 'text-[22px]'}`}>
+        {lang === 'es' ? 'Presentación' : 'Presentation'}
+      </h2>
+      <p className={`text-tinta leading-relaxed ${isDesktop ? 'text-[15px]' : 'text-[16px] sm:text-[17px]'}`}>
+        {descriptionText}
+      </p>
+      {bloodlineText && (
+        <p className={`mt-2.5 text-tinta-diluida leading-relaxed ${isDesktop ? 'text-[14px]' : 'text-[15px] sm:text-[16px]'}`}>
+          {bloodlineText}
+        </p>
+      )}
+    </div>
+  );
+
+  const renderCharacteristics = (isDesktop = false) => (
+    <div className={isDesktop ? 'py-5 border-b border-linea' : 'py-8 border-b border-linea'}>
+      <h2 className={`font-semibold text-tinta mb-4 ${isDesktop ? 'text-[18px]' : 'text-[22px]'}`}>
+        {lang === 'es'
+          ? 'Características principales'
+          : 'Key Characteristics'}
+      </h2>
+      <div className={`grid gap-3 ${isDesktop ? 'grid-cols-2 xl:grid-cols-3' : 'grid-cols-2 sm:grid-cols-3 gap-3.5 sm:gap-4'}`}>
+        {mainCharacteristicCards.map((item) => (
+          <div
+            key={item.label}
+            className={`bg-arena rounded-xl flex flex-col justify-between gap-1 ${
+              isDesktop ? 'p-3.5' : 'p-4 sm:p-5 rounded-2xl'
+            }`}
+          >
+            <span className="text-[12px] text-tinta-diluida leading-none">
+              {item.label}
+            </span>
+            <strong className={`font-semibold text-tinta tabular-specs leading-snug ${
+              isDesktop ? 'text-[15.5px]' : 'text-[17px] sm:text-[19px]'
+            }`}>
+              {item.value}
+            </strong>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderGenealogy = (isDesktop = false) => (
+    <div className={isDesktop ? 'py-5 border-b border-linea' : 'py-8 border-b border-linea'}>
+      <h2 className={`font-semibold text-tinta mb-4 ${isDesktop ? 'text-[18px]' : 'text-[22px]'}`}>
+        {lang === 'es' ? 'Genealogía y registro' : 'Genealogy & Registry'}
+      </h2>
+
+      <div className="bg-arena/50 border border-linea rounded-[14px] overflow-hidden">
+        <div className="grid grid-cols-12 px-4 py-3 bg-arena border-b border-linea text-[12px] font-semibold text-tinta">
+          <div className="col-span-5">
+            {lang === 'es' ? 'Campo' : 'Field'}
+          </div>
+          <div className="col-span-7">
+            {lang === 'es' ? 'Información' : 'Information'}
+          </div>
+        </div>
+
+        <div className="divide-y divide-linea">
+          {genealogyTableRows.map((row) => (
+            <div
+              key={row.field}
+              className="grid grid-cols-12 px-4 py-2.5 text-[14px] items-baseline gap-2"
+            >
+              <div className="col-span-5 text-tinta-diluida text-[12.5px]">
+                {row.field}
+              </div>
+              <div className="col-span-7 text-tinta font-medium tabular-specs text-[13.5px]">
+                {row.info}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Visual Pedigree Diagram */}
+      {(horse.sire || horse.dam || horse.damsire) && (
+        <div className="mt-4 bg-arena/70 border border-linea rounded-[14px] p-4">
+          <p className="text-[10.5px] uppercase tracking-[0.2em] text-tinta-diluida mb-3">
+            {lang === 'es'
+              ? 'ÁRBOL GENEALÓGICO DIRECTO · KFPS'
+              : 'DIRECT PEDIGREE TREE · KFPS'}
+          </p>
+          <div className={`grid gap-2.5 items-stretch ${isDesktop ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-3'}`}>
+            <div className="bg-niebla border border-tinta p-3 rounded-[10px]">
+              <span className="block text-[9.5px] uppercase tracking-[0.18em] text-tinta-diluida">
+                {lang === 'es' ? 'EJEMPLAR' : 'HORSE'}
+              </span>
+              <strong className="font-display-split font-bold text-[22px] text-tinta leading-none">
+                {horse.name}
+              </strong>
+              {horse.registrationNumber && (
+                <span className="block text-[11px] text-tinta-diluida mt-0.5 tabular-specs">
+                  Reg. {horse.registrationNumber}
+                </span>
+              )}
+            </div>
+
+            <div className="bg-niebla border border-linea p-3 rounded-[10px]">
+              <span className="block text-[9.5px] uppercase tracking-[0.18em] text-tinta-diluida">
+                {lang === 'es' ? 'PADRE (SIRE)' : 'SIRE'}
+              </span>
+              <strong className="text-[14.5px] font-semibold text-tinta block mt-0.5">
+                {horse.sire || '—'}
+              </strong>
+            </div>
+
+            <div className="bg-niebla border border-linea p-3 rounded-[10px] flex flex-col gap-1.5">
+              <div>
+                <span className="block text-[9.5px] uppercase tracking-[0.18em] text-tinta-diluida">
+                  {lang === 'es' ? 'MADRE (DAM)' : 'DAM'}
+                </span>
+                <strong className="text-[14px] font-semibold text-tinta block">
+                  {horse.dam || '—'}
+                </strong>
+              </div>
+              {horse.damsire && (
+                <div className="pt-1.5 border-t border-linea">
+                  <span className="block text-[9.5px] uppercase tracking-[0.18em] text-tinta-diluida">
+                    {lang === 'es'
+                      ? 'ABUELO MATERNO (DAMSIRE)'
+                      : 'DAMSIRE'}
+                  </span>
+                  <strong className="text-[13px] font-medium text-tinta block">
+                    {horse.damsire}
+                  </strong>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+
+  const renderDocumentation = (isDesktop = false) => (
+    <div className={isDesktop ? 'py-5 border-b border-linea' : 'py-8 border-b border-linea'}>
+      <h2 className={`font-semibold text-tinta mb-4 ${isDesktop ? 'text-[18px]' : 'text-[22px]'}`}>
+        {lang === 'es' ? 'Documentación' : 'Documentation'}
+      </h2>
+
+      <div className="flex flex-col gap-3">
+        {/* Row 1: Registro Genealógico */}
+        <div
+          onClick={() => setActiveDocModal('pedigree')}
+          className="w-full p-3.5 sm:p-4 rounded-[12px] bg-arena/70 hover:bg-arena border border-linea flex items-center justify-between gap-3 transition-colors cursor-pointer"
+        >
+          <div className="flex items-center gap-3 text-left min-w-0">
+            <div className="w-10 h-10 rounded-[8px] bg-[#9E2A2B] text-niebla flex items-center justify-center shrink-0">
+              <FileText className="w-4.5 h-4.5 stroke-[1.75]" />
+            </div>
+            <div className="min-w-0">
+              <h3 className="text-[15px] font-semibold text-tinta truncate">
+                {lang === 'es'
+                  ? 'Registro genealógico'
+                  : 'Genealogical Registry'}
+              </h3>
+              <p className="text-[12px] text-tinta-diluida truncate">
+                KFPS · {horse.registrationNumber ? `Reg. #${horse.registrationNumber}` : 'Pedigree Tree'}
+              </p>
+            </div>
+          </div>
+
+          <span className="inline-flex items-center px-3 py-1.5 bg-polder text-niebla text-[10.5px] font-semibold uppercase tracking-[0.14em] rounded-[6px] shrink-0">
+            {lang === 'es' ? 'Ver' : 'View'}
+          </span>
+        </div>
+
+        {/* Row 2: Ficha Técnica */}
+        <div
+          onClick={() => setActiveDocModal('tech_sheet')}
+          className="w-full p-3.5 sm:p-4 rounded-[12px] bg-arena/70 hover:bg-arena border border-linea flex items-center justify-between gap-3 transition-colors cursor-pointer"
+        >
+          <div className="flex items-center gap-3 text-left min-w-0">
+            <div className="w-10 h-10 rounded-[8px] bg-niebla border border-linea overflow-hidden shrink-0">
+              <img
+                src={encodeURI(horse.coverPhoto)}
+                alt={horse.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="min-w-0">
+              <h3 className="text-[15px] font-semibold text-tinta truncate">
+                {horse.name} · {lang === 'es' ? 'Ficha técnica' : 'Tech Sheet'}
+              </h3>
+              <p className="text-[12px] text-tinta-diluida truncate">
+                {lang === 'es' ? 'Expediente y características' : 'Full horse specs'}
+              </p>
+            </div>
+          </div>
+
+          <span className="inline-flex items-center px-3 py-1.5 bg-polder text-niebla text-[10.5px] font-semibold uppercase tracking-[0.14em] rounded-[6px] shrink-0">
+            {lang === 'es' ? 'Ver' : 'View'}
+          </span>
+        </div>
+      </div>
+
+      {/* Accordions */}
+      <div className="mt-4 border-t border-linea">
+        {vetSummaryText && (
+          <AccordionItem title={dict.horseDetail.accordions.vet}>
+            <p className="text-[14px] text-tinta/90 leading-relaxed">{vetSummaryText}</p>
+          </AccordionItem>
+        )}
+        <AccordionItem title={dict.horseDetail.accordions.visit}>
+          <p className="text-[14px] text-tinta/90 leading-relaxed">{dict.horseDetail.accordions.visitBody}</p>
+        </AccordionItem>
+        <AccordionItem title={dict.horseDetail.accordions.shipping}>
+          <p className="text-[14px] text-tinta/90 leading-relaxed">{dict.horseDetail.accordions.shippingBody}</p>
+        </AccordionItem>
+        {!isStud && (
+          <AccordionItem title={dict.horseDetail.accordions.payment}>
+            <p className="text-[14px] text-tinta/90 leading-relaxed">{dict.horseDetail.accordions.paymentBody}</p>
+          </AccordionItem>
+        )}
+      </div>
+    </div>
+  );
+
+  const renderClosingCta = (isDesktop = false) => (
+    <div className={isDesktop ? 'pt-4' : 'pt-8'}>
+      {isSold ? (
+        <div className="bg-arena border border-linea rounded-[16px] p-6 text-center flex flex-col items-center gap-3">
+          <p className="text-[16px] font-medium text-tinta">
+            {dict.horseDetail.soldMessage}
+          </p>
+          <SecondaryButton href={`/${lang}/ejemplares`}>
+            {dict.horseDetail.soldCta}
+          </SecondaryButton>
+        </div>
+      ) : (
+        <div className={`bg-polder text-niebla rounded-[16px] shadow-sm ${isDesktop ? 'p-6' : 'p-7 sm:p-10'}`}>
+          <h2 className={`font-bold text-niebla leading-tight ${isDesktop ? 'text-[22px]' : 'text-[26px] sm:text-[32px]'}`}>
+            {lang === 'es'
+              ? '¿Le interesa este ejemplar?'
+              : 'Interested in this horse?'}
+          </h2>
+          <p className={`mt-2 text-niebla/85 leading-relaxed ${isDesktop ? 'text-[14px]' : 'text-[16px] sm:text-[17px] max-w-2xl'}`}>
+            {isStud
+              ? lang === 'es'
+                ? 'El servicio de maquila se cotiza según modalidad (monta directa, semen refrigerado o congelado).'
+                : 'Breeding service is quoted by modality (live cover, cooled or frozen semen).'
+              : lang === 'es'
+                ? 'El precio se proporciona bajo solicitud. Nuestro equipo puede asesorarle y coordinar una presentación privada en Zapotlanejo o enviarle el expediente completo por WhatsApp.'
+                : 'Price is provided upon request. Our team can advise you and coordinate a private presentation in Zapotlanejo.'}
+          </p>
+
+          <button
+            type="button"
+            data-whatsapp-cta="true"
+            onClick={() =>
+              triggerWhatsApp({
+                intent: isStud ? 'stud' : 'horse',
+                horses: [
+                  {
+                    name: horse.name,
+                    code: horse.code,
+                    sire: horse.sire,
+                  },
+                ],
+                ctaPosition: 'ficha_bottom_card_primary',
+              })
+            }
+            className="mt-4 w-full h-[50px] rounded-[10px] bg-niebla text-tinta hover:bg-arena font-semibold text-[13.5px] uppercase tracking-[0.14em] transition-colors flex items-center justify-center gap-2"
+          >
+            <WhatsAppIcon className="w-4 h-4 text-polder shrink-0" />
+            <span>
+              {lang === 'es'
+                ? 'SOLICITAR INFORMACIÓN'
+                : 'REQUEST INFORMATION'}
+            </span>
+          </button>
+
+          <div className="mt-4 pt-3 border-t border-niebla/15 flex flex-col gap-2 text-[12px] text-niebla/80">
+            <span>
+              {lang === 'es'
+                ? `Atención comercial · WhatsApp ${settings.officialWhatsAppDisplay}`
+                : `Commercial Concierge · WhatsApp ${settings.officialWhatsAppDisplay}`}
+            </span>
+          </div>
+        </div>
+      )}
+
+      <div className="mt-3 text-center">
+        <DynamicScheduleMicrocopy lang={lang} settings={settings} />
+      </div>
+    </div>
+  );
+
   return (
     <div className="bg-niebla text-tinta pt-24 pb-28 lg:pb-24">
-      <div className="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Breadcrumb + Save Bar */}
+      {/* Top Breadcrumb + Save Bar (Spanning container) */}
+      <div className="max-w-[960px] lg:max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 mb-5">
         <nav
           aria-label="Breadcrumb"
-          className="mb-5 flex items-center justify-between text-[12px] uppercase tracking-[0.18em] text-tinta-diluida"
+          className="flex items-center justify-between text-[12px] uppercase tracking-[0.18em] text-tinta-diluida"
         >
           <div className="flex items-center gap-2">
             <Link
@@ -280,557 +794,49 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
             <span>{saved ? dict.system.saved : dict.system.save}</span>
           </button>
         </nav>
+      </div>
 
-        {/* =================================================================
-            1. TOP EQUINE COLLECTION BRAND HEADER CARD (Official Logo + Golden Hairlines)
-            ================================================================= */}
-        <Reveal>
-          <div className="relative bg-polder text-niebla rounded-2xl py-8 px-6 text-center mb-6 flex flex-col items-center justify-center gap-2 overflow-hidden border border-[#C6B28A]/25 shadow-sm">
-            {/* Subtle top & bottom gold hairlines matching the official logo */}
-            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/50 to-transparent pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A]/35 to-transparent pointer-events-none" />
+      {/* =====================================================================
+          1. MOBILE VIEW (< lg): 100% UNTOUCHED LINEAR FLOW (User's preferred layout)
+          ===================================================================== */}
+      <div className="lg:hidden max-w-[960px] mx-auto px-4 sm:px-6">
+        <Reveal>{renderBrandHeader(false)}</Reveal>
+        <Reveal delay={0.05}>{renderHeroPhoto(false)}</Reveal>
+        <Reveal delay={0.08}>{renderTitleAndActions(false)}</Reveal>
+        <Reveal>{renderPresentation(false)}</Reveal>
+        <Reveal>{renderCharacteristics(false)}</Reveal>
+        <Reveal>{renderGallery(false)}</Reveal>
+        <Reveal>{renderGenealogy(false)}</Reveal>
+        {horse.mainVideo && <Reveal>{renderVideo(false)}</Reveal>}
+        <Reveal>{renderDocumentation(false)}</Reveal>
+        <Reveal>{renderClosingCta(false)}</Reveal>
+      </div>
 
-            <img
-              src="/brand/Logotipo_Cuadra_Imperial_Loy_horizontal_degradado.svg"
-              alt="Cuadra Imperial Loy"
-              className="h-10 sm:h-12 w-auto object-contain my-1"
-            />
-            <div className="w-14 h-[1px] bg-gradient-to-r from-transparent via-[#C6B28A] to-transparent my-1" />
-            <p className="text-[10.5px] sm:text-[11.5px] uppercase tracking-[0.28em] text-champagne font-semibold">
-              EQUINE COLLECTION · KFPS ROYAL FRIESIAN
-            </p>
-          </div>
-        </Reveal>
-
-        {/* =================================================================
-            2. MAIN HERO PHOTO CARD (4:3 Uncropped + Subtle Brand Pill + Sold Stamp)
-            ================================================================= */}
-        <Reveal delay={0.05}>
-          <div
-            onClick={() => setLightboxUrl(horse.coverPhoto)}
-            className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-arena cursor-zoom-in mb-7"
-          >
-            <img
-              src={encodeURI(horse.coverPhoto)}
-              alt={horse.name}
-              loading="eager"
-              className="w-full h-full object-contain bg-arena transition-transform duration-700 hover:scale-[1.015]"
-            />
-            {isSold && (
-              <div className="pointer-events-none absolute inset-0 bg-[#141413]/30 flex items-center justify-center z-10">
-                <div className="px-8 py-3.5 rounded-full bg-[#181816]/85 backdrop-blur-md border border-[#C6B28A]/60 shadow-xl flex items-center gap-4">
-                  <span className="w-6 h-[1px] bg-[#C6B28A]/80" />
-                  <span className="text-[13px] sm:text-[15px] font-medium tracking-[0.34em] uppercase text-[#F4F2ED] leading-none">
-                    {lang === 'es' ? 'EJEMPLAR VENDIDO' : 'SOLD'}
-                  </span>
-                  <span className="w-6 h-[1px] bg-[#C6B28A]/80" />
-                </div>
-              </div>
-            )}
-            {/* Subtle bottom-left official brand logo seal */}
-            <div className="absolute bottom-4 left-4 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-tinta/85 backdrop-blur-md inline-flex items-center justify-center z-10 border border-[#C6B28A]/40 shadow-md">
-              <img
-                src="/brand/Logotipo_Cuadra_Imperial_Loy_isotipo_degradado.svg"
-                alt="Cuadra Imperial Loy"
-                className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
-              />
-            </div>
-          </div>
-        </Reveal>
-
-        {/* =================================================================
-            3. HORSE NAME, STATUS BADGE & ID · BREED · COUNTRY SUBTITLE
-            ================================================================= */}
-        <Reveal delay={0.08}>
-          <div className="pb-7 border-b border-linea">
-            <div className="flex flex-wrap items-start justify-between gap-4">
-              <div>
-                <h1 className="font-display-split font-bold text-[42px] sm:text-[56px] leading-[0.98] tracking-tight text-tinta uppercase">
-                  {horse.name}
-                </h1>
-                <p className="mt-2.5 text-[13px] sm:text-[14px] uppercase tracking-[0.15em] text-bronce font-semibold tabular-specs">
-                  {horse.registrationNumber
-                    ? `${horse.registrationNumber}`
-                    : `ID ${horse.code}`}{' '}
-                  · FRISÓN KFPS · {nationalityLabel}
-                </p>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-2">
-                {horse.fullPaper && (
-                  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[12px] font-semibold">
-                    Full Paper · KFPS
-                  </span>
-                )}
-                {horse.awards && horse.awards.length > 0 && (
-                  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[12px] font-semibold">
-                    {horse.awards.join(' · ')}
-                  </span>
-                )}
-                <span
-                  className={`inline-flex items-center px-4 py-1.5 rounded-full text-[12px] font-medium ${isSold
-                      ? 'bg-[#181816] text-[#C6B28A] border border-[#C6B28A]/40 uppercase tracking-[0.18em]'
-                      : 'bg-[#EFEAE2] text-[#211915] border border-[#DDD5C7] font-semibold'
-                    }`}
-                >
-                  {statusText}
-                </span>
-              </div>
-            </div>
-
-            {/* Quick Action Bar at Top so buyer doesn't have to wait until bottom */}
-            {!isSold && (
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <PrimaryButton
-                  onClick={() =>
-                    triggerWhatsApp({
-                      intent: isStud ? 'stud' : 'horse',
-                      horses: [
-                        {
-                          name: horse.name,
-                          code: horse.code,
-                          sire: horse.sire,
-                        },
-                      ],
-                      ctaPosition: 'ficha_top_primary',
-                    })
-                  }
-                >
-                  {isStud
-                    ? `${dict.horseDetail.studPrimaryCtaPrefix} ${horse.name}`
-                    : lang === 'es'
-                      ? `Solicitar información de ${horse.name}`
-                      : `Request information on ${horse.name}`}
-                </PrimaryButton>
-
-                <SecondaryButton
-                  isWhatsAppCta={true}
-                  onClick={() =>
-                    triggerWhatsApp({
-                      intent: isStud ? 'stud' : 'visit',
-                      horses: [
-                        {
-                          name: horse.name,
-                          code: horse.code,
-                          sire: horse.sire,
-                        },
-                      ],
-                      ctaPosition: 'ficha_top_visit',
-                    })
-                  }
-                >
-                  {isStud
-                    ? dict.horseDetail.studSecondaryCta
-                    : `${dict.horseDetail.primaryCtaPrefix} ${horse.name}`}
-                </SecondaryButton>
-              </div>
-            )}
-          </div>
-        </Reveal>
-
-        {/* =================================================================
-            4. PRESENTACIÓN (Commercial & Pedigree Narrative)
-            ================================================================= */}
-        <Reveal className="py-8 border-b border-linea">
-          <h2 className="text-[22px] font-semibold text-tinta mb-3">
-            {lang === 'es' ? 'Presentación' : 'Presentation'}
-          </h2>
-          <p className="text-[16px] sm:text-[17px] text-tinta leading-relaxed">
-            {descriptionText}
-          </p>
-          {bloodlineText && (
-            <p className="mt-3 text-[15px] sm:text-[16px] text-tinta-diluida leading-relaxed">
-              {bloodlineText}
-            </p>
-          )}
-        </Reveal>
-
-        {/* =================================================================
-            5. CARACTERÍSTICAS PRINCIPALES (2x3 Rounded Card Grid)
-            ================================================================= */}
-        <Reveal className="py-8 border-b border-linea">
-          <h2 className="text-[22px] font-semibold text-tinta mb-5">
-            {lang === 'es'
-              ? 'Características principales'
-              : 'Key Characteristics'}
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5 sm:gap-4">
-            {mainCharacteristicCards.map((item) => (
-              <div
-                key={item.label}
-                className="bg-arena rounded-2xl p-4 sm:p-5 flex flex-col justify-between gap-1.5"
-              >
-                <span className="text-[13px] text-tinta-diluida">
-                  {item.label}
-                </span>
-                <strong className="text-[17px] sm:text-[19px] font-semibold text-tinta tabular-specs leading-snug">
-                  {item.value}
-                </strong>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-
-        {/* =================================================================
-            6. GALERÍA DE FOTOGRAFÍAS (2x2 Rounded Grid, Uncropped)
-            ================================================================= */}
-        <Reveal className="py-8 border-b border-linea">
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-[22px] font-semibold text-tinta">
-              {lang === 'es' ? 'Galería de fotografías' : 'Photo Gallery'}
-            </h2>
-            <span className="text-[12px] uppercase tracking-[0.18em] text-tinta-diluida tabular-specs">
-              {horse.gallery.length}{' '}
-              {horse.gallery.length === 1
-                ? lang === 'es'
-                  ? 'FOTOGRAFÍA'
-                  : 'PHOTO'
-                : lang === 'es'
-                  ? 'FOTOGRAFÍAS'
-                  : 'PHOTOS'}
-            </span>
+      {/* =====================================================================
+          2. DESKTOP VIEW (>= lg): SHOPIFY COCO PDP 2-COLUMN LUXURY LAYOUT
+             Left Column: Media (Hero Photo + Photo Gallery + Video Presentation)
+             Right Column: Sticky Information (Heritage Badge, Title, CTAs, Specs, Docs, Accordions)
+          ===================================================================== */}
+      <div className="hidden lg:block max-w-[1360px] mx-auto px-6 lg:px-8 xl:px-12">
+        <div className="grid grid-cols-12 gap-10 xl:gap-14 items-start">
+          {/* LEFT COLUMN: Media Stream (7 cols / ~58%) */}
+          <div className="col-span-7 space-y-8">
+            <Reveal delay={0.02}>{renderHeroPhoto(true)}</Reveal>
+            <Reveal delay={0.05}>{renderGallery(true)}</Reveal>
+            {horse.mainVideo && <Reveal delay={0.08}>{renderVideo(true)}</Reveal>}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {horse.gallery.map((media, idx) => (
-              <figure
-                key={idx}
-                onClick={() => setLightboxUrl(media.url)}
-                className="group relative aspect-[4/3] rounded-[16px] overflow-hidden bg-arena border border-linea cursor-zoom-in"
-              >
-                <img
-                  src={encodeURI(media.url)}
-                  alt={lang === 'es' ? media.altEs : media.altEn}
-                  loading={idx < 2 ? 'eager' : 'lazy'}
-                  className="w-full h-full object-contain bg-arena transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-                <figcaption className="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-tinta/70 text-niebla text-[11px] tabular-specs">
-                  0{idx + 1} / 0{horse.gallery.length}
-                </figcaption>
-              </figure>
-            ))}
+          {/* RIGHT COLUMN: Sticky Product Information (5 cols / ~42%) */}
+          <div className="col-span-5 space-y-6 sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto overscroll-contain pr-2 [scrollbar-width:thin] [scrollbar-color:#C6B28A40_transparent]">
+            <Reveal delay={0.02}>{renderBrandHeader(true)}</Reveal>
+            <Reveal delay={0.04}>{renderTitleAndActions(true)}</Reveal>
+            <Reveal delay={0.06}>{renderCharacteristics(true)}</Reveal>
+            <Reveal delay={0.08}>{renderPresentation(true)}</Reveal>
+            <Reveal delay={0.10}>{renderDocumentation(true)}</Reveal>
+            <Reveal delay={0.12}>{renderGenealogy(true)}</Reveal>
+            <Reveal delay={0.14}>{renderClosingCta(true)}</Reveal>
           </div>
-        </Reveal>
-
-        {/* =================================================================
-            7. GENEALOGÍA Y REGISTRO (Clean Table Campo | Información + Tree)
-            ================================================================= */}
-        <Reveal className="py-8 border-b border-linea">
-          <h2 className="text-[22px] font-semibold text-tinta mb-5">
-            {lang === 'es' ? 'Genealogía y registro' : 'Genealogy & Registry'}
-          </h2>
-
-          <div className="bg-arena/50 border border-linea rounded-[16px] overflow-hidden">
-            <div className="grid grid-cols-12 px-5 py-3.5 bg-arena border-b border-linea text-[13px] font-semibold text-tinta">
-              <div className="col-span-5">
-                {lang === 'es' ? 'Campo' : 'Field'}
-              </div>
-              <div className="col-span-7">
-                {lang === 'es' ? 'Información' : 'Information'}
-              </div>
-            </div>
-
-            <div className="divide-y divide-linea">
-              {genealogyTableRows.map((row) => (
-                <div
-                  key={row.field}
-                  className="grid grid-cols-12 px-5 py-3.5 text-[15px] items-baseline gap-2"
-                >
-                  <div className="col-span-5 text-tinta-diluida">
-                    {row.field}
-                  </div>
-                  <div className="col-span-7 text-tinta font-medium tabular-specs">
-                    {row.info}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Visual 3-Node Pedigree Diagram when Sire/Dam/Damsire are present */}
-          {(horse.sire || horse.dam || horse.damsire) && (
-            <div className="mt-6 bg-arena/70 border border-linea rounded-[16px] p-5">
-              <p className="text-[11px] uppercase tracking-[0.2em] text-tinta-diluida mb-4">
-                {lang === 'es'
-                  ? 'ÁRBOL GENEALÓGICO DIRECTO · KFPS'
-                  : 'DIRECT PEDIGREE TREE · KFPS'}
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 items-center">
-                <div className="bg-niebla border border-tinta p-4 rounded-[12px]">
-                  <span className="block text-[10px] uppercase tracking-[0.2em] text-tinta-diluida">
-                    {lang === 'es' ? 'EJEMPLAR' : 'HORSE'}
-                  </span>
-                  <strong className="font-display-split font-bold text-[26px] text-tinta leading-none">
-                    {horse.name}
-                  </strong>
-                  {horse.registrationNumber && (
-                    <span className="block text-[12px] text-tinta-diluida mt-1 tabular-specs">
-                      Reg. {horse.registrationNumber}
-                    </span>
-                  )}
-                </div>
-
-                <div className="bg-niebla border border-linea p-4 rounded-[12px]">
-                  <span className="block text-[10px] uppercase tracking-[0.2em] text-tinta-diluida">
-                    {lang === 'es' ? 'PADRE (SIRE)' : 'SIRE'}
-                  </span>
-                  <strong className="text-[16px] font-semibold text-tinta block mt-0.5">
-                    {horse.sire || '—'}
-                  </strong>
-                </div>
-
-                <div className="bg-niebla border border-linea p-4 rounded-[12px] flex flex-col gap-2">
-                  <div>
-                    <span className="block text-[10px] uppercase tracking-[0.2em] text-tinta-diluida">
-                      {lang === 'es' ? 'MADRE (DAM)' : 'DAM'}
-                    </span>
-                    <strong className="text-[15px] font-semibold text-tinta block">
-                      {horse.dam || '—'}
-                    </strong>
-                  </div>
-                  {horse.damsire && (
-                    <div className="pt-2 border-t border-linea">
-                      <span className="block text-[10px] uppercase tracking-[0.2em] text-tinta-diluida">
-                        {lang === 'es'
-                          ? 'ABUELO MATERNO (DAMSIRE)'
-                          : 'DAMSIRE'}
-                      </span>
-                      <strong className="text-[14px] font-medium text-tinta block">
-                        {horse.damsire}
-                      </strong>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-        </Reveal>
-
-        {/* =================================================================
-            8. VIDEOS (Original Arena Video from Dossier)
-            ================================================================= */}
-        {horse.mainVideo && (
-          <Reveal className="py-8 border-b border-linea">
-            <h2 className="text-[22px] font-semibold text-tinta mb-5">
-              {lang === 'es' ? 'Videos' : 'Videos'}
-            </h2>
-
-            <div className="relative rounded-[18px] overflow-hidden bg-arena border border-linea aspect-[4/3]">
-              <video
-                src={encodeURI(horse.mainVideo)}
-                poster={encodeURI(horse.videoPoster || horse.coverPhoto)}
-                controls
-                playsInline
-                preload="metadata"
-                className="w-full h-full object-contain bg-arena"
-              />
-              <div className="pointer-events-none absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-tinta/85 backdrop-blur-md text-niebla inline-flex items-center gap-2 border border-[#C6B28A]/40 shadow-md">
-                <Play className="w-3.5 h-3.5 fill-current text-champagne" />
-                <img
-                  src="/brand/Logotipo_Cuadra_Imperial_Loy_isotipo_degradado.svg"
-                  alt="Cuadra Imperial Loy"
-                  className="w-4 h-4 object-contain"
-                />
-              </div>
-            </div>
-
-            <p className="mt-3 text-[14px] text-tinta-diluida">
-              {lang === 'es'
-                ? 'Presentación en movimiento · Video original integrado desde el expediente.'
-                : 'Presentation in motion · Original video integrated from the horse’s file.'}
-            </p>
-          </Reveal>
-        )}
-
-        {/* =================================================================
-            9. DOCUMENTACIÓN (Registro Genealógico & Ficha Técnica Interactive Rows)
-            ================================================================= */}
-        <Reveal className="py-8 border-b border-linea">
-          <h2 className="text-[22px] font-semibold text-tinta mb-5">
-            {lang === 'es' ? 'Documentación' : 'Documentation'}
-          </h2>
-
-          <div className="flex flex-col gap-3.5">
-            {/* Row 1: Registro genealógico (un solo botón limpio, sin repetir VER DOCUMENTO + PDF) */}
-            <div
-              onClick={() => setActiveDocModal('pedigree')}
-              className="w-full p-4 sm:p-5 rounded-[14px] bg-arena/70 hover:bg-arena border border-linea flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors cursor-pointer"
-            >
-              <div className="flex items-center gap-4 text-left flex-1">
-                <div className="w-11 h-11 rounded-[10px] bg-[#9E2A2B] text-niebla flex items-center justify-center shrink-0">
-                  <FileText className="w-5 h-5 stroke-[1.75]" />
-                </div>
-                <div>
-                  <h3 className="text-[17px] font-semibold text-tinta">
-                    {lang === 'es'
-                      ? 'Registro genealógico'
-                      : 'Genealogical Registry'}
-                  </h3>
-                  <p className="text-[14px] text-tinta-diluida">
-                    {lang === 'es'
-                      ? `Nombre del ejemplar y árbol genealógico KFPS${horse.registrationNumber ? ` (Reg. #${horse.registrationNumber})` : ''}`
-                      : `Horse name and KFPS pedigree tree${horse.registrationNumber ? ` (Reg. #${horse.registrationNumber})` : ''}`}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center shrink-0">
-                <span className="inline-flex items-center gap-2 px-4 py-2.5 bg-polder text-niebla text-[11px] font-semibold uppercase tracking-[0.16em] rounded-[8px] hover:opacity-90">
-                  <span>
-                    {lang === 'es' ? 'Ver registro' : 'View registry'}
-                  </span>
-                </span>
-              </div>
-            </div>
-
-            {/* Row 2: Ficha técnica (un solo botón limpio, sin repetir VER FICHA + PDF) */}
-            <div
-              onClick={() => setActiveDocModal('tech_sheet')}
-              className="w-full p-4 sm:p-5 rounded-[14px] bg-arena/70 hover:bg-arena border border-linea flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors cursor-pointer"
-            >
-              <div className="flex items-center gap-4 text-left flex-1">
-                <div className="w-12 h-12 rounded-[10px] bg-niebla border border-linea overflow-hidden shrink-0">
-                  <img
-                    src={encodeURI(horse.coverPhoto)}
-                    alt={horse.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-[17px] font-semibold text-tinta">
-                    {horse.name} ·{' '}
-                    {lang === 'es' ? 'Ficha técnica' : 'Technical Sheet'}
-                  </h3>
-                  <p className="text-[14px] text-tinta-diluida">
-                    {lang === 'es'
-                      ? 'Información completa del ejemplar, fotografía principal, características y genealogía'
-                      : 'Complete horse information, main photograph, characteristics and pedigree'}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center shrink-0">
-                <span className="inline-flex items-center gap-2 px-4 py-2.5 bg-polder text-niebla text-[11px] font-semibold uppercase tracking-[0.16em] rounded-[8px] hover:opacity-90">
-                  <span>
-                    {lang === 'es' ? 'Ver ficha técnica' : 'View technical sheet'}
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Complementary Accordions (Revisión veterinaria, Cita privada, Envíos, Formas de pago) */}
-          <div className="mt-6 border-t border-linea">
-            {vetSummaryText && (
-              <AccordionItem title={dict.horseDetail.accordions.vet}>
-                <p>{vetSummaryText}</p>
-              </AccordionItem>
-            )}
-            <AccordionItem title={dict.horseDetail.accordions.visit}>
-              <p>{dict.horseDetail.accordions.visitBody}</p>
-            </AccordionItem>
-            <AccordionItem title={dict.horseDetail.accordions.shipping}>
-              <p>{dict.horseDetail.accordions.shippingBody}</p>
-            </AccordionItem>
-            {!isStud && (
-              <AccordionItem title={dict.horseDetail.accordions.payment}>
-                <p>{dict.horseDetail.accordions.paymentBody}</p>
-              </AccordionItem>
-            )}
-          </div>
-        </Reveal>
-
-        {/* =================================================================
-            10. DARK GREEN CLOSING CTA CARD ("¿Te interesa este ejemplar?")
-            ================================================================= */}
-        <Reveal className="pt-8">
-          {isSold ? (
-            <div className="bg-arena border border-linea rounded-[20px] p-8 text-center flex flex-col items-center gap-4">
-              <p className="text-[18px] font-medium text-tinta">
-                {dict.horseDetail.soldMessage}
-              </p>
-              <SecondaryButton href={`/${lang}/ejemplares`}>
-                {dict.horseDetail.soldCta}
-              </SecondaryButton>
-            </div>
-          ) : (
-            <div className="bg-polder text-niebla rounded-[20px] p-7 sm:p-10 shadow-sm">
-              <h2 className="text-[26px] sm:text-[32px] font-bold text-niebla leading-tight">
-                {lang === 'es'
-                  ? '¿Le interesa este ejemplar?'
-                  : 'Interested in this horse?'}
-              </h2>
-              <p className="mt-3 text-[16px] sm:text-[17px] text-niebla/85 leading-relaxed max-w-2xl">
-                {isStud
-                  ? lang === 'es'
-                    ? 'El servicio de maquila se cotiza según modalidad (monta directa, semen refrigerado o congelado). Nuestro equipo puede asesorarle y enviarle la genealogía completa.'
-                    : 'Breeding service is quoted by modality (live cover, cooled or frozen semen). Our team can advise you and send the complete pedigree.'
-                  : lang === 'es'
-                    ? 'El precio se proporciona bajo solicitud. Nuestro equipo puede asesorarle y coordinar una presentación privada en Zapotlanejo o enviarle el expediente completo por WhatsApp.'
-                    : 'Price is provided upon request. Our team can advise you and coordinate a private presentation in Zapotlanejo or send you the complete file via WhatsApp.'}
-              </p>
-
-              <button
-                type="button"
-                data-whatsapp-cta="true"
-                onClick={() =>
-                  triggerWhatsApp({
-                    intent: isStud ? 'stud' : 'horse',
-                    horses: [
-                      {
-                        name: horse.name,
-                        code: horse.code,
-                        sire: horse.sire,
-                      },
-                    ],
-                    ctaPosition: 'ficha_bottom_card_primary',
-                  })
-                }
-                className="mt-6 w-full h-[56px] rounded-[12px] bg-niebla text-tinta hover:bg-arena font-semibold text-[14px] sm:text-[15px] uppercase tracking-[0.14em] transition-colors flex items-center justify-center gap-2.5"
-              >
-                <WhatsAppIcon className="w-4 h-4 text-polder shrink-0" />
-                <span>
-                  {lang === 'es'
-                    ? 'SOLICITAR INFORMACIÓN'
-                    : 'REQUEST INFORMATION'}
-                </span>
-              </button>
-
-              <div className="mt-5 pt-4 border-t border-niebla/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[13px] text-niebla/80">
-                <span>
-                  {lang === 'es'
-                    ? `Atención comercial · WhatsApp Oficial ${settings.officialWhatsAppDisplay}`
-                    : `Commercial Concierge · Official WhatsApp ${settings.officialWhatsAppDisplay}`}
-                </span>
-                <button
-                  type="button"
-                  onClick={() =>
-                    triggerWhatsApp({
-                      intent: isStud ? 'stud' : 'visit',
-                      horses: [
-                        {
-                          name: horse.name,
-                          code: horse.code,
-                          sire: horse.sire,
-                        },
-                      ],
-                      ctaPosition: 'ficha_bottom_card_visit',
-                    })
-                  }
-                  className="underline text-niebla hover:opacity-85 text-left sm:text-right"
-                >
-                  {isStud
-                    ? dict.horseDetail.studSecondaryCta
-                    : `${dict.horseDetail.primaryCtaPrefix} ${horse.name} →`}
-                </button>
-              </div>
-            </div>
-          )}
-
-          <div className="mt-4 text-center">
-            <DynamicScheduleMicrocopy lang={lang} settings={settings} />
-          </div>
-        </Reveal>
+        </div>
       </div>
 
       {/* Photo Lightbox Modal */}
