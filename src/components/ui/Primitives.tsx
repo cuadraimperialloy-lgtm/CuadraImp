@@ -254,23 +254,11 @@ export function AccordionItem({
         {/* Subtle gold gradient plus/minus sign matching brand crest */}
         <span
           aria-hidden="true"
-          className="w-7 h-7 flex items-center justify-center rounded-full border border-[#C6B28A]/35 bg-[#C6B28A]/5 group-hover:border-[#C6B28A]/70 group-hover:bg-[#C6B28A]/10 transition-all select-none shrink-0"
+          className="w-7 h-7 flex items-center justify-center rounded-full border border-[#C6B28A]/40 bg-[#C6B28A]/5 group-hover:border-[#C6B28A]/80 group-hover:bg-[#C6B28A]/15 transition-all select-none shrink-0"
         >
-          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none">
-            <defs>
-              <linearGradient id="accordion-gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#E8CB7C" />
-                <stop offset="50%" stopColor="#D4B160" />
-                <stop offset="100%" stopColor="#B08532" />
-              </linearGradient>
-            </defs>
-            <path
-              d={open ? 'M5 12h14' : 'M12 5v14M5 12h14'}
-              stroke="url(#accordion-gold-grad)"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-            />
-          </svg>
+          <span className="text-[20px] font-light leading-none select-none bg-gradient-to-r from-[#E8CB7C] via-[#D4B160] to-[#B08532] bg-clip-text text-transparent flex items-center justify-center pb-0.5">
+            {open ? '−' : '+'}
+          </span>
         </span>
       </button>
       {open && (
