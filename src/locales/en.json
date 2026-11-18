@@ -307,7 +307,7 @@
       "shipping": "Shipping",
       "shippingBody": "We coordinate and quote transport to your ranch across Mexico, the United States and Latin America with health movement certificate and negative Coggins test.",
       "payment": "Payment methods",
-      "paymentBody": "Secure payments."
+      "paymentBody": "Secure and Diverse Payment Methods"
     },
     "dossierScrollBar": {
       "questionPrefix": "Would you like the full dossier for",
@@ -398,7 +398,7 @@
       "titleStrong": "SECURE",
       "titleLight": "PAYMENTS",
       "methods": [
-        "Secure payments"
+        "Secure and Diverse Payment Methods"
       ],
       "cta": "Inquire on WhatsApp"
     }

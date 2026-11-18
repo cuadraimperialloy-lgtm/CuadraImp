@@ -307,7 +307,7 @@
       "shipping": "Envíos",
       "shippingBody": "Coordinamos y cotizamos el traslado a su rancho en todo México, Estados Unidos y Latinoamérica con certificado zoosanitario de movilización y prueba de anemia infecciosa negativa.",
       "payment": "Formas de pago",
-      "paymentBody": "Pagos seguros."
+      "paymentBody": "Métodos de Pago Seguros y Diversos"
     },
     "dossierScrollBar": {
       "questionPrefix": "¿Quiere el expediente completo de",
@@ -398,7 +398,7 @@
       "titleStrong": "PAGOS",
       "titleLight": "SEGUROS",
       "methods": [
-        "Pagos seguros"
+        "Métodos de Pago Seguros y Diversos"
       ],
       "cta": "Consultar por WhatsApp"
     }
