@@ -136,19 +136,15 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
       ]
       : []),
     {
-      label: lang === 'es' ? 'Nacionalidad · CEDIS' : 'Origin · Location',
+      label: lang === 'es' ? 'Nacionalidad' : 'Nationality',
       value:
         horse.origin === 'Holanda'
-          ? horse.status === 'en_route'
-            ? lang === 'es'
-              ? 'Europeo · En tránsito'
-              : 'European · In transit'
-            : lang === 'es'
-              ? 'Europeo · Zapotlanejo'
-              : 'European · Zapotlanejo'
+          ? lang === 'es'
+            ? 'Europeo'
+            : 'European'
           : lang === 'es'
-            ? 'Nacional · Zapotlanejo'
-            : 'National · Zapotlanejo',
+            ? 'Nacional'
+            : 'National',
     },
     ...(horse.fullPaper === true
       ? [
@@ -239,10 +235,6 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
         },
       ]
       : []),
-    {
-      field: lang === 'es' ? 'CEDIS / Ubicación' : 'Location / CEDIS',
-      info: cedisLabel,
-    },
   ];
 
   // Helper sub-blocks for modular Mobile vs Desktop (Shopify PDP layout)

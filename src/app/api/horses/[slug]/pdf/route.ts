@@ -498,7 +498,7 @@ function generateHorsePdfBuffer(params: {
       [lang === 'es' ? 'Padre (Sire)' : 'Sire', sire],
       [lang === 'es' ? 'Madre (Dam)' : 'Dam', dam],
       [lang === 'es' ? 'Abuelo Materno (Damsire)' : 'Maternal Grandsire', damsire],
-      [lang === 'es' ? 'Ubicacion / CEDIS' : 'Location / Facility', origin],
+      [lang === 'es' ? 'Nacionalidad' : 'Nationality', origin],
     ];
 
     specs.forEach(([label, val], idx) => {
@@ -721,10 +721,8 @@ export async function GET(
     last4Chip,
     origin:
       horse.origin === 'Holanda'
-        ? horse.status === 'en_route'
-          ? 'Europeo (En transito)'
-          : 'Europeo (CEDIS Zapotlanejo, Jalisco)'
-        : 'Nacional (CEDIS Zapotlanejo, Jalisco)',
+        ? (lang === 'es' ? 'Europeo' : 'European')
+        : (lang === 'es' ? 'Nacional' : 'National'),
     status: statusText,
     sex: sexText,
     age: ageText,
