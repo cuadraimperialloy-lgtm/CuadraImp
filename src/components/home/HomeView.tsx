@@ -136,7 +136,9 @@ export function HomeView() {
 
               <h1 className="font-display-split font-bold uppercase text-niebla text-[36px] sm:text-[50px] lg:text-[60px] leading-[1.02] tracking-[-0.01em]">
                 {dict.home.hero.titleStrong}{' '}
-                <span className="text-champagne">{dict.home.hero.titleLight}</span>
+                <span className="bg-gradient-to-r from-[#E8CB7C] via-[#D4B160] to-[#B08532] bg-clip-text text-transparent">
+                  {dict.home.hero.titleLight}
+                </span>
               </h1>
             </motion.div>
 
@@ -253,11 +255,11 @@ export function HomeView() {
                     <div className="flex items-center justify-between pb-3">
                       <StatusTag label={dict.home.stallions.studOnlyTag} />
                       {stallion.awards.length > 0 ? (
-                        <span className="px-3 py-1 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[11px] font-semibold">
+                        <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#E8CB7C] via-[#D4B160] to-[#B08532] text-[#181816] border border-[#B08532]/30 text-[11px] font-semibold shadow-xs">
                           {stallion.awards[0]}
                         </span>
                       ) : stallion.fullPaper ? (
-                        <span className="px-3 py-1 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[11px] font-semibold">
+                        <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#E8CB7C] via-[#D4B160] to-[#B08532] text-[#181816] border border-[#B08532]/30 text-[11px] font-semibold shadow-xs">
                           Full Paper
                         </span>
                       ) : null}

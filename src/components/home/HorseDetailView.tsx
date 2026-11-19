@@ -377,12 +377,12 @@ export function HorseDetailView({ horse }: { horse: PublicHorse }) {
 
         <div className="flex flex-wrap items-center gap-2 pt-0.5">
           {horse.fullPaper && (
-            <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[11.5px] font-semibold">
+            <span className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-[#E8CB7C] via-[#D4B160] to-[#B08532] text-[#181816] border border-[#B08532]/30 text-[11.5px] font-semibold shadow-xs">
               Full Paper · KFPS
             </span>
           )}
           {horse.awards && horse.awards.length > 0 && (
-            <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#EFE9DC] text-[#756242] border border-[#D8CCB4] text-[11.5px] font-semibold">
+            <span className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-[#E8CB7C] via-[#D4B160] to-[#B08532] text-[#181816] border border-[#B08532]/30 text-[11.5px] font-semibold shadow-xs">
               {horse.awards.join(' · ')}
             </span>
           )}

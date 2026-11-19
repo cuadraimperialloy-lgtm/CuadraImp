@@ -32,17 +32,19 @@ export function SplitHeading({
     size === 'hero'
       ? 'hero-fluid'
       : size === 'h1'
-      ? 'h1-fluid'
-      : size === 'h2'
-      ? 'h2-fluid'
-      : 'h3-fluid';
+        ? 'h1-fluid'
+        : size === 'h2'
+          ? 'h2-fluid'
+          : 'h3-fluid';
   return (
     <Tag className={`font-display-split font-bold text-tinta ${sizeClass} ${className}`}>
       <span>{strong}</span>
       {light ? (
         <>
           {' '}
-          <span className="font-semibold text-bronce">{light}</span>
+          <span className="font-semibold bg-gradient-to-r from-[#E8CB7C] via-[#D4B160] to-[#B08532] bg-clip-text text-transparent">
+            {light}
+          </span>
         </>
       ) : null}
     </Tag>
