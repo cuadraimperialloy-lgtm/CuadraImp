@@ -154,7 +154,7 @@ export function HorseCard({
               className={`px-3.5 py-1 rounded-full text-[11px] font-medium ${
                 horse.status === 'sold'
                   ? 'bg-[#181816] text-[#C6B28A] border border-[#C6B28A]/40 uppercase tracking-[0.16em]'
-                  : 'bg-[#EFEAE2] text-[#211915] border border-[#DDD5C7] font-semibold'
+                  : 'bg-[#EFEAE2] text-[#181816] border border-[#DDD5C7] font-semibold'
               }`}
             >
               {statusText}

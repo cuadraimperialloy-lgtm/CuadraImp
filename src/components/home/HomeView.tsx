@@ -317,7 +317,7 @@ export function HomeView() {
       </section>
 
       {/* =====================================================================
-          04 · VIDEOS EN LA PISTA (Sección limpia en Café Cuero / Ébano)
+          04 · VIDEOS EN LA PISTA (Sección limpia en Carbón Mate)
           ===================================================================== */}
       {activeCinemaHorse && (
         <section id="en-la-pista" className="relative py-16 lg:py-24 bg-polder text-niebla">

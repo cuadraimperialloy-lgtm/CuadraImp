@@ -14,7 +14,7 @@ const config: Config = {
         'arena-profunda': '#DFDBD2',
         tinta: '#181816',
         'tinta-diluida': '#6E6A63',
-        polder: '#211915',
+        polder: '#181816',
         champagne: '#C6B28A',
         bronce: '#7D6B4A',
         linea: 'rgba(24, 24, 22, 0.08)',

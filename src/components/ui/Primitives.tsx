@@ -224,7 +224,7 @@ export function StatusTag({
 }) {
   return (
     <span
-      className={`inline-flex items-center px-3 py-1 rounded-full bg-[#EFEAE2] text-[#211915] border border-[#DDD5C7] text-[11px] font-semibold tracking-[0.04em] ${className}`}
+      className={`inline-flex items-center px-3 py-1 rounded-full bg-[#EFEAE2] text-[#181816] border border-[#DDD5C7] text-[11px] font-semibold tracking-[0.04em] ${className}`}
     >
       {label}
     </span>

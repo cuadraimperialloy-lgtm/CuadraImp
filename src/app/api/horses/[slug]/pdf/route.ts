@@ -187,8 +187,8 @@ function generateHorsePdfBuffer(params: {
   ops.push('0.957 0.949 0.929 rg');
   ops.push('0 0 595 842 re f');
 
-  // 2. Top Header Banner: Café Cuero / Ébano Profundo (#211915 -> 0.130 0.098 0.082)
-  ops.push('0.130 0.098 0.082 rg');
+  // 2. Top Header Banner: Carbón Mate (#181816 -> 0.094 0.094 0.086)
+  ops.push('0.094 0.094 0.086 rg');
   ops.push('36 742 523 66 re f');
 
   // Gold accent line inside header
@@ -295,8 +295,8 @@ function generateHorsePdfBuffer(params: {
     // Col 3 Bottom (Abuelo Materno): x = 402, w = 131, y = 240, h = 82 (center y = 281)
     // -------------------------------------------------------------------------
 
-    // Connector Lines (Café Cuero #211915)
-    ops.push('0.130 0.098 0.082 RG 1.5 w');
+    // Connector Lines (Carbón Mate #181816)
+    ops.push('0.094 0.094 0.086 RG 1.5 w');
     // From Ejemplar right edge (197, 383) to fork at x = 214
     ops.push('197 383 m 214 383 l S');
     // Vertical fork from y = 281 to y = 476 at x = 214
@@ -308,8 +308,8 @@ function generateHorsePdfBuffer(params: {
     // Horizontal from Madre right edge (372, 281) -> Abuelo Materno (402, 281)
     ops.push('372 281 m 402 281 l S');
 
-    // Node 1: EJEMPLAR (Dark Café Cuero Box with Cream & Champagne Text)
-    ops.push('0.130 0.098 0.082 rg 62 335 135 96 re f');
+    // Node 1: EJEMPLAR (Dark Carbón Mate Box with Cream & Champagne Text)
+    ops.push('0.094 0.094 0.086 rg 62 335 135 96 re f');
     ops.push('0.776 0.698 0.541 RG 1.2 w 62 335 135 96 re S');
     ops.push(
       'BT /F1 8 Tf 0.776 0.698 0.541 rg 74 408 Td (' +
@@ -534,9 +534,9 @@ function generateHorsePdfBuffer(params: {
     }
   }
 
-  // 4. Bottom Footer Box (Café Cuero / Arena)
+  // 4. Bottom Footer Box (Carbón Mate / Arena)
   ops.push('0.918 0.902 0.875 rg 36 36 523 58 re f');
-  ops.push('0.130 0.098 0.082 RG 1 w 36 36 523 58 re S');
+  ops.push('0.094 0.094 0.086 RG 1 w 36 36 523 58 re S');
   ops.push(
     'BT /F2 9.5 Tf 0.094 0.094 0.086 rg 48 75 Td (' +
       pdfEscape('CUADRA IMPERIAL LOY  -  ESTANCIA EN AYOTLAN, JALISCO, MEXICO') +
