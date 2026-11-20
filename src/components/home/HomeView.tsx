@@ -335,7 +335,7 @@ export function HomeView() {
                   </p>
                   <h2 className="font-display-split h2-fluid font-bold text-niebla">
                     {dict.home.videos.titleStrong}{' '}
-                    <span className="text-champagne">
+                    <span className="bg-gradient-to-r from-[#E8CB7C] via-[#D4B160] to-[#B08532] bg-clip-text text-transparent">
                       {dict.home.videos.titleLight}
                     </span>
                   </h2>

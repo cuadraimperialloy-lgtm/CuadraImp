@@ -281,7 +281,7 @@ export function GuaranteeView() {
             </p>
             <h2 className="font-display-split font-bold text-[32px] sm:text-[38px] text-niebla leading-tight uppercase">
               {dict.guaranteePage.shipping.titleStrong}{' '}
-              <span className="font-light text-champagne">
+              <span className="font-light bg-gradient-to-r from-[#E8CB7C] via-[#D4B160] to-[#B08532] bg-clip-text text-transparent">
                 {dict.guaranteePage.shipping.titleLight}
               </span>
             </h2>
