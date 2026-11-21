@@ -1026,7 +1026,29 @@ export function AdminDashboard({
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-5 gap-4">
+                    <div>
+                      <label className="block text-[11px] uppercase tracking-[0.14em] text-tinta-diluida mb-1 font-semibold text-tinta">
+                        Estado
+                      </label>
+                      <select
+                        value={editingHorse.status}
+                        onChange={(e) =>
+                          setEditingHorse({
+                            ...editingHorse,
+                            status: e.target.value as HorseStatus,
+                          })
+                        }
+                        className="w-full h-10 px-3 bg-niebla border border-linea text-[14px] font-medium"
+                      >
+                        <option value="available">Disponible</option>
+                        <option value="en_route">En camino</option>
+                        <option value="reserved">Apartado</option>
+                        <option value="sold">Vendido</option>
+                        <option value="draft">Borrador</option>
+                        <option value="archived">Archivado</option>
+                      </select>
+                    </div>
                     <div>
                       <label className="block text-[11px] uppercase tracking-[0.14em] text-tinta-diluida mb-1">
                         Tipo

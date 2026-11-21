@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 import type {
   AdminHorse,
   AuditLogEntry,
@@ -12,7 +13,8 @@ import initialSeedData from '@/lib/seed';
 import { getLast4MicrochipDigits } from '@/lib/utils';
 
 const DB_FILE_PATH = path.join(process.cwd(), 'src', 'data', 'database.json');
-const RUNTIME_LEADS_PATH = path.join(process.cwd(), '.next', 'leads-store.json');
+const TMP_DB_PATH = path.join(os.tmpdir(), 'cuadra-database.json');
+const RUNTIME_LEADS_PATH = path.join(os.tmpdir(), 'leads-store.json');
 
 function readRuntimeLeads(): LeadRecord[] {
   try {
@@ -37,6 +39,30 @@ function writeRuntimeLeads(leads: LeadRecord[]): void {
 }
 
 export function readDatabase(): DatabaseSchema {
+  // 1. Try reading from tmp directory if it has a newer version (e.g. on serverless Vercel)
+  try {
+    if (fs.existsSync(TMP_DB_PATH)) {
+      let isTmpValid = true;
+      if (fs.existsSync(DB_FILE_PATH)) {
+        const tmpMtime = fs.statSync(TMP_DB_PATH).mtimeMs;
+        const fileMtime = fs.statSync(DB_FILE_PATH).mtimeMs;
+        if (tmpMtime < fileMtime) {
+          isTmpValid = false;
+        }
+      }
+      if (isTmpValid) {
+        const content = fs.readFileSync(TMP_DB_PATH, 'utf-8');
+        const db = JSON.parse(content) as DatabaseSchema;
+        if (db && Array.isArray(db.horses)) {
+          return db;
+        }
+      }
+    }
+  } catch {
+    // ignore
+  }
+
+  // 2. Read from static workspace file
   try {
     if (fs.existsSync(DB_FILE_PATH)) {
       const content = fs.readFileSync(DB_FILE_PATH, 'utf-8');
@@ -56,10 +82,18 @@ export function readDatabase(): DatabaseSchema {
 }
 
 export function writeDatabase(data: DatabaseSchema): void {
+  // 1. Write to local project file (works in local dev & build environments)
   try {
     fs.writeFileSync(DB_FILE_PATH, JSON.stringify(data, null, 2), 'utf-8');
   } catch (err) {
-    console.error('Error writing database.json:', err);
+    // Read-only filesystem in Vercel serverless environment
+  }
+
+  // 2. Write to writable temp directory (persists across warm serverless requests)
+  try {
+    fs.writeFileSync(TMP_DB_PATH, JSON.stringify(data, null, 2), 'utf-8');
+  } catch {
+    // ignore
   }
 }
 

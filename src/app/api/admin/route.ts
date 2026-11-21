@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { appendAuditLog, readDatabase, writeDatabase } from '@/lib/db';
+import { syncDatabaseToGitHub } from '@/lib/githubSync';
 import {
   changeAdminPassword,
   checkAdminCredentials,
@@ -57,6 +58,7 @@ export async function POST(req: NextRequest) {
       if (!changeRes.ok) {
         return NextResponse.json({ error: changeRes.error }, { status: 400 });
       }
+      await syncDatabaseToGitHub(db, 'cms(auth): change admin password');
       return NextResponse.json({ ok: true, message: 'Contraseña actualizada correctamente.' });
     }
 
@@ -90,6 +92,10 @@ export async function POST(req: NextRequest) {
 
       writeDatabase(db);
       revalidatePath('/', 'layout');
+      await syncDatabaseToGitHub(
+        db,
+        `cms(horse): update ${horse.name} (${horse.code}) [${horse.status}]`
+      );
       return NextResponse.json({ ok: true, db });
     }
 
@@ -114,6 +120,10 @@ export async function POST(req: NextRequest) {
         });
         writeDatabase(db);
         revalidatePath('/', 'layout');
+        await syncDatabaseToGitHub(
+          db,
+          `cms(horse): delete ${target.name} (${target.code})`
+        );
       }
       return NextResponse.json({ ok: true, db });
     }
@@ -134,6 +144,7 @@ export async function POST(req: NextRequest) {
       });
       writeDatabase(db);
       revalidatePath('/', 'layout');
+      await syncDatabaseToGitHub(db, 'cms(horses): reorder collection');
       return NextResponse.json({ ok: true, db });
     }
 
@@ -238,6 +249,7 @@ export async function POST(req: NextRequest) {
       });
       writeDatabase(db);
       revalidatePath('/', 'layout');
+      await syncDatabaseToGitHub(db, 'cms(settings): update site settings');
       return NextResponse.json({ ok: true, db });
     }
 
