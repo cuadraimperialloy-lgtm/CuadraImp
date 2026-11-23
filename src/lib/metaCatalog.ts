@@ -31,26 +31,32 @@ export function generateMetaCatalogXml(): string {
           ? 'in stock'
           : 'out of stock';
 
-      // Price: use internalPriceMxn if available, default to 0.00 MXN
-      const priceVal = (horse.internalPriceMxn || 0).toFixed(2);
-      const priceFormatted = `${priceVal} MXN`;
+      // Base price 1.00 MXN for "Precio a consultar / Contáctanos"
+      const priceFormatted = '1.00 MXN';
 
-      // Description with genealogy, age and origin
-      const pedigreeLine = [
-        horse.sire ? `Padre: ${horse.sire}` : '',
-        horse.dam ? `Madre: ${horse.dam}` : '',
+      // Pedigree concatenation (Padre × Madre y Abuelo)
+      const parentsConcat = horse.sire && horse.dam
+        ? `${horse.sire} × ${horse.dam}`
+        : horse.sire
+          ? `Padre: ${horse.sire}`
+          : '';
+
+      const pedigreeDetails = [
+        parentsConcat ? `Línea: ${parentsConcat}` : '',
         horse.damsire ? `Abuelo Materno: ${horse.damsire}` : '',
       ]
         .filter(Boolean)
         .join(' · ');
 
       const fullDescription = [
-        horse.descriptionEs || `Ejemplar Frisón KFPS importado de Holanda.`,
-        pedigreeLine ? `Genealogía: ${pedigreeLine}.` : '',
+        `Contáctanos y consulta su precio.`,
+        horse.descriptionEs || `Ejemplar Frisón KFPS europeo de alta conformación racial y papeles en regla.`,
+        pedigreeDetails ? `${pedigreeDetails}.` : '',
         ageStr ? `Edad: ${ageStr}.` : '',
         horse.heightM ? `Alzada: ${horse.heightM} m.` : '',
-        `Ubicación: Zapotlanejo y La Barca, Jalisco. Cuadra Imperial Loy.`,
+        `Ubicación: Zapotlanejo y La Barca, Jalisco (Cuadra Imperial Loy).`,
         `Estado: ${statusLabel}.`,
+        `Visitas únicamente con previa cita a puerta cerrada.`,
       ]
         .filter(Boolean)
         .join(' ');
