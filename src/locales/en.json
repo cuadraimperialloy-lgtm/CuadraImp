@@ -187,20 +187,20 @@
       "closingQuote": "“We say what you see in the arena and what the papers say.”"
     },
     "privateVisit": {
-      "eyebrow": "38 MINUTES FROM GUADALAJARA",
+      "eyebrow": "ZAPOTLANEJO & LA BARCA, JALISCO · 38 MIN FROM GUADALAJARA",
       "titleStrong": "A PRIVATE VISIT.",
       "titleLight": "BEHIND CLOSED DOORS.",
-      "body": "We reserve the arena and the time for you. Only you, your people and the horses, with no rush and no pressure to buy.",
+      "body": "Visits exclusively by private appointment at our private facilities in Zapotlanejo and La Barca, Jalisco. We reserve the arena and the time for you: only you, your team and the horses, with no rush and no pressure to buy.",
       "bullets": [
+        "Private attention behind closed doors in Zapotlanejo or La Barca",
         "Arena presentation or ridden demonstration",
-        "Original KFPS passport review",
-        "Private attention behind closed doors",
-        "Your vet and trainer welcome"
+        "Original KFPS passport and pedigree review",
+        "Your veterinarian and trainer are welcome"
       ],
       "cta": "Book a private visit",
       "estanciaTitle": "Estancia Imperial Loy",
-      "estanciaBadge": "Under construction · Rendering",
-      "estanciaCaption": "Architectural rendering of the upcoming Estancia Imperial Loy in Ayotlán, Jalisco."
+      "estanciaBadge": "Coming Soon · Architectural Projection",
+      "estanciaCaption": "Architectural projection of the upcoming Estancia Imperial Loy in Ayotlán, Jalisco."
     },
     "kfps": {
       "eyebrow": "KONINKLIJKE VERENIGING HET FRIESCH PAARDEN-STAMBOEK",
@@ -404,10 +404,10 @@
     }
   },
   "privateVisitPage": {
-    "eyebrow": "ZAPOTLANEJO, JALISCO",
+    "eyebrow": "ZAPOTLANEJO & LA BARCA, JALISCO",
     "titleStrong": "BOOK YOUR",
     "titleLight": "PRIVATE VISIT",
-    "subtitle": "Only you, your people and the horses, with no pressure. 38 minutes from Guadalajara.",
+    "subtitle": "Visits exclusively by private appointment at our private facilities in Zapotlanejo and La Barca, Jalisco. 38 minutes from Guadalajara.",
     "form": {
       "nameLabel": "Your name*",
       "namePlaceholder": "First and last name",

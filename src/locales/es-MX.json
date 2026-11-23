@@ -187,19 +187,19 @@
       "closingQuote": "«Se dice lo que se ve en la pista y lo que dice el papel.»"
     },
     "privateVisit": {
-      "eyebrow": "A 38 MINUTOS DE GUADALAJARA",
+      "eyebrow": "ZAPOTLANEJO Y LA BARCA, JALISCO · A 38 MIN DE GUADALAJARA",
       "titleStrong": "UNA CITA PRIVADA.",
       "titleLight": "A PUERTA CERRADA.",
-      "body": "Le apartamos la pista y el tiempo. Solo usted, su gente y los caballos, sin prisa y sin presión de compra.",
+      "body": "Visitas únicamente con previa cita en nuestras instalaciones privadas en Zapotlanejo y La Barca, Jalisco. Le apartamos la pista y el tiempo: solo usted, su gente y los caballos, sin prisa y sin presión de compra.",
       "bullets": [
+        "Atención privada a puerta cerrada en Zapotlanejo o La Barca",
         "Presentación en pista o prueba montada",
-        "Revisión del pasaporte KFPS original",
-        "Atención privada a puerta cerrada",
-        "Su veterinario y caballerango, bienvenidos"
+        "Revisión del pasaporte KFPS original y genealogía completa",
+        "Su médico veterinario y caballerango son bienvenidos"
       ],
       "cta": "Agendar cita privada",
       "estanciaTitle": "Estancia Imperial Loy",
-      "estanciaBadge": "En construcción · Render",
+      "estanciaBadge": "Próximamente · Proyección arquitectónica",
       "estanciaCaption": "Proyección arquitectónica de la próxima Estancia Imperial Loy en Ayotlán, Jalisco."
     },
     "kfps": {
@@ -404,10 +404,10 @@
     }
   },
   "privateVisitPage": {
-    "eyebrow": "ZAPOTLANEJO, JALISCO",
+    "eyebrow": "ZAPOTLANEJO Y LA BARCA, JALISCO",
     "titleStrong": "AGENDE SU",
     "titleLight": "CITA PRIVADA",
-    "subtitle": "Solo usted, su gente y los caballos, sin presión. A 38 minutos de Guadalajara.",
+    "subtitle": "Visitas exclusivamente con previa cita en nuestras instalaciones privadas de Zapotlanejo y La Barca, Jalisco. A 38 minutos de Guadalajara.",
     "form": {
       "nameLabel": "Su nombre*",
       "namePlaceholder": "Nombre y apellido",

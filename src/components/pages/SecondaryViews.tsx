@@ -177,8 +177,8 @@ export function StallionsView() {
           <div className="lg:col-span-5 space-y-5">
             <Eyebrow className="text-bronce">
               {lang === 'es'
-                ? 'LA CUADRA · ZAPOTLANEJO, JALISCO'
-                : 'THE STABLE · ZAPOTLANEJO, JALISCO'}
+                ? 'LA CUADRA · ZAPOTLANEJO Y LA BARCA, JALISCO'
+                : 'THE STABLE · ZAPOTLANEJO & LA BARCA, JALISCO'}
             </Eyebrow>
             <h2 className="font-display-split font-bold text-[34px] text-tinta leading-tight uppercase">
               {dict.home.privateVisit.estanciaTitle}
@@ -189,10 +189,10 @@ export function StallionsView() {
             <div className="grid grid-cols-3 gap-3 pt-2">
               <div className="bg-niebla rounded-xl p-3.5">
                 <span className="block text-[10px] uppercase tracking-[0.16em] text-tinta-diluida">
-                  {lang === 'es' ? 'Ubicación' : 'Location'}
+                  {lang === 'es' ? 'Instalaciones' : 'Facilities'}
                 </span>
-                <strong className="text-[14px] font-semibold text-tinta block mt-1">
-                  Zapotlanejo, Jal.
+                <strong className="text-[13px] font-semibold text-tinta block mt-1 leading-tight">
+                  Zapotlanejo y La Barca
                 </strong>
               </div>
               <div className="bg-niebla rounded-xl p-3.5">
@@ -742,10 +742,10 @@ export function StableView() {
             <div className="grid grid-cols-3 gap-3 pt-2">
               <div className="bg-arena rounded-xl p-4">
                 <span className="block text-[10px] uppercase tracking-[0.16em] text-tinta-diluida">
-                  {lang === 'es' ? 'Ubicación' : 'Location'}
+                  {lang === 'es' ? 'Instalaciones' : 'Facilities'}
                 </span>
-                <strong className="text-[15px] font-semibold text-tinta block mt-1">
-                  Zapotlanejo, Jal.
+                <strong className="text-[14px] font-semibold text-tinta block mt-1 leading-tight">
+                  Zapotlanejo y La Barca
                 </strong>
               </div>
               <div className="bg-arena rounded-xl p-4">
